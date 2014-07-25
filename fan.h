@@ -25,7 +25,5 @@ class Fan: public BasicSwitch
 	 int getLowTemp();
 };
 
-extern Fan fan;
-
 #endif
 
