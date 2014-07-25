@@ -7,25 +7,17 @@
 	#include "WProgram.h"
 #endif
 
-class Fan
+#include "basic_switch.h"
+
+class Fan: public BasicSwitch
 {
  protected:
-	 int pin;
-	 int state;
 	 int highTemp;
 	 int lowTemp;
-	 void setState(int val);
 
  public:
 	 Fan(int valPin, int valLowTemp, int valHighTemp);
-	 Fan();
-	 
-	 int getPin();
-	 void setPin(int val);
-	 int getState();
-	 void on();
-	 void off();
-	 void toggle();
+
 	 void checkTemp(int val);
 	 void setHighTemp(int val);
 	 int getHighTemp();

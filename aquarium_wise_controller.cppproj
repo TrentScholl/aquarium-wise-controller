@@ -328,13 +328,22 @@ build.arch=AVR
     <Compile Include="aquarium_wise_controller.ino">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="basic_switch.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="basic_switch.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="controller.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="controller.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="relay.cpp">
+    <Compile Include="fan.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="fan.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="relay.h">

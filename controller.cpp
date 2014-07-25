@@ -1,5 +1,6 @@
 #include "controller.h"
 #include "relay.h"
+#include "fan.h"
 
 Relay rlyLight1(A0);
 Relay rlyLight2(A1);

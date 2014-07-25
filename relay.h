@@ -7,23 +7,14 @@
 	#include "WProgram.h"
 #endif
 
-class Relay
+#include "basic_switch.h"
+
+class Relay: public BasicSwitch
 {
  protected:
-	int pin;
-	int state;
-	void setState(int val);
 
  public:
-	Relay(int val);
-	Relay();
-	
-	int getPin();
-	void setPin(int val);
-	int getState();
-	void on();
-	void off();
-	void toggle();
+	Relay(int val) : BasicSwitch(val) {}
 };
 
 #endif
