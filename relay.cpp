@@ -50,6 +50,9 @@ void Relay::toggle()
 
 void Relay::setState(int val)
 {
-	digitalWrite(pin, val);
-	state = val;
+	if (state != val)
+	{
+		digitalWrite(pin, val);
+		state = val;
+	}
 }
