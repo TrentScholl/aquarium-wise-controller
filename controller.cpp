@@ -2,6 +2,7 @@
 #include "relay.h"
 #include "fan.h"
 #include "configuration.h"
+#include "dosing_pump.h"
 
 Relay rlyLight1(A0);
 Relay rlyLight2(A1);
@@ -12,9 +13,13 @@ Relay rlyCO2(A5);
 Relay rlyAux1(A6);
 Relay rlyAux2(A7);
 
+DosingPump dpMacro(10);
+DosingPump dpMicro(11);
+DosingPump dpFe(12);
+
 void Controller::setup()
 {
-	int i = configuration.data.test;
+	
 }
 
 void Controller::loop()
