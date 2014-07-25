@@ -1,4 +1,4 @@
-#include "Relay.h"
+#include "relay.h"
 
 Relay::Relay(int val)
 {

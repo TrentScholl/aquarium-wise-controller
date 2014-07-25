@@ -1,5 +1,5 @@
-#include "Controller.h"
-#include "Relay.h"
+#include "controller.h"
+#include "relay.h"
 
 Relay rlyLight1(A0);
 Relay rlyLight2(A1);
