@@ -1,3 +1,4 @@
+#include "fan.h"
 #include "controller.h"
 
 void setup()

@@ -24,5 +24,7 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "C:\Workspaces\Personal\aquarium_wise_controller\aquarium_wise_controller.ino"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\controller.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\controller.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\fan.cpp"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\fan.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\relay.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\relay.h"
