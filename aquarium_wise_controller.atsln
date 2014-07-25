@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "aquarium_wise_controller", "aquarium_wise_controller.cppproj", "{FC256319-944B-4B51-9B5E-FBDB56CBD323}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC256319-944B-4B51-9B5E-FBDB56CBD323}.Debug|AVR.ActiveCfg = Debug|AVR
+		{FC256319-944B-4B51-9B5E-FBDB56CBD323}.Debug|AVR.Build.0 = Debug|AVR
+		{FC256319-944B-4B51-9B5E-FBDB56CBD323}.Release|AVR.ActiveCfg = Release|AVR
+		{FC256319-944B-4B51-9B5E-FBDB56CBD323}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
