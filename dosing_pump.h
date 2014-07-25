@@ -20,7 +20,5 @@ class DosingPump
 		void dose(int valMl, int valMls);
 };
 
-extern DosingPump dosingPump;
-
 #endif
 
