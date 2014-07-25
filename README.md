@@ -1,4 +1,4 @@
-aquariumwise-controller
+aquarium_wise_controller
 =======================
 
 Arduino Aquarium Controller
