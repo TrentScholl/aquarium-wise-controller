@@ -1,5 +1,3 @@
-// fan.h
-
 #ifndef _FAN_h
 #define _FAN_h
 
