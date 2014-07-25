@@ -29,4 +29,3 @@ void DosingPump::dose(int valMl, int valMls)
 }
 
 DosingPump dosingPump;
-

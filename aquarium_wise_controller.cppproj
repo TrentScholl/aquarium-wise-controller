@@ -334,10 +334,31 @@ build.arch=AVR
     <Compile Include="basic_switch.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="configuration.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="controller.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="controller.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dosing_pump.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dosing_pump.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EEPROMex.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EEPROMex.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EEPROMVar.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="fan.cpp">
