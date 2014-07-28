@@ -7,8 +7,4 @@ install:
  - sudo pip install ino
 
 script:
- - mkdir src
- - mv *.ino src/
- - mv *.h src/
- - mv *.cpp src/
  - ino build
