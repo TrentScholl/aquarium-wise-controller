@@ -36,3 +36,5 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "C:\Workspaces\Personal\aquarium_wise_controller\fan.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\fan.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\relay.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\sensor.cpp"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\sensor.h"
