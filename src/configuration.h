@@ -7,12 +7,17 @@
 	#include "WProgram.h"
 #endif
 
+#include <Time.h>
+#include <RTClib.h>
+#include <TimeAlarms.h>
+
 class Configuration
 {
  protected:
 	int configAddress;
  	struct Data {
-	 	int test;
+	 	int utcOffset;
+		time_t feedTime;
  	};
 
 	

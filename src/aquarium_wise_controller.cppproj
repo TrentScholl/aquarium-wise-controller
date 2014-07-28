@@ -370,7 +370,16 @@ build.arch=AVR
     <Compile Include="relay.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sensor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Visual Micro\.aquarium_wise_controller.vsarduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Visual Micro\.src.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

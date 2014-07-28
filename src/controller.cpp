@@ -17,8 +17,6 @@ DosingPump dpMacro(10);
 DosingPump dpMicro(11);
 DosingPump dpFe(12);
 
-int utcOffset=10;
-
 void Controller::setup()
 {
 
