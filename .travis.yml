@@ -3,8 +3,8 @@ compiler:
  - gcc
 
 install:
- - sudo apt-get update && sudo apt-get install arduino arduino-core 
- - sudo pip install ino
+ - travis_retry sudo apt-get update && sudo apt-get install arduino arduino-core 
+ - travis_retry sudo pip install ino
 
 script:
  - ino build
