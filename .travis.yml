@@ -21,4 +21,4 @@ script:
  - mv *.ino src/
  - mv *.h src/
  - mv *.cpp src/
- - ino build -m mega2560
+ - ino build -m mega
