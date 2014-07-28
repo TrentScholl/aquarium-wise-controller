@@ -17,6 +17,8 @@ install:
  - pwd
 
 script:
- - ino build --help
- - ls -alF
- - ino build -m arduino_due_x_dbg
+ - mkdir src
+ - mv *.ino src/
+ - mv *.h src/
+ - mv *.cpp src/
+ - ino build -m mega2560
