@@ -53,6 +53,12 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
@@ -77,6 +83,12 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
@@ -200,6 +212,12 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
@@ -224,6 +242,12 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>

@@ -1,3 +1,6 @@
+#include <DS1307RTC.h>
+#include <Time.h>
+#include <Wire.h>
 #include <EEPROMVar.h>
 #include <EEPROMex.h>
 #include "controller.h"
