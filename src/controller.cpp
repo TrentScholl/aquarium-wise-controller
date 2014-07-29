@@ -36,6 +36,8 @@ void Controller::setup()
 	Alarm.alarmRepeat(8, 31, 0, rly07.off);
 	Alarm.alarmRepeat(8, 30, 0, rly08.on);
 	Alarm.alarmRepeat(8, 31, 0, rly08.off);
+	
+	Alarm.alarmRepeat(8, 31, 0, dp01.dose);
 }
 
 void Controller::loop()

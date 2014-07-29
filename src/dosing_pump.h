@@ -11,13 +11,20 @@ class DosingPump
 {
 	protected:
 		int pin;
+		int doseAmt;
+		int mlsSec;
 	public:
 		DosingPump(int val);
 		DosingPump();
 		
 		int getPin();
 		void setPin(int val);
-		void dose(int valMl, int valMls);
+		int getDoseAmt();
+		void setDoseAmt(int val);
+		int getMlsSec();
+		void setMlsSec(int val);
+		static void dose();
+		void dose(int val);
 };
 
 #endif
