@@ -53,6 +53,8 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
@@ -83,6 +85,8 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
@@ -212,6 +216,8 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
@@ -242,6 +248,8 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
