@@ -1,5 +1,7 @@
 #include "basic_switch.h"
 
+void* basicSwitchObject;
+
 BasicSwitch::BasicSwitch(int val)
 {
 	setPin(val);
@@ -28,12 +30,14 @@ int BasicSwitch::getState()
 
 void BasicSwitch::on()
 {
-	setState(HIGH);
+	BasicSwitch* mySelf = (BasicSwitch*)basicSwitchObject;
+	mySelf->setState(HIGH);
 }
 
 void BasicSwitch::off()
 {
-	setState(LOW);
+	BasicSwitch* mySelf = (BasicSwitch*)basicSwitchObject;
+	mySelf->setState(LOW);
 }
 
 void BasicSwitch::toggle()

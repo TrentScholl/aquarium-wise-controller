@@ -21,8 +21,8 @@ class BasicSwitch
 	int getPin();
 	void setPin(int val);
 	int getState();
-	void on();
-	void off();
+	static void on();
+	static void off();
 	void toggle();
 };
 

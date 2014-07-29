@@ -5,8 +5,6 @@
 #include "dosing_pump.h"
 #include <TimeAlarms.h>
 
-void* controllerObject;
-
 Relay rly01(A0);
 Relay rly02(A1);
 Relay rly03(A2);
@@ -22,138 +20,27 @@ DosingPump dp03(12);
 
 void Controller::setup()
 {
-	Alarm.alarmRepeat(8, 30, 0, Controller::wrapper_rly01_On);
-	Alarm.alarmRepeat(8, 31, 0, Controller::wrapper_rly01_Off);
-	Alarm.alarmRepeat(8, 30, 0, Controller::wrapper_rly02_On);
-	Alarm.alarmRepeat(8, 31, 0, Controller::wrapper_rly02_Off);
-	Alarm.alarmRepeat(8, 30, 0, Controller::wrapper_rly03_On);
-	Alarm.alarmRepeat(8, 31, 0, Controller::wrapper_rly03_Off);
-	Alarm.alarmRepeat(8, 30, 0, Controller::wrapper_rly04_On);
-	Alarm.alarmRepeat(8, 31, 0, Controller::wrapper_rly04_Off);
-	Alarm.alarmRepeat(8, 30, 0, Controller::wrapper_rly05_On);
-	Alarm.alarmRepeat(8, 31, 0, Controller::wrapper_rly05_Off);
-	Alarm.alarmRepeat(8, 30, 0, Controller::wrapper_rly06_On);
-	Alarm.alarmRepeat(8, 31, 0, Controller::wrapper_rly06_Off);
-	Alarm.alarmRepeat(8, 30, 0, Controller::wrapper_rly07_On);
-	Alarm.alarmRepeat(8, 31, 0, Controller::wrapper_rly07_Off);
-	Alarm.alarmRepeat(8, 30, 0, Controller::wrapper_rly08_On);
-	Alarm.alarmRepeat(8, 31, 0, Controller::wrapper_rly08_Off);						
+	Alarm.alarmRepeat(8, 30, 0, rly01.on);
+	Alarm.alarmRepeat(8, 31, 0, rly01.off);
+	Alarm.alarmRepeat(8, 30, 0, rly02.on);
+	Alarm.alarmRepeat(8, 31, 0, rly02.off);
+	Alarm.alarmRepeat(8, 30, 0, rly03.on);
+	Alarm.alarmRepeat(8, 31, 0, rly03.off);
+	Alarm.alarmRepeat(8, 30, 0, rly04.on);
+	Alarm.alarmRepeat(8, 31, 0, rly04.off);
+	Alarm.alarmRepeat(8, 30, 0, rly05.on);
+	Alarm.alarmRepeat(8, 31, 0, rly05.off);
+	Alarm.alarmRepeat(8, 30, 0, rly06.on);
+	Alarm.alarmRepeat(8, 31, 0, rly06.off);
+	Alarm.alarmRepeat(8, 30, 0, rly07.on);
+	Alarm.alarmRepeat(8, 31, 0, rly07.off);
+	Alarm.alarmRepeat(8, 30, 0, rly08.on);
+	Alarm.alarmRepeat(8, 31, 0, rly08.off);
 }
 
 void Controller::loop()
 {
 	Alarm.delay(0);
-}
-
-void Controller::rly_State(Relay rly, byte state)
-{
-	switch (state)
-	{
-		case 0:
-			rly.off();
-			break;
-		case 1:
-			rly.on();
-			break;
-	}
-}
-
-// Relay wrapper functions used for the TimeAlarms
-
-void Controller::wrapper_rly01_On()
-{
-       Controller* mySelf = (Controller*)controllerObject;
-       mySelf->rly_State(rly01, 1);
-}
-
-void Controller::wrapper_rly01_Off()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly01, 0);
-}
-
-void Controller::wrapper_rly02_On()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly02, 1);
-}
-
-void Controller::wrapper_rly02_Off()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly02, 0);
-}
-
-void Controller::wrapper_rly03_On()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly03, 1);
-}
-
-void Controller::wrapper_rly03_Off()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly03, 0);
-}
-
-void Controller::wrapper_rly04_On()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly04, 1);
-}
-
-void Controller::wrapper_rly04_Off()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly04, 0);
-}
-
-void Controller::wrapper_rly05_On()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly05, 1);
-}
-
-void Controller::wrapper_rly05_Off()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly05, 0);
-}
-
-void Controller::wrapper_rly06_On()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly06, 1);
-}
-
-void Controller::wrapper_rly06_Off()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly06, 0);
-}
-
-void Controller::wrapper_rly07_On()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly07, 1);
-}
-
-void Controller::wrapper_rly07_Off()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly07, 0);
-}
-
-void Controller::wrapper_rly08_On()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly08, 1);
-}
-
-void Controller::wrapper_rly08_Off()
-{
-	Controller* mySelf = (Controller*)controllerObject;
-	mySelf->rly_State(rly08, 0);
 }
 
 Controller controller;
