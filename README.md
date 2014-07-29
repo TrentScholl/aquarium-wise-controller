@@ -8,8 +8,3 @@ Master
 
 Development
 [![Build Status](https://travis-ci.org/TrentScholl/aquarium_wise_controller.svg?branch=development)](https://travis-ci.org/TrentScholl/aquarium_wise_controller)
-
-Libraries
----------
-
-http://playground.arduino.cc/Code/EEPROMex

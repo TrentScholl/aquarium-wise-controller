@@ -53,8 +53,6 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -77,8 +75,6 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -200,8 +196,6 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -224,8 +218,6 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -358,6 +350,15 @@ build.arch=AVR
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="dosing_pump.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EEPROMex.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EEPROMex.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EEPROMVar.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="fan.cpp">
