@@ -53,6 +53,10 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
@@ -61,12 +65,8 @@
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
@@ -91,6 +91,10 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
@@ -99,12 +103,8 @@
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
@@ -228,6 +228,10 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
@@ -236,12 +240,8 @@ build.arch=AVR
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
@@ -266,6 +266,10 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
@@ -274,12 +278,8 @@ build.arch=AVR
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>

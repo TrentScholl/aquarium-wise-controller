@@ -1,12 +1,18 @@
+#include <Wire.h>
+#include <RTClib.h>
 #include "controller.h"
 #include "relay.h"
 #include "fan.h"
 #include "configuration.h"
 #include "dosing_pump.h"
 #include "atlas_ph.h"
+#include <Time.h>
 #include <TimeAlarms.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+
+
+RTC_DS1307 RTC;
 
 Relay rly01(A0);
 Relay rly02(A1);
@@ -23,7 +29,7 @@ DosingPump dp03(12);
 
 AtlasPh ph01(14, 15);
 
-OneWire oneWire(40);
+OneWire oneWire(2);
 
 DallasTemperature dallasTemperatureSensors(&oneWire);
 
@@ -31,13 +37,22 @@ DeviceAddress temperatureProbe01 = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0
 DeviceAddress temperatureProbe02 = { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01 };
 
 void Controller::setup()
-{
+{	
+	Wire.begin();
+	RTC.begin();
+	setSyncProvider(syncProvider);
+	  
 	load_Configuration();
 	
 	dallasTemperatureSensors.begin();
 	
 	dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, 32);
 	dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, 20);
+}
+
+time_t Controller::syncProvider()
+{
+	return RTC.now().unixtime();
 }
 
 void Controller::load_Configuration()
@@ -156,6 +171,9 @@ void Controller::setup_DosingPumps()
 
 void Controller::setup_Relays()
 {
+	Alarm.alarmRepeat(21, 27, 0, rly01.on);
+	Alarm.alarmRepeat(21, 28, 0, rly01.off);
+	
 	// Lights
 	if (configuration.data.rly01Active)
 	{
@@ -198,6 +216,8 @@ void Controller::setup_Relays()
 
 void Controller::loop()
 {
+	rly01.on();
+	rly01.off();
 	check_Temperatures();
 	check_Ph();
 	
@@ -208,22 +228,22 @@ void Controller::check_Temperatures()
 {
 	dallasTemperatureSensors.requestTemperatures();
 	
-	float probeTemp01 = dallasTemperatureSensors.getTempC(temperatureProbe01);
+	float probeTemp01 = dallasTemperatureSensors.getTempCByIndex(0);
 	
 	if (dallasTemperatureSensors.hasAlarm(temperatureProbe01))
 	{
-		if (probeTemp01 >= dallasTemperatureSensors.getHighAlarmTemp(temperatureProbe01) & rly04.getState() == 1)
+		if (probeTemp01 >= dallasTemperatureSensors.getHighAlarmTemp(temperatureProbe01) & rly08.getState() == 1)
 		{
-			rly04.off();
+			//rly08.off();
 		} 
 		else if (probeTemp01 <= dallasTemperatureSensors.getLowAlarmTemp(temperatureProbe01))
 		{
 			// Sound alarm
 		}
 	}
-	else if (rly04.getState() == 0)
+	else if (rly08.getState() == 0)
 	{
-		rly04.on();
+		//rly08.on();
 	}
 	
 	float probeTemp02 = dallasTemperatureSensors.getTempC(temperatureProbe02);
@@ -235,11 +255,11 @@ void Controller::check_Ph()
 	
 	if (phVal >= ph01.getHighAlarmPh() & rly03.getState() == 0)
 	{
-		rly03.on();
+		//rly03.on();
 	}
 	else if (phVal <= ph01.getLowAlarmPh() & rly03.getState() == 1)
 	{
-		rly03.off();
+		//rly03.off();
 	}
 }
 

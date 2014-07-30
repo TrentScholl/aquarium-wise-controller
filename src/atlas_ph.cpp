@@ -6,25 +6,24 @@ AtlasPh::AtlasPh(int rxPin, int txPin)
 	SoftwareSerial mySerial(rxPin, txPin);
 	atlasSerial = & mySerial;
 	
-	Serial.begin(38400);
 	atlasSerial->begin(38400);
 	
-	atlasSerial->print("E\r");
-	delay(50);
-	atlasSerial->print("E\r");
-	delay(50);
+	//atlasSerial->print("E\r");
+	//delay(50);
+	//atlasSerial->print("E\r");
+	//delay(50);
 }
 
 float AtlasPh::getPh(int tempVal)
 {
-	atlasSerial->print("R\r");
+	//atlasSerial->print("R\r");
 	
 	float phVal = 0.0;
 	
-	while (atlasSerial->available() > 0)
-	{
-		phVal = Serial.parseFloat();
-	}
+	//while (atlasSerial->available() > 0)
+	//{
+	//	phVal = Serial.parseFloat();
+	//}
 	
 	return phVal;
 }

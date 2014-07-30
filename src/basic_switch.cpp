@@ -16,6 +16,7 @@ void BasicSwitch::setPin(int val)
 {
 	pin = val;
 	pinMode(pin, OUTPUT);
+	state = LOW;
 }
 
 int BasicSwitch::getPin()

@@ -8,6 +8,7 @@
 #endif
 
 #include "relay.h"
+#include <Time.h>
 
 class Controller
 {
@@ -21,6 +22,7 @@ class Controller
 	void loop();
 	void check_Temperatures();
 	void check_Ph();
+	static time_t syncProvider();
 };
 
 extern Controller controller;
