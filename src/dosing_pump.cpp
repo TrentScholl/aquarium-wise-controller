@@ -23,14 +23,14 @@ int DosingPump::getPin()
 	return pin;
 }
 
-void DosingPump::setMlsSec(int val)
+void DosingPump::setMlSec(int val)
 {
-	mlsSec = val;
+	mlSec = val;
 }
 
-int DosingPump::getMlsSec()
+int DosingPump::getMlSec()
 {
-	return mlsSec;
+	return mlSec;
 }
 
 void DosingPump::setDoseAmt(int val)
@@ -52,7 +52,7 @@ void DosingPump::dose()
 void DosingPump::dose(int val)
 {
 	analogWrite(pin, 255);
-	delay((mlsSec*10)*val);
+	delay((mlSec*10)*val);
 	analogWrite(pin, 0);
 }
 

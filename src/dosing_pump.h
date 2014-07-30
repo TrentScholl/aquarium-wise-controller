@@ -12,7 +12,7 @@ class DosingPump
 	protected:
 		int pin;
 		int doseAmt;
-		int mlsSec;
+		int mlSec;
 	public:
 		DosingPump(int val);
 		DosingPump();
@@ -21,12 +21,13 @@ class DosingPump
 		void setPin(int val);
 		int getDoseAmt();
 		void setDoseAmt(int val);
-		int getMlsSec();
-		void setMlsSec(int val);
+		int getMlSec();
+		void setMlSec(int val);
 		static void dose();
 		void dose(int val);
 		struct Schedule
 		{
+			byte active;
 			byte onHour;
 			byte onMinute;
 			byte Sunday;

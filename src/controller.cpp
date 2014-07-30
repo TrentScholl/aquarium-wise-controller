@@ -44,9 +44,9 @@ void Controller::setup()
 	Alarm.alarmRepeat(11, 00, 0, rly03.on);
 	Alarm.alarmRepeat(19, 00, 0, rly03.off);
 
-	dp01.setMlsSec(1);
-	dp02.setMlsSec(1);
-	dp03.setMlsSec(1);
+	dp01.setMlSec(1);
+	dp02.setMlSec(1);
+	dp03.setMlSec(1);
 	
 	dp01.setDoseAmt(25);
 	dp02.setDoseAmt(25);
