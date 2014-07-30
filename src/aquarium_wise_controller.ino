@@ -1,3 +1,5 @@
+#include <DallasTemperature.h>
+#include <OneWire.h>
 #include <SoftwareSerial.h>
 #include <TimeAlarms.h>
 #include <DS1307RTC.h>

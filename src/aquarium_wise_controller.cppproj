@@ -53,6 +53,10 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
@@ -87,6 +91,10 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
@@ -220,6 +228,10 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
@@ -254,6 +266,10 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>

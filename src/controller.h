@@ -33,6 +33,7 @@ class Controller
 	static void rly07_Off();
 	static void rly08_On();
 	static void rly08_Off();
+	void check_Temperatures();
 };
 
 extern Controller controller;
