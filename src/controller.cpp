@@ -84,11 +84,11 @@ void Controller::check_Temperatures()
 	
 	if (dallasTemperatureSensors.hasAlarm(temperatureProbe01))
 	{
-		if (probeTemp01 >= dallasTemperatureSensors.getHighAlarmTemp(temperatureProbe01))
+		if (probeTemp01 >= dallasTemperatureSensors.getHighAlarmTemp(temperatureProbe01) & rly04.getState() == 1)
 		{
 			rly04.off();
-		}
-		if (probeTemp01 <= dallasTemperatureSensors.getLowAlarmTemp(temperatureProbe01))
+		} 
+		else if (probeTemp01 <= dallasTemperatureSensors.getLowAlarmTemp(temperatureProbe01))
 		{
 			// Sound alarm
 		}
