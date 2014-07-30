@@ -25,6 +25,18 @@ class DosingPump
 		void setMlsSec(int val);
 		static void dose();
 		void dose(int val);
+		struct Schedule
+		{
+			byte onHour;
+			byte onMinute;
+			byte Sunday;
+			byte Monday;
+			byte Tuesday;
+			byte Wednesday;
+			byte Thursday;
+			byte Friday;
+			byte Saturday;
+		};
 };
 
 #endif

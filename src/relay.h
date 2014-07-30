@@ -15,6 +15,14 @@ class Relay: public BasicSwitch
 
  public:
 	Relay(int val) : BasicSwitch(val) {}
+	struct Schedule
+	{
+		byte active;
+		byte onHour;
+		byte onMinute;
+		byte offHour;
+		byte offMinute;
+	};
 };
 
 #endif
