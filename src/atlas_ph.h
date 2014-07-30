@@ -9,13 +9,19 @@
 
 #include <SoftwareSerial.h>
 
-class AtlasPH
+class AtlasPh
 {
  protected:
 	SoftwareSerial *atlasSerial;
+	uint8_t highAlarmPh;
+	uint8_t lowAlarmPh;
  public:
-	AtlasPH(int rxPin, int txPin);
-	float read();
+	AtlasPh(int rxPin, int txPin);
+	float getPh(int tempVal);
+	void setHighAlarmPh(char);
+	void setLowAlarmPh(char);
+	char getHighAlarmPh();
+	char getLowAlarmPh();
 };
 
 #endif

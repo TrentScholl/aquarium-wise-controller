@@ -1,7 +1,7 @@
 #include "atlas_ph.h"
 #include <SoftwareSerial.h>
 
-AtlasPH::AtlasPH(int rxPin, int txPin)
+AtlasPh::AtlasPh(int rxPin, int txPin)
 {
 	SoftwareSerial mySerial(rxPin, txPin);
 	atlasSerial = & mySerial;
@@ -9,13 +9,13 @@ AtlasPH::AtlasPH(int rxPin, int txPin)
 	Serial.begin(38400);
 	atlasSerial->begin(38400);
 	
-	atlasSerial->print("e\r");
+	atlasSerial->print("E\r");
 	delay(50);
-	atlasSerial->print("e\r");
+	atlasSerial->print("E\r");
 	delay(50);
 }
 
-float AtlasPH::read()
+float AtlasPh::getPh(int tempVal)
 {
 	atlasSerial->print("R\r");
 	
@@ -27,4 +27,32 @@ float AtlasPH::read()
 	}
 	
 	return phVal;
+}
+
+void AtlasPh::setHighAlarmPh(char phVal)
+{
+	if (phVal > 8)
+	{
+		phVal = 8;
+	}
+	else if (phVal < 4)
+	{
+		phVal = 4;
+	}
+
+	highAlarmPh = (uint8_t)phVal;
+}
+
+void AtlasPh::setLowAlarmPh(char phVal)
+{
+	if (phVal > 8)
+	{
+		phVal = 8;
+	}
+	else if (phVal < 4)
+	{
+		phVal = 4;
+	}
+
+	lowAlarmPh = (uint8_t)phVal;
 }

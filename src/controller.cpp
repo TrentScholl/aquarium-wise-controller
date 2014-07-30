@@ -3,6 +3,7 @@
 #include "fan.h"
 #include "configuration.h"
 #include "dosing_pump.h"
+#include "atlas_ph.h"
 #include <TimeAlarms.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
@@ -19,6 +20,8 @@ Relay rly08(A7);
 DosingPump dp01(10);
 DosingPump dp02(11);
 DosingPump dp03(12);
+
+AtlasPh ph01(14, 15);
 
 OneWire oneWire(40);
 
@@ -72,6 +75,7 @@ void Controller::setup()
 void Controller::loop()
 {
 	check_Temperatures();
+	check_Ph();
 	
 	Alarm.delay(0);
 }
@@ -99,6 +103,20 @@ void Controller::check_Temperatures()
 	}
 	
 	float probeTemp02 = dallasTemperatureSensors.getTempC(temperatureProbe02);
+}
+
+void Controller::check_Ph()
+{
+	float phVal = ph01.getPh(dallasTemperatureSensors.getTempC(temperatureProbe01));
+	
+	if (phVal >= ph01.getHighAlarmPh() & rly03.getState() == 0)
+	{
+		rly03.on();
+	}
+	else if (phVal <= ph01.getLowAlarmPh() & rly03.getState() == 1)
+	{
+		rly03.off();
+	}
 }
 
 Controller controller;
