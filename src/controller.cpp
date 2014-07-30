@@ -32,44 +32,168 @@ DeviceAddress temperatureProbe02 = { 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0
 
 void Controller::setup()
 {
-	// Lights
-	Alarm.alarmRepeat(12, 00, 0, rly01.on);
-	Alarm.alarmRepeat(20, 00, 0, rly01.off);
-	
-	// Night Lights
-	Alarm.alarmRepeat(20, 00, 0, rly02.on);
-	Alarm.alarmRepeat(21, 30, 0, rly02.off);
-
-	// CO2
-	Alarm.alarmRepeat(11, 00, 0, rly03.on);
-	Alarm.alarmRepeat(19, 00, 0, rly03.off);
-
-	dp01.setMlSec(1);
-	dp02.setMlSec(1);
-	dp03.setMlSec(1);
-	
-	dp01.setDoseAmt(25);
-	dp02.setDoseAmt(25);
-	dp03.setDoseAmt(5);
-	
-	// Macro
-	Alarm.alarmRepeat(dowSunday, 11, 00, 0, dp01.dose);
-	Alarm.alarmRepeat(dowTuesday, 11, 00, 0, dp01.dose);
-	Alarm.alarmRepeat(dowThursday, 11, 00, 0, dp01.dose);
-	
-	// Micro
-	Alarm.alarmRepeat(dowMonday, 11, 00, 0, dp02.dose);
-	Alarm.alarmRepeat(dowWednesday, 11, 00, 0, dp02.dose);
-	Alarm.alarmRepeat(dowFriday, 11, 00, 0, dp02.dose);
-	
-	// Glut
-	Alarm.alarmRepeat(dowSunday, 20, 00, 0, dp02.dose);
-	Alarm.alarmRepeat(dowWednesday, 20, 00, 0, dp02.dose);
+	load_Configuration();
 	
 	dallasTemperatureSensors.begin();
 	
 	dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, 32);
 	dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, 20);
+}
+
+void Controller::load_Configuration()
+{
+	configuration.load();
+	setup_Relays();
+	setup_DosingPumps();
+}
+
+void Controller::setup_DosingPumps()
+{
+	dp01.setMlSec(configuration.data.dp01MlSec);
+	dp02.setMlSec(configuration.data.dp02MlSec);
+	dp03.setMlSec(configuration.data.dp02MlSec);
+		
+	dp01.setDoseAmt(configuration.data.dp01DoseAmt);
+	dp02.setDoseAmt(configuration.data.dp02DoseAmt);
+	dp03.setDoseAmt(configuration.data.dp03DoseAmt);
+	
+	if (configuration.data.dp01Active)
+	{
+		if (configuration.data.dp01Sunday)
+		{
+			Alarm.alarmRepeat(dowSunday, configuration.data.dp01OnHour, configuration.data.dp01OnMinute, 0, dp01.dose);
+		}
+		if (configuration.data.dp01Monday)
+		{
+			Alarm.alarmRepeat(dowMonday, configuration.data.dp01OnHour, configuration.data.dp01OnMinute, 0, dp01.dose);
+		}
+		if (configuration.data.dp01Tuesday)
+		{
+			Alarm.alarmRepeat(dowTuesday, configuration.data.dp01OnHour, configuration.data.dp01OnMinute, 0, dp01.dose);
+		}
+		if (configuration.data.dp01Wednesday)
+		{
+			Alarm.alarmRepeat(dowWednesday, configuration.data.dp01OnHour, configuration.data.dp01OnMinute, 0, dp01.dose);
+		}
+		if (configuration.data.dp01Thursday)
+		{
+			Alarm.alarmRepeat(dowThursday, configuration.data.dp01OnHour, configuration.data.dp01OnMinute, 0, dp01.dose);
+		}
+		if (configuration.data.dp01Friday)
+		{
+			Alarm.alarmRepeat(dowFriday, configuration.data.dp01OnHour, configuration.data.dp01OnMinute, 0, dp01.dose);
+		}
+		if (configuration.data.dp01Saturday)
+		{
+			Alarm.alarmRepeat(dowSaturday, configuration.data.dp01OnHour, configuration.data.dp01OnMinute, 0, dp01.dose);
+		}
+	}
+	
+	if (configuration.data.dp02Active)
+	{
+		if (configuration.data.dp02Sunday)
+		{
+			Alarm.alarmRepeat(dowSunday, configuration.data.dp02OnHour, configuration.data.dp02OnMinute, 0, dp02.dose);
+		}
+		if (configuration.data.dp02Monday)
+		{
+			Alarm.alarmRepeat(dowMonday, configuration.data.dp02OnHour, configuration.data.dp02OnMinute, 0, dp02.dose);
+		}
+		if (configuration.data.dp02Tuesday)
+		{
+			Alarm.alarmRepeat(dowTuesday, configuration.data.dp02OnHour, configuration.data.dp02OnMinute, 0, dp02.dose);
+		}
+		if (configuration.data.dp02Wednesday)
+		{
+			Alarm.alarmRepeat(dowWednesday, configuration.data.dp02OnHour, configuration.data.dp02OnMinute, 0, dp02.dose);
+		}
+		if (configuration.data.dp02Thursday)
+		{
+			Alarm.alarmRepeat(dowThursday, configuration.data.dp02OnHour, configuration.data.dp02OnMinute, 0, dp02.dose);
+		}
+		if (configuration.data.dp02Friday)
+		{
+			Alarm.alarmRepeat(dowFriday, configuration.data.dp02OnHour, configuration.data.dp02OnMinute, 0, dp02.dose);
+		}
+		if (configuration.data.dp02Saturday)
+		{
+			Alarm.alarmRepeat(dowSaturday, configuration.data.dp02OnHour, configuration.data.dp02OnMinute, 0, dp02.dose);
+		}
+	}
+	
+	if (configuration.data.dp03Active)
+	{
+		if (configuration.data.dp03Sunday)
+		{
+			Alarm.alarmRepeat(dowSunday, configuration.data.dp03OnHour, configuration.data.dp03OnMinute, 0, dp03.dose);
+		}
+		if (configuration.data.dp03Monday)
+		{
+			Alarm.alarmRepeat(dowMonday, configuration.data.dp03OnHour, configuration.data.dp03OnMinute, 0, dp03.dose);
+		}
+		if (configuration.data.dp03Tuesday)
+		{
+			Alarm.alarmRepeat(dowTuesday, configuration.data.dp03OnHour, configuration.data.dp03OnMinute, 0, dp03.dose);
+		}
+		if (configuration.data.dp03Wednesday)
+		{
+			Alarm.alarmRepeat(dowWednesday, configuration.data.dp03OnHour, configuration.data.dp03OnMinute, 0, dp03.dose);
+		}
+		if (configuration.data.dp03Thursday)
+		{
+			Alarm.alarmRepeat(dowThursday, configuration.data.dp03OnHour, configuration.data.dp03OnMinute, 0, dp03.dose);
+		}
+		if (configuration.data.dp03Friday)
+		{
+			Alarm.alarmRepeat(dowFriday, configuration.data.dp03OnHour, configuration.data.dp03OnMinute, 0, dp03.dose);
+		}
+		if (configuration.data.dp03Saturday)
+		{
+			Alarm.alarmRepeat(dowSaturday, configuration.data.dp03OnHour, configuration.data.dp03OnMinute, 0, dp03.dose);
+		}
+	}
+}
+
+void Controller::setup_Relays()
+{
+	// Lights
+	if (configuration.data.rly01Active)
+	{
+		Alarm.alarmRepeat(configuration.data.rly01OnHour, configuration.data.rly01OnMinute, 0, rly01.on);
+		Alarm.alarmRepeat(configuration.data.rly01OffHour, configuration.data.rly01OffMinute, 0, rly01.off);
+	}
+	
+	// Moon Light
+	if (configuration.data.rly02Active)
+	{
+		Alarm.alarmRepeat(configuration.data.rly02OnHour, configuration.data.rly02OnMinute, 0, rly02.on);
+		Alarm.alarmRepeat(configuration.data.rly02OffHour, configuration.data.rly02OffMinute, 0, rly02.off);
+	}
+
+	// CO2
+	if (configuration.data.rly03Active)
+	{
+		Alarm.alarmRepeat(configuration.data.rly03OnHour, configuration.data.rly03OnMinute, 0, rly03.on);
+		Alarm.alarmRepeat(configuration.data.rly03OffHour, configuration.data.rly03OffMinute, 0, rly03.off);
+	}
+	
+	if (configuration.data.rly04Active)
+	{
+		Alarm.alarmRepeat(configuration.data.rly04OnHour, configuration.data.rly04OnMinute, 0, rly04.on);
+		Alarm.alarmRepeat(configuration.data.rly04OffHour, configuration.data.rly04OffMinute, 0, rly04.off);
+	}
+	
+	if (configuration.data.rly05Active)
+	{
+		Alarm.alarmRepeat(configuration.data.rly05OnHour, configuration.data.rly05OnMinute, 0, rly05.on);
+		Alarm.alarmRepeat(configuration.data.rly05OffHour, configuration.data.rly05OffMinute, 0, rly05.off);
+	}
+	
+	if (configuration.data.rly06Active)
+	{
+		Alarm.alarmRepeat(configuration.data.rly06OnHour, configuration.data.rly06OnMinute, 0, rly06.on);
+		Alarm.alarmRepeat(configuration.data.rly06OffHour, configuration.data.rly06OffMinute, 0, rly06.off);
+	}	
 }
 
 void Controller::loop()

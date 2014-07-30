@@ -15,6 +15,9 @@ class Controller
 	
  public:
 	void setup();
+	void load_Configuration();
+	void setup_Relays();
+	void setup_DosingPumps();
 	void loop();
 	void check_Temperatures();
 	void check_Ph();
