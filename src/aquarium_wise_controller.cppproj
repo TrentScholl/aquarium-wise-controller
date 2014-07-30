@@ -53,6 +53,8 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
@@ -85,6 +87,8 @@
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
@@ -216,6 +220,8 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
@@ -248,6 +254,8 @@ build.arch=AVR
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\DS1307RTC</Value>
@@ -368,6 +376,12 @@ build.arch=AVR
     <Compile Include="aquarium_wise_controller.ino">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="atlas_ph.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="atlas_ph.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="basic_switch.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -399,12 +413,6 @@ build.arch=AVR
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="relay.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="sensor.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="sensor.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Visual Micro\.aquarium_wise_controller.vsarduino.h">

@@ -1,3 +1,4 @@
+#include <SoftwareSerial.h>
 #include <TimeAlarms.h>
 #include <DS1307RTC.h>
 #include <Time.h>
