@@ -56,3 +56,13 @@ void AtlasPh::setLowAlarmPh(char phVal)
 
 	lowAlarmPh = (uint8_t)phVal;
 }
+
+char AtlasPh::getHighAlarmPh()
+{
+	return (char)highAlarmPh;
+}
+
+char AtlasPh::getLowAlarmPh()
+{
+	return (char)lowAlarmPh;
+}
