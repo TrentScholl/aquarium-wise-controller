@@ -1,11 +1,7 @@
 #ifndef _FAN_h
 #define _FAN_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "Arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+#include "Arduino.h"
 
 #include "basic_switch.h"
 
