@@ -15,9 +15,7 @@ class Relay
 	void setState(byte val);
 
  public:
-	Relay();
 	Relay(int val);
-	void setPin(int val);
 	void on();
 	void off();
 	void toggle();

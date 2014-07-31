@@ -2,16 +2,6 @@
 
 Relay::Relay(int val)
 {
-	setPin(val);
-}
-
-Relay::Relay()
-{
-
-}
-
-void Relay::setPin(int val)
-{
 	pin = val;
 	setState(HIGH);
 	pinMode(pin, OUTPUT);
