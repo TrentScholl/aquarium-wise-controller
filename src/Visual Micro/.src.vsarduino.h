@@ -17,12 +17,11 @@
 extern "C" void __cxa_pure_virtual() {;}
 
 //
-time_t syncProvider();
 void load_Configuration();
+void setup_TemperatureSensors();
 void setup_DosingPumps();
-void check_RelayScheduleState(Relay rly, byte onHour, byte onMinute, byte offHour, byte offMinute);
-time_t tmConvert_t(int YYYY, byte MM, byte DD, byte hh, byte mm, byte ss);
 void setup_Relays();
+void check_RelayScheduleState(Relay rly, byte onHour, byte onMinute, byte offHour, byte offMinute);
 //
 void check_Temperatures();
 void check_Ph();
@@ -45,7 +44,9 @@ void alarm_rly08_off();
 void alarm_dp01_dose();
 void alarm_dp02_dose();
 void alarm_dp03_dose();
-void set_defaults();
+void set_Defaults();
+time_t syncProvider();
+time_t tmConvert_t(int YYYY, byte MM, byte DD, byte hh, byte mm, byte ss);
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega\pins_arduino.h" 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"

@@ -91,6 +91,8 @@ class Configuration
 		byte dp02Sunday;
 		byte dp02DoseAmt;
 		byte dp02MlSec;
+		byte dp02Capacity;
+		byte dp02Remaining;
 		
 		byte dp03Active;
 		byte dp03OnHour;
@@ -104,6 +106,8 @@ class Configuration
 		byte dp03Sunday;
 		byte dp03DoseAmt;
 		byte dp03MlSec;
+		byte dp03Capacity;
+		byte dp03Remaining;
  	};
 
  public:
