@@ -49,6 +49,16 @@
         <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
         <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
         <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>__AVR_ATmega2560__</Value>
+            <Value>ARDUINO=101</Value>
+            <Value>ARDUINO_MAIN</Value>
+            <Value>F_CPU=16000000L</Value>
+            <Value>__AVR__</Value>
+            <Value>__cplusplus</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
         <avrgcc.compiler.directories.IncludePaths>
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
@@ -69,6 +79,8 @@
             <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -87,6 +99,16 @@
         <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -include=arduino.h</avrgcc.compiler.miscellaneous.OtherFlags>
         <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
         <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcccpp.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>__AVR_ATmega2560__</Value>
+            <Value>ARDUINO=101</Value>
+            <Value>ARDUINO_MAIN</Value>
+            <Value>F_CPU=16000000L</Value>
+            <Value>__AVR__</Value>
+            <Value>__cplusplus</Value>
+          </ListValues>
+        </avrgcccpp.compiler.symbols.DefSymbols>
         <avrgcccpp.compiler.directories.IncludePaths>
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
@@ -107,6 +129,8 @@
             <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -126,26 +150,6 @@
         <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
         <avrgcccpp.compiler.miscellaneous.OtherFlags>-include=arduino.h</avrgcccpp.compiler.miscellaneous.OtherFlags>
         <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
-        <avrgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>__AVR_ATmega2560__</Value>
-            <Value>ARDUINO=101</Value>
-            <Value>ARDUINO_MAIN</Value>
-            <Value>F_CPU=16000000L</Value>
-            <Value>__AVR__</Value>
-            <Value>__cplusplus</Value>
-          </ListValues>
-        </avrgcc.compiler.symbols.DefSymbols>
-        <avrgcccpp.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>__AVR_ATmega2560__</Value>
-            <Value>ARDUINO=101</Value>
-            <Value>ARDUINO_MAIN</Value>
-            <Value>F_CPU=16000000L</Value>
-            <Value>__AVR__</Value>
-            <Value>__cplusplus</Value>
-          </ListValues>
-        </avrgcccpp.compiler.symbols.DefSymbols>
       </AvrGccCpp>
     </ToolchainSettings>
     <VisualMicroSettings>
@@ -200,6 +204,19 @@ build.board=AVR_MEGA2560
 vm.boardsource.path=C:\Program Files (x86)\Arduino\hardware\arduino
 vm.platformname.name=avr
 build.arch=AVR
+vm.runtime.compiler.showwarnings=false
+compiler.path=C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\
+includes= -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino"  -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega"  -I"C:\Program Files (x86)\Arduino\libraries\Wire"  -I"C:\Program Files (x86)\Arduino\libraries\RTClib"  -I"C:\Program Files (x86)\Arduino\libraries\DallasTemperature"  -I"C:\Program Files (x86)\Arduino\libraries\OneWire"  -I"C:\Program Files (x86)\Arduino\libraries\SoftwareSerial"  -I"C:\Program Files (x86)\Arduino\libraries\TimeAlarms"  -I"C:\Program Files (x86)\Arduino\libraries\Time"  -I"C:\Program Files (x86)\Arduino\libraries\EEPROMEx"  -I"C:\Program Files (x86)\Arduino\libraries"  -I"C:\Program Files (x86)\Arduino\hardware\arduino\libraries"  -I"C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers"  -I"C:\Users\tscholl\Documents\Arduino\libraries"  -I"C:\Program Files (x86)\Arduino\libraries\Wire\utility"
+build.path=C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560
+build.project_name=aquarium_wise_controller
+build.variant.path=C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega
+archive_file=core.a
+object_file=C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\EEPROMEx\EEPROMex.cpp.o
+source_file=C:\Program Files (x86)\Arduino\libraries\EEPROMEx\EEPROMex.cpp
+object_files="C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\aquarium_wise_controller.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\atlas_ph.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\basic_switch.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\configuration.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\dosing_pump.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\fan.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Wire\Wire.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Wire\utility\twi.c.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\RTClib\RTClib.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\DallasTemperature\DallasTemperature.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\OneWire\OneWire.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\SoftwareSerial\SoftwareSerial.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\TimeAlarms\TimeAlarms.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Time\DateStrings.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Time\Time.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\EEPROMEx\EEPROMex.cpp.o" 
+build.architecture=avr
+vmresolved.compiler.path=C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\
+vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
 </arduino.board.property_bag>
         <arduino.build.mcu>atmega2560</arduino.build.mcu>
         <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
@@ -224,6 +241,16 @@ build.arch=AVR
         <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
         <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
         <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>__AVR_ATmega2560__</Value>
+            <Value>ARDUINO=101</Value>
+            <Value>ARDUINO_MAIN</Value>
+            <Value>F_CPU=16000000L</Value>
+            <Value>__AVR__</Value>
+            <Value>__cplusplus</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
         <avrgcc.compiler.directories.IncludePaths>
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
@@ -244,6 +271,8 @@ build.arch=AVR
             <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -262,6 +291,16 @@ build.arch=AVR
         <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -include=arduino.h</avrgcc.compiler.miscellaneous.OtherFlags>
         <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
         <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcccpp.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>__AVR_ATmega2560__</Value>
+            <Value>ARDUINO=101</Value>
+            <Value>ARDUINO_MAIN</Value>
+            <Value>F_CPU=16000000L</Value>
+            <Value>__AVR__</Value>
+            <Value>__cplusplus</Value>
+          </ListValues>
+        </avrgcccpp.compiler.symbols.DefSymbols>
         <avrgcccpp.compiler.directories.IncludePaths>
           <ListValues>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino</Value>
@@ -282,6 +321,8 @@ build.arch=AVR
             <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -301,26 +342,6 @@ build.arch=AVR
         <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
         <avrgcccpp.compiler.miscellaneous.OtherFlags>-include=arduino.h</avrgcccpp.compiler.miscellaneous.OtherFlags>
         <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
-        <avrgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>__AVR_ATmega2560__</Value>
-            <Value>ARDUINO=101</Value>
-            <Value>ARDUINO_MAIN</Value>
-            <Value>F_CPU=16000000L</Value>
-            <Value>__AVR__</Value>
-            <Value>__cplusplus</Value>
-          </ListValues>
-        </avrgcc.compiler.symbols.DefSymbols>
-        <avrgcccpp.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>__AVR_ATmega2560__</Value>
-            <Value>ARDUINO=101</Value>
-            <Value>ARDUINO_MAIN</Value>
-            <Value>F_CPU=16000000L</Value>
-            <Value>__AVR__</Value>
-            <Value>__cplusplus</Value>
-          </ListValues>
-        </avrgcccpp.compiler.symbols.DefSymbols>
       </AvrGccCpp>
     </ToolchainSettings>
     <VisualMicroSettings>
@@ -375,6 +396,19 @@ build.board=AVR_MEGA2560
 vm.boardsource.path=C:\Program Files (x86)\Arduino\hardware\arduino
 vm.platformname.name=avr
 build.arch=AVR
+vm.runtime.compiler.showwarnings=false
+compiler.path=C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\
+includes= -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino"  -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega"  -I"C:\Program Files (x86)\Arduino\libraries\Wire"  -I"C:\Program Files (x86)\Arduino\libraries\RTClib"  -I"C:\Program Files (x86)\Arduino\libraries\DallasTemperature"  -I"C:\Program Files (x86)\Arduino\libraries\OneWire"  -I"C:\Program Files (x86)\Arduino\libraries\SoftwareSerial"  -I"C:\Program Files (x86)\Arduino\libraries\TimeAlarms"  -I"C:\Program Files (x86)\Arduino\libraries\Time"  -I"C:\Program Files (x86)\Arduino\libraries\EEPROMEx"  -I"C:\Program Files (x86)\Arduino\libraries"  -I"C:\Program Files (x86)\Arduino\hardware\arduino\libraries"  -I"C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers"  -I"C:\Users\tscholl\Documents\Arduino\libraries"  -I"C:\Program Files (x86)\Arduino\libraries\Wire\utility"
+build.path=C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560
+build.project_name=aquarium_wise_controller
+build.variant.path=C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega
+archive_file=core.a
+object_file=C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\EEPROMEx\EEPROMex.cpp.o
+source_file=C:\Program Files (x86)\Arduino\libraries\EEPROMEx\EEPROMex.cpp
+object_files="C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\aquarium_wise_controller.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\atlas_ph.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\basic_switch.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\configuration.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\dosing_pump.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\fan.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Wire\Wire.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Wire\utility\twi.c.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\RTClib\RTClib.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\DallasTemperature\DallasTemperature.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\OneWire\OneWire.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\SoftwareSerial\SoftwareSerial.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\TimeAlarms\TimeAlarms.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Time\DateStrings.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Time\Time.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\EEPROMEx\EEPROMex.cpp.o" 
+build.architecture=avr
+vmresolved.compiler.path=C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\
+vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
 </arduino.board.property_bag>
         <arduino.build.mcu>atmega2560</arduino.build.mcu>
         <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
@@ -410,10 +444,7 @@ build.arch=AVR
     <Compile Include="configuration.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="controller.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="controller.h">
+    <Compile Include="debug_utils.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="dosing_pump.cpp">

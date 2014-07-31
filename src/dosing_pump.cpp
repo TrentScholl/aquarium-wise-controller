@@ -1,7 +1,5 @@
 #include "dosing_pump.h"
 
-void* dosingPumpObject;
-
 DosingPump::DosingPump(int val)
 {
 	setPin(val);
@@ -45,8 +43,7 @@ int DosingPump::getDoseAmt()
 
 void DosingPump::dose()
 {
-	DosingPump* mySelf = (DosingPump*)dosingPumpObject;
-	mySelf->dose(mySelf->getDoseAmt());
+	dose(getDoseAmt());
 }
 
 void DosingPump::dose(int val)

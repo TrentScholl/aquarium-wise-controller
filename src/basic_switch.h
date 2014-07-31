@@ -11,8 +11,8 @@ class BasicSwitch
 {
 	protected:
 	int pin;
-	int state;
-	void setState(int val);
+	byte state;
+	void setState(byte val);
 
 	public:
 	BasicSwitch(int val);
@@ -21,8 +21,8 @@ class BasicSwitch
 	int getPin();
 	void setPin(int val);
 	int getState();
-	static void on();
-	static void off();
+	void on();
+	void off();
 	void toggle();
 };
 

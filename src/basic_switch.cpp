@@ -1,6 +1,5 @@
 #include "basic_switch.h"
-
-void* basicSwitchObject;
+#include "debug_utils.h"
 
 BasicSwitch::BasicSwitch(int val)
 {
@@ -15,8 +14,8 @@ BasicSwitch::BasicSwitch()
 void BasicSwitch::setPin(int val)
 {
 	pin = val;
+	setState(HIGH);
 	pinMode(pin, OUTPUT);
-	state = LOW;
 }
 
 int BasicSwitch::getPin()
@@ -31,19 +30,17 @@ int BasicSwitch::getState()
 
 void BasicSwitch::on()
 {
-	BasicSwitch* mySelf = (BasicSwitch*)basicSwitchObject;
-	mySelf->setState(HIGH);
+	setState(LOW);
 }
 
 void BasicSwitch::off()
 {
-	BasicSwitch* mySelf = (BasicSwitch*)basicSwitchObject;
-	mySelf->setState(LOW);
+	setState(HIGH);
 }
 
 void BasicSwitch::toggle()
 {
-	if (state==HIGH)
+	if (state==LOW)
 	{
 		off();
 	}
@@ -53,7 +50,7 @@ void BasicSwitch::toggle()
 	}
 }
 
-void BasicSwitch::setState(int val)
+void BasicSwitch::setState(byte val)
 {
 	if (state != val)
 	{

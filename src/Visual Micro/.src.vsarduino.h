@@ -17,7 +17,35 @@
 extern "C" void __cxa_pure_virtual() {;}
 
 //
+time_t syncProvider();
+void load_Configuration();
+void setup_DosingPumps();
+void check_RelayScheduleState(Relay rly, byte onHour, byte onMinute, byte offHour, byte offMinute);
+time_t tmConvert_t(int YYYY, byte MM, byte DD, byte hh, byte mm, byte ss);
+void setup_Relays();
 //
+void check_Temperatures();
+void check_Ph();
+void alarm_rly01_on();
+void alarm_rly01_off();
+void alarm_rly02_on();
+void alarm_rly02_off();
+void alarm_rly03_on();
+void alarm_rly03_off();
+void alarm_rly04_on();
+void alarm_rly04_off();
+void alarm_rly05_on();
+void alarm_rly05_off();
+void alarm_rly06_on();
+void alarm_rly06_off();
+void alarm_rly07_on();
+void alarm_rly07_off();
+void alarm_rly08_on();
+void alarm_rly08_off();
+void alarm_dp01_dose();
+void alarm_dp02_dose();
+void alarm_dp03_dose();
+void set_defaults();
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega\pins_arduino.h" 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
@@ -28,8 +56,7 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\basic_switch.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\configuration.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\configuration.h"
-#include "C:\Workspaces\Personal\aquarium_wise_controller\src\controller.cpp"
-#include "C:\Workspaces\Personal\aquarium_wise_controller\src\controller.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\debug_utils.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\dosing_pump.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\dosing_pump.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fan.cpp"

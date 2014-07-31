@@ -23,7 +23,7 @@ class DosingPump
 		void setDoseAmt(int val);
 		int getMlSec();
 		void setMlSec(int val);
-		static void dose();
+		void dose();
 		void dose(int val);
 		struct Schedule
 		{
