@@ -12,7 +12,7 @@ class Configuration
  protected:
 	int configAddress;
  	struct Data {
-	 	int utcOffset;
+	 	byte loaded;
 		
 		byte rly01Active;
 		byte rly01OnHour;

@@ -284,7 +284,7 @@ void check_Temperatures()
 	
 	if (dallasTemperatureSensors.hasAlarm(temperatureProbe01))
 	{
-		if (probeTemp01 >= dallasTemperatureSensors.getHighAlarmTemp(temperatureProbe01) & rly08.getState() == LOW)
+		if (probeTemp01 >= dallasTemperatureSensors.getHighAlarmTemp(temperatureProbe01) & rly08.isOn())
 		{
 			rly08.off();
 		}
@@ -293,14 +293,17 @@ void check_Temperatures()
 			// Sound alarm
 		}
 	}
-	else if (rly08.getState() == HIGH)
+	else if (rly08.isOff())
 	{
 		rly08.on();
 	}
 	
 	float probeTemp02 = dallasTemperatureSensors.getTempC(temperatureProbe02);
-	
-	lcd.setCursor(0, 1);
+	lcd.setCursor(0, 0);
+	lcd.print("Temp:       C");
+	lcd.setCursor(11, 0);
+	lcd.print((char)223);
+	lcd.setCursor(6, 0);
 	
 	lcd.print(probeTemp01);
 }

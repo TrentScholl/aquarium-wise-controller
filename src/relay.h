@@ -7,14 +7,24 @@
 	#include "WProgram.h"
 #endif
 
-#include "basic_switch.h"
-
-class Relay: public BasicSwitch
+class Relay
 {
  protected:
+	int state;
+	int pin;
+	void setState(byte val);
 
  public:
-	Relay(int val) : BasicSwitch(val) {}
+	Relay();
+	Relay(int val);
+	void setPin(int val);
+	void on();
+	void off();
+	void toggle();
+	int getState();
+	bool isOn();
+	bool isOff();
+		  
 	struct Schedule
 	{
 		byte active;

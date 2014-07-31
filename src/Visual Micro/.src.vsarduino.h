@@ -61,4 +61,5 @@ void set_defaults();
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\dosing_pump.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fan.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fan.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.h"
