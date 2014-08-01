@@ -71,6 +71,8 @@ void setup_TemperatureSensors()
 	
 	dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, configuration.data.temp01HighAlarm);
 	dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, configuration.data.temp01LowAlarm);
+	
+	dallasTemperatureSensors.setAlarmHandler(&alarm_temperature);
 }
 
 void setup_DosingPumps()
@@ -256,24 +258,15 @@ void check_Temperatures()
 {
 	dallasTemperatureSensors.requestTemperatures();
 	
-	float probeTemp01 = dallasTemperatureSensors.getTempC(temperatureProbe01);
+	dallasTemperatureSensors.processAlarms();
 	
-	if (dallasTemperatureSensors.hasAlarm(temperatureProbe01))
-	{
-		if (probeTemp01 >= dallasTemperatureSensors.getHighAlarmTemp(temperatureProbe01) & rly08.isOn())
-		{
-			rly08.off();
-		}
-		else if (probeTemp01 <= dallasTemperatureSensors.getLowAlarmTemp(temperatureProbe01))
-		{
-			// Sound alarm
-		}
-	}
-	else if (rly08.isOff())
+	float probeTemp01 = dallasTemperatureSensors.getTempC(temperatureProbe01);
+
+	if (!dallasTemperatureSensors.hasAlarm(temperatureProbe01) && rly08.isOff())
 	{
 		rly08.on();
 	}
-	
+
 	float probeTemp02 = dallasTemperatureSensors.getTempC(temperatureProbe02);
 	
 	lcd.setCursor(0, 0);
@@ -301,6 +294,20 @@ void check_Ph()
 
 
 // Alarms
+
+void alarm_temperature(const uint8_t* deviceAddress)
+{
+	float probeTemp = dallasTemperatureSensors.getTempC(deviceAddress);
+
+	if (probeTemp >= dallasTemperatureSensors.getHighAlarmTemp(deviceAddress) & rly08.isOn())
+	{
+		rly08.off();
+	}
+	else if (probeTemp <= dallasTemperatureSensors.getLowAlarmTemp(deviceAddress))
+	{
+		// Sound alarm
+	}
+}
 
 void alarm_rly01_on()
 {

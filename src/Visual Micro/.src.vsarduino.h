@@ -25,6 +25,7 @@ void check_RelayScheduleState(Relay rly, byte onHour, byte onMinute, byte offHou
 //
 void check_Temperatures();
 void check_Ph();
+void alarm_temperature(const uint8_t* deviceAddress);
 void alarm_rly01_on();
 void alarm_rly01_off();
 void alarm_rly02_on();
