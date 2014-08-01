@@ -1,29 +1,25 @@
 #include "atlas_ph.h"
 #include <SoftwareSerial.h>
 
-AtlasPh::AtlasPh(int rxPin, int txPin)
+AtlasPh::AtlasPh()
 {
-	SoftwareSerial mySerial(rxPin, txPin);
-	atlasSerial = & mySerial;
+	Serial1.begin(38400);
 	
-	atlasSerial->begin(38400);
-	
-	//atlasSerial->print("E\r");
-	//delay(50);
-	//atlasSerial->print("E\r");
-	//delay(50);
+	Serial1.print("E\r");
+	delay(50);
+	Serial1.print("E\r");
+	delay(50);
 }
 
-float AtlasPh::getPh(int tempVal)
+float AtlasPh::requestPh(int tempVal)
 {
-	//atlasSerial->print("R\r");
+	Serial1.print(tempVal);
+	delay(50);
+
+	Serial1.print("R\r");
+    delay(300);
 	
-	float phVal = 0.0;
-	
-	//while (atlasSerial->available() > 0)
-	//{
-	//	phVal = Serial.parseFloat();
-	//}
+	float phVal = Serial1.parseFloat();
 	
 	return phVal;
 }

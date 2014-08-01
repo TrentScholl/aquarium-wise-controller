@@ -33,7 +33,7 @@ DosingPump dp01(10);
 DosingPump dp02(11);
 DosingPump dp03(12);
 
-AtlasPh ph01(14, 15);
+AtlasPh ph01();
 
 OneWire oneWire(2);
 
