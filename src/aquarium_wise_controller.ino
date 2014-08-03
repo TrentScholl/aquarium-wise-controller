@@ -33,7 +33,7 @@ DosingPump dp01(10);
 DosingPump dp02(11);
 DosingPump dp03(12);
 
-AtlasPh ph01();
+AtlasPh ph01;
 
 OneWire oneWire(2);
 
@@ -46,7 +46,9 @@ LiquidCrystal lcd(5, 6, 7, 8, 9, 10);
 
 void setup()
 {	
-	Serial.begin(9600);
+	Serial.begin(38400);
+	Serial2.begin(38400);
+
 	Wire.begin();
 	RTC.begin();
 	lcd.begin(16, 2);
@@ -62,13 +64,26 @@ void load_Configuration()
 	set_Defaults();
 	setup_Relays();
 	setup_DosingPumps();
+	setup_TemperatureSensors();
+	setup_Ph();
+}
+
+void setup_Ph()
+{	
+	lcd.setCursor(0, 1);
+	lcd.print("pH: ");
 }
 
 void setup_TemperatureSensors()
 {
+	lcd.setCursor(0, 0);
+	lcd.print("Temp:       C");
+	lcd.setCursor(11, 0);
+	lcd.print((char)223);
+		
 	dallasTemperatureSensors.getAddress(temperatureProbe01, 0);
 	dallasTemperatureSensors.getAddress(temperatureProbe02, 1);
-	
+		
 	dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, configuration.data.temp01HighAlarm);
 	dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, configuration.data.temp01LowAlarm);
 	
@@ -248,14 +263,16 @@ void check_RelayScheduleState(Relay rly, byte onHour, byte onMinute, byte offHou
 
 void loop()
 {
+	RTC.now();
 	check_Temperatures();
 	check_Ph();
+	print_Time(hour(), minute());
 	
 	Alarm.delay(0);
 }
 
 void check_Temperatures()
-{
+{	
 	dallasTemperatureSensors.requestTemperatures();
 	
 	dallasTemperatureSensors.processAlarms();
@@ -269,27 +286,56 @@ void check_Temperatures()
 
 	float probeTemp02 = dallasTemperatureSensors.getTempC(temperatureProbe02);
 	
-	lcd.setCursor(0, 0);
-	lcd.print("Temp:       C");
-	lcd.setCursor(11, 0);
-	lcd.print((char)223);
 	lcd.setCursor(6, 0);
-	
 	lcd.print(probeTemp01);
+}
+
+void print_Time(int thour, int tminute)
+{
+	char tmpTime[8], charT[3];
+
+	tmpTime[0] = '\0';
+
+	if (thour>=0 && thour<=9) {          //add space
+		strcat(tmpTime, " ");
+		itoa(thour, charT, 10);
+		strcat(tmpTime, charT);
+	}
+	else
+	itoa(thour, tmpTime, 10);
+	
+	strcat(tmpTime, ":");
+	
+	if (tminute>=0 && tminute<=9) {         //add 0
+		strcat(tmpTime, "0");
+		itoa(tminute, charT, 10);
+		strcat(tmpTime, charT);
+	}
+	else {
+		itoa(tminute, charT, 10);
+		strcat(tmpTime, charT);
+	}
+	
+	lcd.setCursor(11,1);
+	
+	lcd.print(tmpTime);
 }
 
 void check_Ph()
 {
-	//float phVal = ph01.getPh(dallasTemperatureSensors.getTempC(temperatureProbe01));
+	float phVal = ph01.requestPh(dallasTemperatureSensors.getTempC(temperatureProbe01));
 	
-	//if (phVal >= ph01.getHighAlarmPh() & rly03.getState() == 0)
-	//{
-		//rly03.on();
-	//}
-	//else if (phVal <= ph01.getLowAlarmPh() & rly03.getState() == 1)
-	//{
-		//rly03.off();
-	//}
+	if (phVal >= ph01.getHighAlarmPh() & rly03.getState() == 0)
+	{
+		rly03.on();
+	}
+	else if (phVal <= ph01.getLowAlarmPh() & rly03.getState() == 1)
+	{
+		rly03.off();
+	}
+	
+	lcd.setCursor(4, 1);
+	lcd.print(phVal);
 }
 
 
@@ -298,7 +344,7 @@ void check_Ph()
 void alarm_temperature(const uint8_t* deviceAddress)
 {
 	float probeTemp = dallasTemperatureSensors.getTempC(deviceAddress);
-
+	
 	if (probeTemp >= dallasTemperatureSensors.getHighAlarmTemp(deviceAddress) & rly08.isOn())
 	{
 		rly08.off();
@@ -406,7 +452,7 @@ void alarm_dp03_dose()
 
 void set_Defaults()
 {
-	if (!configuration.data.loaded)
+	if (configuration.data.loaded)
 	{
 		configuration.data.loaded = 1;
 		
@@ -447,7 +493,7 @@ void set_Defaults()
 		configuration.data.rly06OffMinute = 0;
 		
 		configuration.data.temp01HighAlarm = 32;
-		configuration.data.temp01LowAlarm = 20;
+		configuration.data.temp01LowAlarm = 21;
 		
 		configuration.data.dp01Active = 1;
 		configuration.data.dp01Capacity = 100;
@@ -493,6 +539,9 @@ void set_Defaults()
 		configuration.data.dp03Thursday = 0;
 		configuration.data.dp03Friday = 0;
 		configuration.data.dp03Saturday = 0;
+		
+		configuration.data.ph01HighAlarm = 7;
+		configuration.data.ph01LowAlarm = 6;
 
 		configuration.save();
 	}

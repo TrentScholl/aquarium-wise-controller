@@ -18,12 +18,14 @@ extern "C" void __cxa_pure_virtual() {;}
 
 //
 void load_Configuration();
+void setup_Ph();
 void setup_TemperatureSensors();
 void setup_DosingPumps();
 void setup_Relays();
 void check_RelayScheduleState(Relay rly, byte onHour, byte onMinute, byte offHour, byte offMinute);
 //
 void check_Temperatures();
+void print_Time(int thour, int tminute);
 void check_Ph();
 void alarm_temperature(const uint8_t* deviceAddress);
 void alarm_rly01_on();

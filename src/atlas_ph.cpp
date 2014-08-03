@@ -1,25 +1,27 @@
 #include "atlas_ph.h"
-#include <SoftwareSerial.h>
 
 AtlasPh::AtlasPh()
-{
-	Serial1.begin(38400);
-	
-	Serial1.print("E\r");
-	delay(50);
-	Serial1.print("E\r");
-	delay(50);
+{	
 }
 
-float AtlasPh::requestPh(int tempVal)
+float AtlasPh::requestPh()
 {
-	Serial1.print(tempVal);
-	delay(50);
+	return requestPh(25.00);
+}
 
-	Serial1.print("R\r");
-    delay(300);
-	
-	float phVal = Serial1.parseFloat();
+float AtlasPh::requestPh(float tempVal)
+{
+	float phVal;
+		
+	Serial2.print(tempVal);
+	Serial2.print("\r");
+
+    while (Serial2.available() > 0) {
+	    phVal = Serial2.parseFloat();
+		        if (Serial2.read() == '\r') {
+			        //Serial.println(phVal);  // can be used for debug, pc display etc.
+		        }
+    }
 	
 	return phVal;
 }

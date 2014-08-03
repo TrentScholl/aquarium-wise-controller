@@ -10,7 +10,7 @@ class AtlasPh
 		uint8_t lowAlarmPh;
 	public:
 		AtlasPh();
-		float requestPh(int tempVal);
+		float requestPh(float tempVal);
 		float requestPh();
 		void setHighAlarmPh(char);
 		void setLowAlarmPh(char);
