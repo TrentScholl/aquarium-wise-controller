@@ -590,6 +590,23 @@ void screenHome()
   check_Ph();
 }
 
+void drawDoseChart(int x, int y, byte pump, Color arcColor)
+{
+  myGLCD.setColor(232, 239, 240);
+  myGLCD.fillCircle(x, y, 31);
+  
+  myGLCD.setColor(255, 255, 255);
+  myGLCD.fillCircle(x, y, 28);
+  
+  int arcAngle = (360 / 100) * ((dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getVol()) * 10);
+  
+  myGLCD.setColor(arcColor.r, arcColor.g, arcColor.b);
+  geo.drawArc(x, y, 30, 0, arcAngle, 3);
+  
+  utext.setFont(Arial11);
+  utext.print(x - 8, y, String(dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getDoseAmt()));
+}
+
 void screenFeeding()
 {
   dispScreen = 2;
