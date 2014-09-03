@@ -7,4 +7,4 @@ install:
  - travis_retry sudo pip install ino
 
 script:
- - ino build
+ - ino build -m mega2560
