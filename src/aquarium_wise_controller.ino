@@ -65,6 +65,7 @@ UTFT_Geometry geo(&myGLCD);
 uText utext(&myGLCD, 240, 320);
 
 byte dispScreen = 0;
+byte selectedItem = 0;
 
 struct RTC_T
 {  
@@ -453,14 +454,20 @@ void drawBackground()
 void drawSpinner(int x, int y)
 {
   myGLCD.setColor(222, 229, 231);
-  myGLCD.fillRect(x, y, x+151, y+33);
+  myGLCD.fillRect(x, y, x + 151, y + 33);
   
   myGLCD.setColor(255, 255, 255);
-  myGLCD.fillRect(x+1, y+1, x+150, y+32);
+  myGLCD.fillRect(x + 1, y + 1, x + 150, y + 32);
   
   myGLCD.setColor(222, 229, 231);
-  myGLCD.drawLine(x+31, y, x+31, y+31);
-  myGLCD.drawLine(x+120, y, x+120, y+31);
+  myGLCD.drawLine(x + 31, y, x + 31, y + 31);
+  myGLCD.drawLine(x + 120, y, x + 120, y + 31);
+
+  myGLCD.setColor(0, 0, 0);
+  myGLCD.fillRect(x + 10, y + 16, x + 20, y + 17);
+
+  myGLCD.fillRect(x + 130, y + 16, x + 141, y + 17);
+  myGLCD.fillRect(x + 135, y + 11, x + 136, y + 22);
 }
 
 void drawFillButton(int x, int y)
@@ -679,9 +686,36 @@ void drawDosingPumpSettings(byte pump)
   int rate = 0;
   int vol = 0;
  
-  utext.print(145, 115, String(dosingPumps[pump].getDoseAmt()));
-  utext.print(145, 156, String(dosingPumps[pump].getMlSec())); 
-  utext.print(145, 197, String(dosingPumps[pump].getVol())); 
+  utext.setForeground(88, 102, 110);
+  utext.setBackground(237, 241, 242);
+  utext.setFont(Arial11);
+
+  int offset = 0;
+
+  if (dosingPumps[pump].getDoseAmt() > 9)
+  {
+    offset = 6;
+  }
+
+  utext.print(152 - offset, 115, String(dosingPumps[pump].getDoseAmt()));
+
+  if (dosingPumps[pump].getMlSec() > 999)
+  {
+    offset = 12;
+  }
+
+  utext.print(152 - offset, 156, String(dosingPumps[pump].getMlSec())); 
+
+  if (dosingPumps[pump].getVol() > 999)
+  {
+    offset = 12;
+  }
+  else if (dosingPumps[pump].getVol() > 99)
+  {
+    offset = 6;
+  }
+
+  utext.print(152 - offset, 197, String(dosingPumps[pump].getVol())); 
 }
 
 void drawDosingPumpTabs(byte selected)
@@ -722,11 +756,12 @@ void drawDosingPumpTabs(byte selected)
 void screenDosing()
 {
   dispScreen = 10;
+  selectedItem = 0;
 
   drawHeader("e", "Dosing");
   drawBackground();
 
-  drawDosingPumpTabs(0);
+  drawDosingPumpTabs(selectedItem);
 
   myGLCD.setColor(255, 255, 255);
   myGLCD.fillRect(4, 101, 235, 316);
@@ -735,7 +770,7 @@ void screenDosing()
   utext.print(12, 161, "Rate");
   utext.print(12, 200, "Volume");
   
-  drawDosingPumpSettings(0);
+  drawDosingPumpSettings(selectedItem);
   
   drawFillButton(8, 280);
 }
@@ -981,7 +1016,7 @@ void processMyTouch()
       {
         if (relays[0].isOn() == 1)
         {
-          screenLights(); // only respond to the lights button if they are turned on
+          screenLights();
         }
       }
       else if (inBounds(x, y, 122, 139, 235, 172))
@@ -1049,22 +1084,60 @@ void processMyTouch()
     case 10:
       if (inBounds(x, y, 80, 0, 165, 39))
       {     
+        for (byte i = 0; i <= numDosingPumps; i++)
+        {
+          dosingPumps[i].saveSettings();
+        }
+
         screenHome();
       } 
       else if (inBounds(x, y, 5, 65, 80, 96))
       {
-        drawDosingPumpTabs(0);
-        drawDosingPumpSettings(0);
+        selectedItem = 0;
+        drawDosingPumpTabs(selectedItem);
+        drawDosingPumpSettings(selectedItem);
       } 
       else if (inBounds(x, y, 82, 65, 158, 96))
       {
-        drawDosingPumpTabs(1);
-        drawDosingPumpSettings(1);
+        selectedItem = 1;
+        drawDosingPumpTabs(selectedItem);
+        drawDosingPumpSettings(selectedItem);
       } 
       else if (inBounds(x, y, 160, 65, 234, 96))
       {
-        drawDosingPumpTabs(2);
-        drawDosingPumpSettings(2);
+        selectedItem = 2;
+        drawDosingPumpTabs(selectedItem);
+        drawDosingPumpSettings(selectedItem);
+      }
+      else if (inBounds(x, y, 80, 105, 111, 138))
+      {
+        dosingPumps[selectedItem].setDoseAmt(dosingPumps[selectedItem].getDoseAmt() - 1);
+        drawDosingPumpSettings(selectedItem);
+      }
+      else if (inBounds(x, y, 200, 105, 231, 138))
+      {
+        dosingPumps[selectedItem].setDoseAmt(dosingPumps[selectedItem].getDoseAmt() + 1);
+        drawDosingPumpSettings(selectedItem);
+      }
+      else if (inBounds(x, y, 80, 146, 111, 179))
+      {
+        dosingPumps[selectedItem].setMlSec(dosingPumps[selectedItem].getMlSec() - 10);
+        drawDosingPumpSettings(selectedItem);
+      }
+      else if (inBounds(x, y, 200, 146, 231, 179))
+      {
+        dosingPumps[selectedItem].setMlSec(dosingPumps[selectedItem].getMlSec() + 10);
+        drawDosingPumpSettings(selectedItem);
+      }
+      else if (inBounds(x, y, 80, 187, 111, 219))
+      {
+        dosingPumps[selectedItem].setVol(dosingPumps[selectedItem].getVol() - 10);
+        drawDosingPumpSettings(selectedItem);
+      }
+      else if (inBounds(x, y, 200, 187, 231, 219))
+      {
+        dosingPumps[selectedItem].setVol(dosingPumps[selectedItem].getVol() + 10);
+        drawDosingPumpSettings(selectedItem);
       }
       break;
 
