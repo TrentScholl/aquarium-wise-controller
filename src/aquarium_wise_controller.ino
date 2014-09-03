@@ -363,6 +363,9 @@ void drawHeader(char* icon, char* title)
       break;
   }
 
+  prevRTC.tMinute = 0;
+  prevRTC.tHour = 0;
+
   updateTimeDate();
 }
 
