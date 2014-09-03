@@ -550,47 +550,20 @@ void screenHome()
   myGLCD.fillRect(122, 245, 235, 315);
   
  // End Row 4
-  myGLCD.setColor(232, 239, 240);
-  myGLCD.fillCircle(42, 202, 31);
-  myGLCD.fillCircle(119, 202, 31);
-  myGLCD.fillCircle(198, 202, 31);
-  
-  myGLCD.setColor(255, 255, 255);
-  myGLCD.fillCircle(42, 202, 28);
-  myGLCD.fillCircle(119, 202, 28); 
-  myGLCD.fillCircle(198, 202, 28);
-  
-  myGLCD.setColor(THEME_MACRO.r, THEME_MACRO.g, THEME_MACRO.b);
-  geo.drawArc(42, 202, 30, 180, 260, 3);
-  
-   
-  myGLCD.setColor(THEME_MICRO.r, THEME_MICRO.g, THEME_MICRO.b);
-  geo.drawArc(119, 202, 30, 180, 290, 3);
-  
-  myGLCD.setColor(THEME_GLUT.r, THEME_GLUT.g, THEME_GLUT.b);
-  geo.drawArc(198, 202, 30, 180, 360, 3);
-  
-  utext.setForeground(THEME_PRIMARY_FORE.r, THEME_PRIMARY_FORE.g, THEME_PRIMARY_FORE.b);
-  utext.setBackground(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
-  
-  utext.setFont(Arial11);
-  utext.print(34, 196, String(dosingPumps[0].getRemainingVol() / dosingPumps[0].getDoseAmt()));
-  utext.print(112, 196, String(dosingPumps[1].getRemainingVol() / dosingPumps[1].getDoseAmt()));
-  utext.print(190, 196, String(dosingPumps[2].getRemainingVol() / dosingPumps[2].getDoseAmt()));
+ 
+  drawDoseChart(42, 202, 0, "Macro", THEME_MACRO);
+  drawDoseChart(119, 202, 1, "Micro", THEME_MICRO);
+  drawDoseChart(198, 202, 1, "Glut", THEME_GLUT);
   
   utext.setFont(Arial7);
   utext.print(48, 108, "Temp");
   utext.print(172, 108, "pH");
-  
-  utext.print(28, 158, "Macro");
-  utext.print(108, 158, "Micro");
-  utext.print(188, 158, "Glut");
  
   check_Temperatures();
   check_Ph();
 }
 
-void drawDoseChart(int x, int y, byte pump, Color arcColor)
+void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor)
 {
   myGLCD.setColor(232, 239, 240);
   myGLCD.fillCircle(x, y, 31);
@@ -605,6 +578,9 @@ void drawDoseChart(int x, int y, byte pump, Color arcColor)
   
   utext.setFont(Arial11);
   utext.print(x - 8, y, String(dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getDoseAmt()));
+  
+  utext.setFont(Arial7);
+  utext.print(x - 12, y - 44, label);
 }
 
 void screenFeeding()

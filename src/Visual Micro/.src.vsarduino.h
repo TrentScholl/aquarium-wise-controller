@@ -30,7 +30,7 @@ void drawBackground();
 void drawSpinner(int x, int y);
 void drawLargeBlueButton(int x, int y, char* text);
 void screenHome();
-void drawDoseChart(int x, int y, byte pump, Color arcColor);
+void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor);
 void screenFeeding();
 void screenPower();
 void screenSettings();
