@@ -8,8 +8,9 @@ class AtlasPh
 	protected:
 		uint8_t highAlarmPh;
 		uint8_t lowAlarmPh;
+		HardwareSerial *hwSerial;
 	public:
-		AtlasPh();
+		AtlasPh(HardwareSerial *serialPort);
 		float requestPh(float tempVal);
 		float requestPh();
 		void setHighAlarmPh(char);

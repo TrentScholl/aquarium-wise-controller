@@ -65,22 +65,28 @@
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTouch</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTouch\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT_Geometry</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT_Geometry\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\uText</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\uText\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\IRremote</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\IRremote\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -115,22 +121,28 @@
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTouch</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTouch\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT_Geometry</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT_Geometry\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\uText</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\uText\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\IRremote</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\IRremote\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -257,22 +269,28 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTouch</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTouch\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT_Geometry</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT_Geometry\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\uText</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\uText\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\IRremote</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\IRremote\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -307,22 +325,28 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\SoftwareSerial\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\LiquidCrystal\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTouch</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTouch\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT_Geometry</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\UTFT_Geometry\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\uText</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\uText\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\RTClib\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\Time\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\TimeAlarms\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\IRremote</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\IRremote\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\OneWire\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -459,10 +483,16 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
     <Compile Include="fan.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="fonts.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="relay.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="relay.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="theme.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Visual Micro\.aquarium_wise_controller.vsarduino.h">

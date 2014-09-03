@@ -1,7 +1,9 @@
 #include "atlas_ph.h"
 
-AtlasPh::AtlasPh()
+AtlasPh::AtlasPh(HardwareSerial *serialPort)
 {	
+	hwSerial = serialPort;
+	hwSerial->begin(38400);
 }
 
 float AtlasPh::requestPh()
@@ -13,15 +15,16 @@ float AtlasPh::requestPh(float tempVal)
 {
 	float phVal;
 		
-	Serial2.print(tempVal);
-	Serial2.print("\r");
+	hwSerial->print(tempVal);
+	hwSerial->print("\r");
 
-    while (Serial2.available() > 0) {
-	    phVal = Serial2.parseFloat();
-		        if (Serial2.read() == '\r') {
-			        //Serial.println(phVal);  // can be used for debug, pc display etc.
-		        }
-    }
+  while (hwSerial->available() > 0) {
+	  phVal = hwSerial->parseFloat();
+		if (hwSerial->read() == '\r')
+		{
+			//Serial.println(phVal); 
+		}
+  }
 	
 	return phVal;
 }

@@ -16,40 +16,69 @@
 #define __cplusplus
 extern "C" void __cxa_pure_virtual() {;}
 
+int freeRam ();
 //
-void load_Configuration();
-void setup_Ph();
+void load_Settings();
 void setup_TemperatureSensors();
-void setup_DosingPumps();
 void setup_Relays();
-void check_RelayScheduleState(Relay rly, byte onHour, byte onMinute, byte offHour, byte offMinute);
-//
-void check_Temperatures();
-void print_Time(int thour, int tminute);
-void check_Ph();
-void alarm_temperature(const uint8_t* deviceAddress);
-void alarm_rly01_on();
-void alarm_rly01_off();
-void alarm_rly02_on();
-void alarm_rly02_off();
-void alarm_rly03_on();
-void alarm_rly03_off();
-void alarm_rly04_on();
-void alarm_rly04_off();
-void alarm_rly05_on();
-void alarm_rly05_off();
-void alarm_rly06_on();
-void alarm_rly06_off();
-void alarm_rly07_on();
-void alarm_rly07_off();
-void alarm_rly08_on();
-void alarm_rly08_off();
-void alarm_dp01_dose();
-void alarm_dp02_dose();
-void alarm_dp03_dose();
-void set_Defaults();
 time_t syncProvider();
+//
+void drawSmallRelayStatus(int relay, int state, int x, int y);
+void drawHeader(char* icon, char* title);
+void drawLargeButton(char icon, char* text, int state, int x, int y);
+void drawBackground();
+void drawSpinner(int x, int y);
+void drawFillButton(int x, int y);
+void screenHome();
+void screenFeeding();
+void screenPower();
+void screenSettings();
+void screenLights();
+void screenClock();
+void screenFeedSettings();
+void screenHeater();
+void screenSchedule();
+void drawDosingPumpSettings(byte pump);
+void drawDosingPumpTabs(byte selected);
+void screenDosing();
+void screenPwrSchedule();
+void screenPwrScheduleItem(int itemNo);
+void screenResyncLights();
+void screenLightRamps();
+void screenLightRampItem(byte rampNo);
+void screenDosingSched(byte pumpNo);
+void screenScreen();
+boolean inBounds(int touchPointx, int touchPointy, int point1x, int point1y, int point2x, int point2y);
+void processMyTouch();
+void check_Ph();
+void check_Temperatures();
+void SaveTime();
+void updateTimeDate();
+void printTime(int thour, int tminute, byte ampm, int posx, int posy);
 time_t tmConvert_t(int YYYY, byte MM, byte DD, byte hh, byte mm, byte ss);
+void autoBrightness();
+void rampScreenBrightness(byte fromLevel, byte toLevel);
+void update_alarms();
+void alarm_temperature(const uint8_t* deviceAddress);
+void alarm_rlyLight1_on();
+void alarm_rlyLight2_on();
+void alarm_rlyFilter_on();
+void alarm_rlyHeater_on();
+void alarm_rlyCirc_on();
+void alarm_rlyCO2_on();
+void alarm_rlyAux1_on();
+void alarm_rlyAux2_on();
+void alarm_rlyLight1_off();
+void alarm_rlyLight2_off();
+void alarm_rlyFilter_off();
+void alarm_rlyHeater_off();
+void alarm_rlyCirc_off();
+void alarm_rlyCO2_off();
+void alarm_rlyAux1_off();
+void alarm_rlyAux2_off();
+void alarm_macro_dose();
+void alarm_micro_dose();
+void firstRunSetup();
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega\pins_arduino.h" 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino\arduino.h"
@@ -65,5 +94,7 @@ time_t tmConvert_t(int YYYY, byte MM, byte DD, byte hh, byte mm, byte ss);
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\dosing_pump.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fan.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fan.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\fonts.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\theme.h"

@@ -1,26 +1,37 @@
 #ifndef _DOSING_PUMP_h
 #define _DOSING_PUMP_h
 
+#include <Time.h>
+#include <TimeAlarms.h>
+#include <EEPROMex.h>
 #include "Arduino.h"
+
+typedef void (*DoseHandler)();
 
 class DosingPump
 {
 	protected:
-		int pin;
-		int doseAmt;
+		byte pin;
+		byte doseAmt;
 		int mlSec;
+		int vol;
+		int cfgByte;
+    int alarmIds[6];
+
 	public:
-		DosingPump(int val);
-		DosingPump();
-		
-		int getPin();
-		void setPin(int val);
-		int getDoseAmt();
-		void setDoseAmt(int val);
+		DosingPump(byte pin, int configByte, DoseHandler handler);
+		byte getDoseAmt();
+		void setDoseAmt(byte val);
 		int getMlSec();
 		void setMlSec(int val);
+		int getVol();
+		void setVol(int val);
 		void dose();
-		void dose(int val);
+		void saveSettings();
+    void updateAlarms();
+
+    DoseHandler doseHandler;
+		
 		struct Schedule
 		{
 			byte active;
@@ -34,6 +45,7 @@ class DosingPump
 			byte Friday;
 			byte Saturday;
 		};
+    Schedule schedule;
 };
 
 #endif
