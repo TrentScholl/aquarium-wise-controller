@@ -374,10 +374,10 @@ void drawLargeButton(char icon, char* text, int state, int x, int y)
   if (state == 1)
   {
     myGLCD.setColor(35, 175, 68);
-    myGLCD.fillRect(x, y, x+34, y+33);
+    myGLCD.fillRect(x, y, x + 34, y + 33);
     
     myGLCD.setColor(39, 194, 76);
-    myGLCD.fillRect(x+34, y, x+113, y+33);
+    myGLCD.fillRect(x+34, y, x + 113, y + 33);
     
     utext.setForeground(255, 255, 255);
     utext.setBackground(35, 175, 68);
@@ -385,13 +385,13 @@ void drawLargeButton(char icon, char* text, int state, int x, int y)
   else
   {
     myGLCD.setColor(222, 229, 231);
-    myGLCD.fillRect(x, y, x+113, y+33);
+    myGLCD.fillRect(x, y, x + 113, y + 33);
     
     myGLCD.setColor(255, 255, 255);
-    myGLCD.fillRect(x+1, y+1, x+112, y+32);
+    myGLCD.fillRect(x + 1, y + 1, x + 112, y + 32);
     
     myGLCD.setColor(222, 229, 231);
-    myGLCD.drawLine(x+34, y, x+34, y+33);
+    myGLCD.drawLine(x + 34, y, x + 34, y + 33);
     
     utext.setForeground(88, 102, 110);
     utext.setBackground(255, 255, 255);
