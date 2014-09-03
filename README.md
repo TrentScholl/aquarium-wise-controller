@@ -6,6 +6,17 @@ Arduino Aquarium Controller
 Development
 [![Build Status](https://travis-ci.org/TrentScholl/aquarium-wise-controller.svg?branch=development)](https://travis-ci.org/TrentScholl/aquarium-wise-controller)
 
+![Home Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/home.png)
+![Power Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/power.png)
+
+![Settings Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/settings.png)
+![Schedule Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/schedule.png)
+
+![Clock Settings Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/clock.png)
+![Dosing Settings Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/dosing.png)
+
+![Feeding Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/feeding.png)
+
 Libraries
 ---------
 
