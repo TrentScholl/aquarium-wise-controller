@@ -574,9 +574,9 @@ void screenHome()
   utext.setBackground(THEME_PRIMARY_BACK[0], THEME_PRIMARY_BACK[1], THEME_PRIMARY_BACK[2]);
   
   utext.setFont(Arial11);
-  utext.print(34, 196, "25");
-  utext.print(112, 196, "36");
-  utext.print(190, 196, "22");
+  utext.print(34, 196, String(dosingPumps[0].getRemainingVol() / dosingPumps[0].getDoseAmt()));
+  utext.print(112, 196, String(dosingPumps[1].getRemainingVol() / dosingPumps[1].getDoseAmt()));
+  utext.print(190, 196, String(dosingPumps[2].getRemainingVol() / dosingPumps[2].getDoseAmt()));
   
   utext.setFont(Arial7);
   utext.print(48, 108, "Temp");

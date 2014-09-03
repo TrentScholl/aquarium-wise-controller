@@ -28,7 +28,7 @@ class DosingPump
 		int getVol();
 		void setVol(int val);
     void setRemainingVol(int val);
-    void getRemainingVol();
+    int getRemainingVol();
 		void dose();
 		void saveSettings();
     void updateAlarms();

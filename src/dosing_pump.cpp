@@ -9,7 +9,7 @@ DosingPump::DosingPump(byte pin, int configByte, DoseHandler handler)
 	doseAmt = EEPROM.readByte(cfgByte + 10);
 	mlSec = EEPROM.readByte(cfgByte + 11) * 10;
 	vol = EEPROM.readByte(cfgByte + 12) * 10;
-  remainingVol = EEPROM.readInt(cfgByte + 13)
+  remainingVol = EEPROM.readInt(cfgByte + 13);
 
   schedule.active = EEPROM.readByte(cfgByte);
   schedule.onHour = EEPROM.readByte(cfgByte + 1);
@@ -31,7 +31,7 @@ void DosingPump::setRemainingVol(int val)
   EEPROM.updateInt(cfgByte + 13, remainingVol);
 }
 
-void DosingPump::getRemainingVol()
+int DosingPump::getRemainingVol()
 {
   return remainingVol;
 }
