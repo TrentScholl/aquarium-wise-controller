@@ -86,8 +86,6 @@ byte heatOffTemp;
 byte heatOnTemp;
 byte coldWarnTemp;
 
-char timestring[8];
-
 int freeRam ()
 {
   // Returns available SRAM
@@ -125,7 +123,6 @@ void setup()
   analogWrite(screenBrightPin, screenBrightMem);
   
   updateTimeDate();
-  timestring[0] = '0';
 
   millisDim = millis();
   
@@ -1248,14 +1245,9 @@ void printTime(int thour, int tminute, byte ampm, int posx, int posy)
     strcat(tmpTime, "PM");
   }
   
-  if (strcmp(timestring, tmpTime) != 0)
-  { 
-    myGLCD.setColor(246, 248, 248);
-    myGLCD.fillRect(165, 42, 239, 59);
-    
-    strncpy(timestring, tmpTime, 8);
-  }
-      
+  myGLCD.setColor(246, 248, 248);
+  myGLCD.fillRect(165, 42, 239, 59);
+        
   utext.setForeground(88, 102, 110);
   utext.setBackground(246, 248, 248);
   utext.setFont(Arial11);
