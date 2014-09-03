@@ -28,7 +28,7 @@ void drawHeader(char* icon, char* title);
 void drawLargeButton(char icon, char* text, int state, int x, int y);
 void drawBackground();
 void drawSpinner(int x, int y);
-void drawFillButton(int x, int y);
+void drawLargeBlueButton(int x, int y, char* text);
 void screenHome();
 void screenFeeding();
 void screenPower();

@@ -367,7 +367,7 @@ void drawHeader(char* icon, char* title)
         break;
     case 10:
         utext.print(160, 12, "1");
-        utext.print(60, 12, "h");
+        utext.print(60, 12, "1");
       break;
   }
 
@@ -477,17 +477,18 @@ void drawSpinner(int x, int y)
   myGLCD.fillRect(x + 135, y + 11, x + 136, y + 22);
 }
 
-void drawFillButton(int x, int y)
+void drawLargeBlueButton(int x, int y, char* text)
 {
   myGLCD.setColor(31, 164, 205);
   myGLCD.fillRect(x, y, x+33, y+33);
   
   myGLCD.setColor(35, 183, 229);
-  myGLCD.fillRect(x+33, y, x+222, y+33);
+  myGLCD.fillRect(x+33, y, x+110, y+33);
   
   utext.setForeground(255, 255, 255);
   utext.setBackground(35, 183, 229);
-  utext.print(x+113, y+10, "Fill");
+  utext.setFont(Arial11);
+  utext.print(x + 55, y + 10, text);
 }
 
 void screenHome()
@@ -779,7 +780,8 @@ void screenDosing()
   
   drawDosingPumpSettings(selectedItem);
   
-  drawFillButton(8, 280);
+  drawLargeBlueButton(8, 280, "Fill");
+  drawLargeBlueButton(121, 280, "Test");
 }
 
 void screenPwrSchedule()
@@ -1144,6 +1146,15 @@ void processMyTouch()
       else if (inBounds(x, y, 200, 187, 231, 219))
       {
         dosingPumps[selectedItem].setVol(dosingPumps[selectedItem].getVol() + 10);
+        drawDosingPumpSettings(selectedItem);
+      }
+      else if (inBounds(x, y, 8, 280, 118, 313))
+      {
+        drawDosingPumpSettings(selectedItem);
+      }
+      else if (inBounds(x, y, 8, 280, 118, 313))
+      {
+        dosingPumps[selectedItem].dose();
         drawDosingPumpSettings(selectedItem);
       }
       break;
