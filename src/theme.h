@@ -16,23 +16,23 @@ const Color THEME_HEAD_FORE = {255, 255, 255};
 const Color THEME_SUBHEAD_BACK = {246, 248, 248};
 const Color THEME_SUBHEAD_FORE = {88, 102, 100};
 
-const byte THEME_PRIMARY_BACK[] = {255, 255, 255};
-const byte THEME_PRIMARY_FORE[] = {88, 102, 100};
+const Color THEME_PRIMARY_BACK = {255, 255, 255};
+const Color THEME_PRIMARY_FORE = {88, 102, 100};
 
-const byte THEME_ON[] = {35, 175, 68};
-const byte THEME_OFF[] = {255, 255, 255};
+const Color THEME_ON = {35, 175, 68};
+const Color THEME_OFF = {255, 255, 255};
 
-const byte THEME_BTN_LIGHT[] = {255, 255, 255};
-const byte THEME_BTN_DARK[] = {39, 194, 76};
-const byte THEME_BTN_DARK_A[] = {35, 175, 68};
+const Color THEME_BTN_LIGHT = {255, 255, 255};
+const Color THEME_BTN_DARK = {39, 194, 76};
+const Color THEME_BTN_DARK_A = {35, 175, 68};
 
-const byte THEME_TAB_LIGHT_FORE[] = {88, 102, 100};
-const byte THEME_TAB_LIGHT_BACK[] = {255, 255, 255};
-const byte THEME_TAB_DARK_FORE[] = {88, 102, 100};
-const byte THEME_TAB_DARK_BACK[] = {237, 241, 242};
+const Color THEME_TAB_LIGHT_FORE = {88, 102, 100};
+const Color THEME_TAB_LIGHT_BACK = {255, 255, 255};
+const Color THEME_TAB_DARK_FORE = {88, 102, 100};
+const Color THEME_TAB_DARK_BACK = {237, 241, 242};
 
-const byte THEME_MACRO[] = {250, 215, 51};
-const byte THEME_MICRO[] = {111, 98, 184};
-const byte THEME_GLUT[] = {35, 183, 229};
+const Color THEME_MACRO = {250, 215, 51};
+const Color THEME_MICRO = {111, 98, 184};
+const Color THEME_GLUT = {35, 183, 229};
 
 #endif

@@ -503,7 +503,7 @@ void screenHome()
   dispScreen = 1;
   
   // Row 1
-  myGLCD.setColor(THEME_PRIMARY_BACK[0], THEME_PRIMARY_BACK[1], THEME_PRIMARY_BACK[2]);
+  myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
 
   // Column 1
   myGLCD.fillRect(4, 64, 117, 121);
@@ -526,7 +526,7 @@ void screenHome()
   // End Row 2
   
   // Row 3
-  myGLCD.setColor(THEME_PRIMARY_BACK[0], THEME_PRIMARY_BACK[1], THEME_PRIMARY_BACK[2]);
+  myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
   
   // Column 1
   myGLCD.fillRect(4, 154, 79, 241);
@@ -560,18 +560,18 @@ void screenHome()
   myGLCD.fillCircle(119, 202, 28); 
   myGLCD.fillCircle(198, 202, 28);
   
-  myGLCD.setColor(THEME_MACRO[0], THEME_MACRO[1], THEME_MACRO[2]);
+  myGLCD.setColor(THEME_MACRO.r, THEME_MACRO.g, THEME_MACRO.b);
   geo.drawArc(42, 202, 30, 180, 260, 3);
   
    
-  myGLCD.setColor(THEME_MICRO[0], THEME_MICRO[1], THEME_MICRO[2]);
+  myGLCD.setColor(THEME_MICRO.r, THEME_MICRO.g, THEME_MICRO.b);
   geo.drawArc(119, 202, 30, 180, 290, 3);
   
-  myGLCD.setColor(THEME_GLUT[0], THEME_GLUT[1], THEME_GLUT[2]);
+  myGLCD.setColor(THEME_GLUT.r, THEME_GLUT.g, THEME_GLUT.b);
   geo.drawArc(198, 202, 30, 180, 360, 3);
   
-  utext.setForeground(THEME_PRIMARY_FORE[0], THEME_PRIMARY_FORE[1], THEME_PRIMARY_FORE[2]);
-  utext.setBackground(THEME_PRIMARY_BACK[0], THEME_PRIMARY_BACK[1], THEME_PRIMARY_BACK[2]);
+  utext.setForeground(THEME_PRIMARY_FORE.r, THEME_PRIMARY_FORE.g, THEME_PRIMARY_FORE.b);
+  utext.setBackground(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
   
   utext.setFont(Arial11);
   utext.print(34, 196, String(dosingPumps[0].getRemainingVol() / dosingPumps[0].getDoseAmt()));
