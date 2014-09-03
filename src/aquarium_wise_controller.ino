@@ -31,7 +31,7 @@ const byte numDosingPumps = 3;
 DosingPump dosingPumps[numDosingPumps] = {
   DosingPump(A8, 58, alarm_macro_dose),
   DosingPump(A9, 75, alarm_micro_dose),
-  DosingPump(A10, 92, alarm_micro_dose)
+  DosingPump(A10, 92, alarm_glut_dose)
 };
 
 AtlasPh pH01(&Serial1);
@@ -1475,6 +1475,11 @@ void alarm_macro_dose()
 void alarm_micro_dose()
 {
   dosingPumps[1].dose();
+}
+
+void alarm_glut_dose()
+{
+  dosingPumps[3].dose();
 }
 
 void firstRunSetup()

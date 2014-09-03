@@ -78,6 +78,7 @@ void alarm_rlyAux1_off();
 void alarm_rlyAux2_off();
 void alarm_macro_dose();
 void alarm_micro_dose();
+void alarm_glut_dose();
 void firstRunSetup();
 
 #include "C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega\pins_arduino.h" 
