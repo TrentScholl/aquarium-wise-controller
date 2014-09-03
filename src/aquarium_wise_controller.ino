@@ -9,6 +9,7 @@
 #include <TimeAlarms.h>
 #include <OneWire.h> 
 #include <DallasTemperature.h>
+#include "Arduino.h"
 #include "dosing_pump.h"
 #include "relay.h"
 #include "atlas_ph.h"
