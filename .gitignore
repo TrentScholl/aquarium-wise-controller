@@ -20,6 +20,9 @@
 *.out
 *.app
 
+# Old backup files
+*.bak
+
 # Debug folder
 Debug/
 
