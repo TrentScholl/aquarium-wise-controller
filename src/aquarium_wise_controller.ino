@@ -234,6 +234,13 @@ void loop()
       unsigned long pastMillis = (currentMillis - millisHome);
       if (pastMillis > (60000 * screenRetHome)) 
       {
+        if (dispScreen == 10)
+        {
+          for (byte i = 0; i <= numDosingPumps; i++)
+          {
+            dosingPumps[i].saveSettings();
+          }
+        }
         screenHome();
       }
     }
