@@ -4,7 +4,7 @@ Aquarium Wise Controller
 Arduino Aquarium Controller
 
 Development
-[![Build Status](https://travis-ci.org/TrentScholl/aquarium-wise-controller.svg?branch=development)](https://travis-ci.org/TrentScholl/aquarium_wise_controller)
+[![Build Status](https://travis-ci.org/TrentScholl/aquarium-wise-controller.svg?branch=development)](https://travis-ci.org/TrentScholl/aquarium-wise-controller)
 
 Libraries
 ---------
