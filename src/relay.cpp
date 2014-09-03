@@ -39,37 +39,40 @@ void Relay::updateAlarms()
 
 bool Relay::inSchedule()
 {
-  tmElements_t tmSet;
-
-  tmSet.Year = year() - 1970;
-  tmSet.Month = month();
-  tmSet.Day = day();
-  tmSet.Hour = hour();
-  tmSet.Minute = minute();
-  tmSet.Second = second();
-
-  time_t currentTime = makeTime(tmSet);
-      
-  tmSet.Hour = schedule.onHour;
-  tmSet.Minute = schedule.onMinute;
-      
-  time_t powerOn = makeTime(tmSet);
-      
-  tmSet.Hour = schedule.offHour;
-  tmSet.Minute = schedule.offMinute;
-      
-  time_t powerOff =  makeTime(tmSet);
-      
-  if (powerOff < powerOn)
+  if (schedule.active)
   {
-    if (powerOn <= currentTime)
+    tmElements_t tmSet;
+
+    tmSet.Year = year() - 1970;
+    tmSet.Month = month();
+    tmSet.Day = day();
+    tmSet.Hour = hour();
+    tmSet.Minute = minute();
+    tmSet.Second = second();
+
+    time_t currentTime = makeTime(tmSet);
+    
+    tmSet.Hour = schedule.onHour;
+    tmSet.Minute = schedule.onMinute;
+    
+    time_t powerOn = makeTime(tmSet);
+    
+    tmSet.Hour = schedule.offHour;
+    tmSet.Minute = schedule.offMinute;
+    
+    time_t powerOff =  makeTime(tmSet);
+    
+    if (powerOff < powerOn)
+    {
+      if (powerOn <= currentTime)
+      {
+        return true;
+      }
+    }
+    else if ((powerOn <= currentTime) && (powerOff > currentTime))
     {
       return true;
     }
-  }
-  else if ((powerOn <= currentTime) && (powerOff > currentTime))
-  {
-    return true;
   }
   
   return false;
