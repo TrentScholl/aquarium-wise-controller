@@ -6,9 +6,10 @@ DosingPump::DosingPump(byte pin, int configByte, DoseHandler handler)
   doseHandler = handler;
   
 	pinMode(pin, OUTPUT);
-	setDoseAmt(EEPROM.readByte(cfgByte + 10));
-	setMlSec(EEPROM.readByte(cfgByte + 11) * 10);
-	setVol(EEPROM.readByte(cfgByte + 12) * 10);
+	doseAmt = EEPROM.readByte(cfgByte + 10);
+	mlSec = EEPROM.readByte(cfgByte + 11) * 10;
+	vol = EEPROM.readByte(cfgByte + 12) * 10;
+  remainingVol = EEPROM.readInt(cfgByte + 13)
 
   schedule.active = EEPROM.readByte(cfgByte);
   schedule.onHour = EEPROM.readByte(cfgByte + 1);
@@ -22,6 +23,17 @@ DosingPump::DosingPump(byte pin, int configByte, DoseHandler handler)
   schedule.Saturday = EEPROM.readByte(cfgByte + 9);
   
   updateAlarms();
+}
+
+void DosingPump::setRemainingVol(int val)
+{
+  remainingVol = val;
+  EEPROM.updateInt(cfgByte + 13, remainingVol);
+}
+
+void DosingPump::getRemainingVol()
+{
+  return remainingVol;
 }
 
 void DosingPump::updateAlarms()
@@ -102,6 +114,8 @@ void DosingPump::dose()
 	analogWrite(pin, 255);
 	delay(mlSec * doseAmt);
 	analogWrite(pin, 0);
+  
+  setRemainingVol(remainingVol - doseAmt);
 }
 
 void DosingPump::saveSettings()
@@ -109,6 +123,7 @@ void DosingPump::saveSettings()
   EEPROM.updateByte(cfgByte + 10, doseAmt);
   EEPROM.updateByte(cfgByte + 11, mlSec / 10);
   EEPROM.updateByte(cfgByte + 12, vol / 10);
+  EEPROM.updateInt(cfgByte + 13, remainingVol);
   EEPROM.updateByte(cfgByte, schedule.active);
   EEPROM.updateByte(cfgByte + 1, schedule.onHour);
   EEPROM.updateByte(cfgByte + 2, schedule.onMinute);

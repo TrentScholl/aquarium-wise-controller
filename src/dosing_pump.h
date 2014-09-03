@@ -15,6 +15,7 @@ class DosingPump
 		byte doseAmt;
 		int mlSec;
 		int vol;
+    int remainingVol;
 		int cfgByte;
     int alarmIds[6];
 
@@ -26,6 +27,8 @@ class DosingPump
 		void setMlSec(int val);
 		int getVol();
 		void setVol(int val);
+    void setRemainingVol(int val);
+    void getRemainingVol();
 		void dose();
 		void saveSettings();
     void updateAlarms();

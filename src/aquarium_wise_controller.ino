@@ -1150,6 +1150,7 @@ void processMyTouch()
       }
       else if (inBounds(x, y, 8, 280, 118, 313))
       {
+        dosingPumps[selectedItem].setRemainingVol(dosingPumps[selectedItem].getVol());
         drawDosingPumpSettings(selectedItem);
       }
       else if (inBounds(x, y, 8, 280, 118, 313))
