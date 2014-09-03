@@ -180,6 +180,7 @@ void loop()
 
   if (myTouch.dataAvailable())
   {
+    delay(5);
     if (currentMillis - prevMillisTouch > 500)
     {
       if (backlightTouch == false)
@@ -806,7 +807,6 @@ boolean inBounds(int touchPointx, int touchPointy, int point1x, int point1y, int
 void processMyTouch()
 {
   myTouch.read();
-  delay(5);
 
   int x = myTouch.getX();
   int y = myTouch.getY();
