@@ -59,7 +59,7 @@ DallasTemperature dallasTemperatureSensors(&oneWire);
 DeviceAddress temperatureProbe01;
 DeviceAddress temperatureProbe02;
 
-UTFT myGLCD(ITDB32S, 38, 39, 40, 41);
+UTFT myGLCD(SSD1289, 38, 39, 40, 41);
 UTouch myTouch(6, 5, 4, 3, 2);
 UTFT_Geometry geo(&myGLCD);
 uText utext(&myGLCD, 240, 320);
