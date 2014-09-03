@@ -7,7 +7,6 @@
 #include <RTClib.h>
 #include <Time.h>
 #include <TimeAlarms.h>
-#include <IRremote.h>
 #include <OneWire.h> 
 #include <DallasTemperature.h>
 #include "dosing_pump.h"
