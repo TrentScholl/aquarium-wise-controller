@@ -840,7 +840,7 @@ void processMyTouch()
       {     
         screenHome();
       }
-      else if ((x>=4)&&(x<=117)&&(y>=283)&&(y<=316))
+      else if (inBounds(x, y, 4, 283, 117, 316))
       {
         alarm_rlyLight1_on();
         alarm_rlyLight2_on();
@@ -853,7 +853,7 @@ void processMyTouch()
         
         screenPower();
       }
-      else if ((x>=122)&&(x<=235)&&(y>=283)&&(y<=316))
+      else if (inBounds(x, y, 122, 283, 235, 316))
       {
         alarm_rlyLight1_off();
         alarm_rlyLight2_off();
@@ -866,7 +866,7 @@ void processMyTouch()
 
         screenPower();
       }
-      else if ((x>=4)&&(x<=117)&&(y>=64)&&(y<=97))    // Front lights power
+      else if (inBounds(x, y, 4, 64, 117, 97))
       {
         if (relays[0].isOn() == 0)
         {
@@ -879,7 +879,7 @@ void processMyTouch()
 
         drawLargeButton('2', "Lights 1", relays[0].isOn(), 4, 64);
       }
-      else if ((x>=122)&&(x<=235)&&(y>=64)&&(y<=97))
+      else if (inBounds(x, y, 122, 64, 235, 97))
       {
         if (relays[1].isOn() == 0)
         {
@@ -892,7 +892,7 @@ void processMyTouch()
         
         drawLargeButton('2', "Lights 2", relays[1].isOn(), 122, 64);
       }
-      else if ((x>=4)&&(x<=117)&&(y>=102)&&(y<=135))
+      else if (inBounds(x, y, 4, 102, 117, 135))
       {
         if (relays[2].isOn() == 0)
         { 
@@ -905,7 +905,7 @@ void processMyTouch()
 
         drawLargeButton('3', "Filter", relays[2].isOn(), 4, 102);
       }
-      else if ((x>=4)&&(x<=117)&&(y>=140)&&(y<=173))
+      else if (inBounds(x, y, 4, 140, 117, 173))
       {
         if (relays[4].isOn() == 0)
         {
@@ -918,7 +918,7 @@ void processMyTouch()
 
         drawLargeButton('5', "Circulat..", relays[4].isOn(), 4, 140);
       }
-      else if ((x>=122)&&(x<=235)&&(y>=102)&&(y<=135))
+      else if (inBounds(x, y, 122, 102, 235, 135))
       {
         if (relays[3].isOn() == 0)
         {
@@ -931,7 +931,7 @@ void processMyTouch()
 
         drawLargeButton('4', "Heater", relays[3].isOn(), 122, 102);
       }
-      else if ((x>=122)&&(x<=235)&&(y>=130)&&(y<=173))
+      else if (inBounds(x, y, 122, 130, 235, 173))
       {
         if (relays[5].isOn() == 0)
         {
@@ -944,7 +944,7 @@ void processMyTouch()
 
         drawLargeButton('6', "CO2", relays[5].isOn(), 122, 140);
       }
-      else if ((x>=4)&&(x<=117)&&(y>=178)&&(y<=211))
+      else if (inBounds(x, y, 4, 178, 117, 211))
       {
         if (relays[6].isOn() == 0)
         {
@@ -957,7 +957,7 @@ void processMyTouch()
         
         drawLargeButton('7', "AUX1", relays[6].isOn(), 4, 178);
       }
-      else if ((x>=122)&&(x<=235)&&(y>=178)&&(y<=211))
+      else if (inBounds(x, y, 122, 178, 235, 211))
       {
         if (relays[7].isOn() == 0)
         {
@@ -977,34 +977,34 @@ void processMyTouch()
       {     
         screenHome();
       }
-      else if ((x>=4)&&(x<=117)&&(y>=64)&&(y<=97))
+      else if (inBounds(x, y, 4, 64, 117, 97))
       {
         if (relays[0].isOn() == 1)
         {
           screenLights(); // only respond to the lights button if they are turned on
         }
       }
-      else if ((x>=122)&&(x<=235)&&(y>=139)&&(y<=172))
+      else if (inBounds(x, y, 122, 139, 235, 172))
       {
         screenClock();
       }
-      else if ((x>=122)&&(x<=235)&&(y>=102)&&(y<=135))
+      else if (inBounds(x, y, 122, 102, 235, 135))
       {
         screenFeedSettings();
       }
-      else if ((x>=122)&&(x<=235)&&(y>=64)&&(y<=97))
+      else if (inBounds(x, y, 122, 64, 235, 97))
       {
         screenSchedule();
       }
-      else if ((x>=4)&&(x<=117)&&(y>=102)&&(y<=135))
+      else if (inBounds(x, y, 4, 102, 117, 135))
       {
         screenHeater();
       }
-      else if ((x>=4)&&(x<=117)&&(y>=139)&&(y<=172))
+      else if (inBounds(x, y, 4, 139, 117, 172))
       {
         screenDosing();
       }
-      else if ((x>=4)&&(x<=117)&&(y>=177)&&(y<=210))
+      else if (inBounds(x, y, 4, 177, 117, 210))
       {
         screenScreen();
       }
