@@ -553,7 +553,7 @@ void screenHome()
  
   drawDoseChart(42, 202, 0, "Macro", THEME_MACRO);
   drawDoseChart(119, 202, 1, "Micro", THEME_MICRO);
-  drawDoseChart(198, 202, 1, "Glut", THEME_GLUT);
+  drawDoseChart(198, 202, 2, "Glut", THEME_GLUT);
   
   utext.setFont(Arial7);
   utext.print(48, 108, "Temp");
@@ -561,6 +561,16 @@ void screenHome()
  
   check_Temperatures();
   check_Ph();
+}
+
+void drawPleaseWait()
+{
+    myGLCD.setColor(THEME_SUBHEAD_BACK.r, THEME_SUBHEAD_BACK.g, THEME_SUBHEAD_BACK.b);
+    myGLCD.fillRect(0, 0, 239, 319);
+    
+    utext.setFont(Arial11);
+    utext.setForeground(0, 0, 0);
+    utext.print(80, 150, "Please wait...");
 }
 
 void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor)
@@ -571,13 +581,13 @@ void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor)
   myGLCD.setColor(255, 255, 255);
   myGLCD.fillCircle(x, y, 28);
   
-  int arcAngle = (360 / 100) * ((dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getVol()) * 10);
+  int arcAngle = (360) * ((dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getVol()));
   
   myGLCD.setColor(arcColor.r, arcColor.g, arcColor.b);
   geo.drawArc(x, y, 30, 0, arcAngle, 3);
   
   utext.setFont(Arial11);
-  utext.print(x - 8, y, String(dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getDoseAmt()));
+  utext.print(x - 8, y - 7, String(dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getDoseAmt()));
   
   utext.setFont(Arial7);
   utext.print(x - 12, y - 44, label);
@@ -754,10 +764,10 @@ void drawDosingPumpTabs(byte selected)
   utext.print(184, 74, "Glut");
 }
 
-void screenDosing()
+void screenDosing(byte pump)
 {
   dispScreen = 10;
-  selectedItem = 0;
+  selectedItem = pump;
 
   drawHeader("e", "Dosing");
   drawBackground();
@@ -1039,7 +1049,7 @@ void processMyTouch()
       }
       else if (inBounds(x, y, 4, 139, 117, 172))
       {
-        screenDosing();
+        screenDosing(0);
       }
       else if (inBounds(x, y, 4, 177, 117, 210))
       {
@@ -1146,10 +1156,11 @@ void processMyTouch()
         dosingPumps[selectedItem].setRemainingVol(dosingPumps[selectedItem].getVol());
         drawDosingPumpSettings(selectedItem);
       }
-      else if (inBounds(x, y, 8, 280, 118, 313))
+      else if (inBounds(x, y, 120, 280, 230, 313))
       {
+        drawPleaseWait();
         dosingPumps[selectedItem].dose();
-        drawDosingPumpSettings(selectedItem);
+        screenDosing(selectedItem);
       }
       break;
 

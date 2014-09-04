@@ -112,7 +112,7 @@ byte DosingPump::getDoseAmt()
 void DosingPump::dose()
 {
 	analogWrite(pin, 255);
-	delay(mlSec * doseAmt);
+	delay((long)mlSec * doseAmt);
 	analogWrite(pin, 0);
   
   setRemainingVol(remainingVol - doseAmt);
