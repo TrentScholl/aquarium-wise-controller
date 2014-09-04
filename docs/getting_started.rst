@@ -15,7 +15,8 @@ Here's what you need to get started:
 * Arduino Mega 2560 R3
 * Atlas Scientific pH Kit
 * SainSmart 8 Channel Relay Module Board
-* SainSmart 3.2" SSD1289 Touch Screen
+* SainSmart 3.2" SSD1289 TFT Touch Screen
+* SainSmart TFT Shield
 * 3 x 10 Position Terminal Blocks
 * 8 x Panel Mount Power Sockets (to match your country)
 * C14 Power Inlet Socket
@@ -38,3 +39,14 @@ Here's what you need to get started:
 * Waterproof DS18B20
 * DS1307 Module
 * Breadboard
+
+Addtionally you'll also need:
+
+* A Soldering iron
+* Solder
+* Wire stripper
+* Pliers
+* Wire cutters
+* Crimper
+* Various sized Screw Drivers
+* Lots of spare time
