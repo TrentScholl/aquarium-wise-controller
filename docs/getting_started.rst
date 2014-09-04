@@ -37,7 +37,7 @@ Here's what you need to get started:
 * 47uF Capacitors
 * NPN Transistors
 * Waterproof DS18B20
-* DS1307 Module
+* DS3231 Module
 * Breadboard
 
 Addtionally you'll also need:

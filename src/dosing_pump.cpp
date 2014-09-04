@@ -123,6 +123,12 @@ void DosingPump::saveSettings()
   EEPROM.updateByte(cfgByte + 10, doseAmt);
   EEPROM.updateByte(cfgByte + 11, mlSec / 10);
   EEPROM.updateByte(cfgByte + 12, vol / 10);
+  
+  if (remainingVol > vol)
+  {
+    remainingVol = vol;  
+  } 
+     
   EEPROM.updateInt(cfgByte + 13, remainingVol);
   EEPROM.updateByte(cfgByte, schedule.active);
   EEPROM.updateByte(cfgByte + 1, schedule.onHour);

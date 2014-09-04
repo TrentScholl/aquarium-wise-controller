@@ -581,7 +581,9 @@ void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor)
   myGLCD.setColor(255, 255, 255);
   myGLCD.fillCircle(x, y, 28);
   
-  int arcAngle = (360) * ((dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getVol()));
+  int arcAngle = (360) * (((float)dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getVol()));
+  
+  Serial.println(arcAngle);
   
   myGLCD.setColor(arcColor.r, arcColor.g, arcColor.b);
   geo.drawArc(x, y, 30, 0, arcAngle, 3);
