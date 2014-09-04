@@ -17,6 +17,7 @@ Hardware
     :maxdepth: 2
 
     getting_started
+    hardware
 
 Software
 --------
