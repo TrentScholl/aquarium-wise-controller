@@ -13,6 +13,10 @@ The main documenation for the controller is organized into a couple of sections.
 
 Hardware
 --------
+.. toctree::
+    :maxdepth: 2
+
+    getting_started
 
 Software
 --------
