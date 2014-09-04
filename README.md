@@ -3,8 +3,13 @@ Aquarium Wise Controller
 
 Arduino Aquarium Controller
 
-Development
+Build Status
+
 [![Build Status](https://travis-ci.org/TrentScholl/aquarium-wise-controller.svg?branch=development)](https://travis-ci.org/TrentScholl/aquarium-wise-controller)
+
+Documentation
+
+[![Documentation Status](https://readthedocs.org/projects/aquarium-wise-controller/badge/?version=latest)](https://readthedocs.org/projects/aquarium-wise-controller/?badge=latest)
 
 ![Home Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/home.png)
 ![Power Screen](https://s3-ap-southeast-2.amazonaws.com/aquarium-wise-cdn/controller/images/power.png)
