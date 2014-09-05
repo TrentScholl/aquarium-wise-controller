@@ -5,7 +5,6 @@ Arduino Mega 2560 R3
 --------------------
 
 .. image:: /img/ArduinoMega2560_R3_Front_450px.jpg
-.. image:: /img/ArduinoMega2560_R3_Back_450px.jpg
 
 The `Arduino Mega 2560 <http://arduino.cc/en/Main/ArduinoBoardMega2560>`_ is a microcontroller board based on the ATmega2560. Although it is recommended that you purchase an official board from an Arduino reseller, there are many cheaper clones available that are suitable to use for the Aquarium Wise Controller.
 
