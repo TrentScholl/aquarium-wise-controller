@@ -355,7 +355,6 @@ void drawHeader(char* icon, char* title)
     case 5:
     case 6:
     case 7:
-    case 8:
     case 9:
     case 11:
     case 12:
@@ -365,8 +364,9 @@ void drawHeader(char* icon, char* title)
     case 16:
         utext.print(110, 12, "1");
         break;
+    case 8:
     case 10:
-        utext.print(160, 12, "1");
+        utext.print(160, 12, "a");
         utext.print(60, 12, "1");
       break;
   }
@@ -679,6 +679,21 @@ void screenHeater()
   
   drawHeader("4", "Heater");
   drawBackground();
+  
+  myGLCD.setColor(255, 255, 255);
+  myGLCD.fillRect(4, 64, 235, 190);
+
+  utext.print(12, 81, "Off");
+  utext.print(12, 124, "On");
+  utext.print(12, 163, "Warn.");
+  
+  drawSpinner(80, 68);
+  drawSpinner(80, 109);
+  drawSpinner(80, 150);
+  
+  utext.print(152, 78, String(EEPROM.readByte(138)));
+  utext.print(152, 119, String(EEPROM.readByte(139)));
+  utext.print(152, 160, String(EEPROM.readByte(140)));
 }
 
 void screenSchedule()
@@ -1082,9 +1097,13 @@ void processMyTouch()
       break;
 
     case 8:
-      if (inBounds(x, y, 80, 0, 165, 39))
+      if (inBounds(x, y, 0, 0, 119, 39))
       {     
         screenHome();
+      }
+      else if (inBounds(x, y, 120, 0, 239, 39))
+      {
+        screenSettings();
       }
       break;
 
@@ -1096,15 +1115,19 @@ void processMyTouch()
       break;
 
     case 10:
-      if (inBounds(x, y, 80, 0, 165, 39))
-      {     
+      if (inBounds(x, y, 0, 0, 119, 39))
+      {
         for (byte i = 0; i <= numDosingPumps; i++)
         {
           dosingPumps[i].saveSettings();
         }
 
         screenHome();
-      } 
+      }
+      else if (inBounds(x, y, 120, 0, 239, 39))
+      {
+        screenSettings();
+      }
       else if (inBounds(x, y, 5, 65, 80, 96))
       {
         selectedItem = 0;
