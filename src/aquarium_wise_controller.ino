@@ -458,7 +458,7 @@ void drawBackground()
     myGLCD.fillRect(0, 61, 239, 319);
 }
 
-void drawSpinner(int x, int y)
+void drawSpinner(int x, int y, String val)
 {
   myGLCD.setColor(222, 229, 231);
   myGLCD.fillRect(x, y, x + 151, y + 33);
@@ -475,6 +475,10 @@ void drawSpinner(int x, int y)
 
   myGLCD.fillRect(x + 130, y + 16, x + 141, y + 17);
   myGLCD.fillRect(x + 135, y + 11, x + 136, y + 22);
+  
+  utext.setFont(Arial11);
+  utext.setForeground(88, 102, 110);
+  utext.print((x + 32) + findCenterText(val, x + 32, x + 119), y + 10, val);
 }
 
 void drawLargeBlueButton(int x, int y, char* text)
@@ -688,9 +692,7 @@ void screenFeedSettings()
 
   utext.print(12, 81, "Mins.");
     
-  drawSpinner(80, 68);
-    
-  utext.print(152, 78, String(EEPROM.readByte(150)));
+  drawSpinner(80, 68, String(EEPROM.readByte(150)));
   
   drawLargeButton('2', "Lights 1", 0, 4, 110);
   drawLargeButton('2', "Lights 2", 0, 122, 110);
@@ -719,13 +721,9 @@ void screenHeater()
   utext.print(12, 124, "On");
   utext.print(12, 163, "Warn.");
   
-  drawSpinner(80, 68);
-  drawSpinner(80, 109);
-  drawSpinner(80, 150);
-  
-  utext.print(152, 78, String(EEPROM.readByte(138)));
-  utext.print(152, 119, String(EEPROM.readByte(139)));
-  utext.print(152, 160, String(EEPROM.readByte(140)));
+  drawSpinner(80, 68, String(EEPROM.readByte(138)));
+  drawSpinner(80, 109, String(EEPROM.readByte(139)));
+  drawSpinner(80, 150, String(EEPROM.readByte(140)));
 }
 
 void screenSchedule()
@@ -738,44 +736,13 @@ void screenSchedule()
 
 void drawDosingPumpSettings(byte pump)
 { 
-  drawSpinner(80, 105);
-  drawSpinner(80, 146);
-  drawSpinner(80, 187);
+  drawSpinner(80, 105, String(dosingPumps[pump].getDoseAmt()));
+  drawSpinner(80, 146, String(dosingPumps[pump].getMlSec()));
+  drawSpinner(80, 187, String(dosingPumps[pump].getVol()));
 
-  int dose = 0;
-  int rate = 0;
-  int vol = 0;
- 
-  utext.setForeground(88, 102, 110);
-  utext.setBackground(237, 241, 242);
-  utext.setFont(Arial11);
-
-  int offset = 0;
-
-  if (dosingPumps[pump].getDoseAmt() > 9)
-  {
-    offset = 6;
-  }
-
-  utext.print(152 - offset, 115, String(dosingPumps[pump].getDoseAmt()));
-
-  if (dosingPumps[pump].getMlSec() > 999)
-  {
-    offset = 12;
-  }
-
-  utext.print(152 - offset, 156, String(dosingPumps[pump].getMlSec())); 
-
-  if (dosingPumps[pump].getVol() > 999)
-  {
-    offset = 12;
-  }
-  else if (dosingPumps[pump].getVol() > 99)
-  {
-    offset = 6;
-  }
-
-  utext.print(152 - offset, 197, String(dosingPumps[pump].getVol())); 
+  //utext.setForeground(88, 102, 110);
+  //utext.setBackground(237, 241, 242);
+  //utext.setFont(Arial11);
 }
 
 void drawDosingPumpTabs(byte selected)
@@ -897,15 +864,10 @@ void screenScreen()
   utext.print(12, 163, "Dim Time");
   utext.print(12, 202, "Bright");
     
-  drawSpinner(80, 68);
-  drawSpinner(80, 109);
-  drawSpinner(80, 150);
-  drawSpinner(80, 191);
-    
-  utext.print(152, 78, String(EEPROM.readByte(144)));
-  utext.print(152, 119, String(EEPROM.readByte(145)));
-  utext.print(152, 160, String(EEPROM.readByte(146)));
-  utext.print(152, 201, String(EEPROM.readByte(147)));
+  drawSpinner(80, 68, String(EEPROM.readByte(144)));
+  drawSpinner(80, 109, String(EEPROM.readByte(145)));
+  drawSpinner(80, 150, String(EEPROM.readByte(146)));
+  drawSpinner(80, 191, String(EEPROM.readByte(147)));
 }
 
 boolean inBounds(int touchPointx, int touchPointy, int point1x, int point1y, int point2x, int point2y)
@@ -1192,6 +1154,11 @@ void processMyTouch()
       }
       else if (inBounds(x, y, 120, 0, 239, 39))
       {
+        for (byte i = 0; i <= numDosingPumps; i++)
+        {
+          dosingPumps[i].saveSettings();
+        }
+                
         screenSettings();
       }
       else if (inBounds(x, y, 5, 65, 80, 96))

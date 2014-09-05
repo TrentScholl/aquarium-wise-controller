@@ -27,7 +27,7 @@ void drawSmallRelayStatus(int relay, int state, int x, int y);
 void drawHeader(char* icon, char* title);
 void drawLargeButton(char icon, char* text, int state, int x, int y);
 void drawBackground();
-void drawSpinner(int x, int y);
+void drawSpinner(int x, int y, String val);
 void drawLargeBlueButton(int x, int y, char* text);
 void screenHome();
 int findCenterText(String text, int x1, int x2);
