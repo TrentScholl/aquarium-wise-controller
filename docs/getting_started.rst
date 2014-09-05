@@ -14,7 +14,7 @@ Here's what you need to get started:
 
 * Arduino Mega 2560 R3
 * Atlas Scientific pH Kit
-* SainSmart 8 Channel Relay Module Board
+* SainSmart 8 Channel DC 5V Relay Module
 * SainSmart 3.2" SSD1289 TFT Touch Screen
 * SainSmart TFT LCD Adjustable Shield 
 * 3 x 10 Position Terminal Blocks

@@ -37,6 +37,13 @@ The software is writen specially to work with the Atlas Scientific pH stamp, but
 
 `Datasheet <https://www.atlas-scientific.com/_files/_.../_circuit/pH_Circuit_5.0.pdf>`_
 
+SainSmart 8 Channel DC 5V Relay Module
+--------------------------------------
+
+.. image:: /img/relay_board.jpg
+
+The SainSmart 8 Channel Relay Module is used to control the power outlets for lights, filters, heaters, etc.. Any relay board can be used in place of the SainSmart board - some software changes may be required depending on what signal the relay board is expecting (Some expect HIGH for off and others expect LOW for on).
+
 DS3231
 ------
 
