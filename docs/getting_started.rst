@@ -3,8 +3,8 @@ Getting Started
 
 This documentation will show you all the bits and pieces you'll need to purchase and how to hook it all together.
 
-Bill of Materials (aka Shopping List)
--------------------------------------
+Bill of Materials
+-----------------
 
 The Aquarium Wise controller is built from many different electronics components that can be sourced from online stores, local stores or eBay. Most of the components can be sourced cheaply from eBay, but be warned that postage times from China are generally 25-30 days. It is recommended you source as many of the components as you can in one shop to avoid losing interest.
 
