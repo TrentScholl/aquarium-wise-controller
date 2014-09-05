@@ -1,6 +1,8 @@
 Hardware
 =========
 
+Below is a list of the major componentry required to build a working Aquarium Wise Controller.
+
 Arduino Mega 2560 R3
 --------------------
 
