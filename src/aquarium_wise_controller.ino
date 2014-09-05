@@ -856,6 +856,24 @@ void screenScreen()
   
   drawHeader("d", "Screen");
   drawBackground();
+    
+  myGLCD.setColor(255, 255, 255);
+  myGLCD.fillRect(4, 64, 235, 230);
+
+  utext.print(12, 81, "Ret. Time");
+  utext.print(12, 124, "Dim Lev.");
+  utext.print(12, 163, "Dim Time");
+  utext.print(12, 202, "Bright");
+    
+  drawSpinner(80, 68);
+  drawSpinner(80, 109);
+  drawSpinner(80, 150);
+  drawSpinner(80, 191);
+    
+  utext.print(152, 78, String(EEPROM.readByte(144)));
+  utext.print(152, 119, String(EEPROM.readByte(145)));
+  utext.print(152, 160, String(EEPROM.readByte(146)));
+  utext.print(152, 201, String(EEPROM.readByte(147)));
 }
 
 boolean inBounds(int touchPointx, int touchPointy, int point1x, int point1y, int point2x, int point2y)
@@ -1742,6 +1760,6 @@ void firstRunSetup()
     EEPROM.writeByte(144,30); // Screen Return Home
     EEPROM.writeByte(145,25); // Screen Auto-dim Level
     EEPROM.writeByte(146,5); // Screen Auto-dim Seconds 
-    EEPROM.writeByte(147,225); // Screen Brightness
+    EEPROM.writeByte(147,255); // Screen Brightness
   }
 }
