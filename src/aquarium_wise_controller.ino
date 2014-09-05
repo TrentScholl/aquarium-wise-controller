@@ -352,20 +352,20 @@ void drawHeader(char* icon, char* title)
     case 2:
     case 3:
     case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 9:
     case 11:
     case 12:
     case 13:
     case 14:
     case 15:
-    case 16:
         utext.print(110, 12, "1");
         break;
+    case 5:
+    case 6:
+    case 7:
     case 8:
+    case 9:
     case 10:
+    case 16:
         utext.print(160, 12, "a");
         utext.print(60, 12, "1");
       break;
@@ -671,6 +671,27 @@ void screenFeedSettings()
   
   drawHeader("8", "Feeding");
   drawBackground();
+  
+  myGLCD.setColor(255, 255, 255);
+  myGLCD.fillRect(4, 64, 235, 105);
+
+  utext.print(12, 81, "Mins.");
+    
+  drawSpinner(80, 68);
+    
+  utext.print(152, 78, String(EEPROM.readByte(150)));
+  
+  drawLargeButton('2', "Lights 1", 0, 4, 110);
+  drawLargeButton('2', "Lights 2", 0, 122, 110);
+    
+  drawLargeButton('3', "Filter", 0, 4, 148);
+  drawLargeButton('4', "Heater", 0, 122, 148);
+    
+  drawLargeButton('5', "Circulat..", 0, 4, 186);
+  drawLargeButton('6', "CO2", 0, 122, 186);
+    
+  drawLargeButton('7', "AUX1", 0, 4, 224);
+  drawLargeButton('7', "AUX2", 0, 122, 224);
 }
 
 void screenHeater()
@@ -1094,23 +1115,35 @@ void processMyTouch()
       break;
 
     case 5:
-      if (inBounds(x, y, 80, 0, 165, 39))
-      {     
+      if (inBounds(x, y, 0, 0, 119, 39))
+      {
         screenHome();
+      }
+      else if (inBounds(x, y, 120, 0, 239, 39))
+      {
+        screenSettings();
       }
       break;
 
     case 6:
-      if (inBounds(x, y, 80, 0, 165, 39))
-      {     
+      if (inBounds(x, y, 0, 0, 119, 39))
+      {
         screenHome();
+      }
+      else if (inBounds(x, y, 120, 0, 239, 39))
+      {
+        screenSettings();
       }
       break;
 
     case 7:
-      if (inBounds(x, y, 80, 0, 165, 39))
-      {     
+      if (inBounds(x, y, 0, 0, 119, 39))
+      {
         screenHome();
+      }
+      else if (inBounds(x, y, 120, 0, 239, 39))
+      {
+        screenSettings();
       }
       break;
 
@@ -1126,9 +1159,13 @@ void processMyTouch()
       break;
 
     case 9:
-      if (inBounds(x, y, 80, 0, 165, 39))
-      {     
+      if (inBounds(x, y, 0, 0, 119, 39))
+      {
         screenHome();
+      }
+      else if (inBounds(x, y, 120, 0, 239, 39))
+      {
+        screenSettings();
       }
       break;
 
@@ -1243,9 +1280,13 @@ void processMyTouch()
       break;
       
     case 16:
-      if (inBounds(x, y, 80, 0, 165, 39))
-      {     
+      if (inBounds(x, y, 0, 0, 119, 39))
+      {
         screenHome();
+      }
+      else if (inBounds(x, y, 120, 0, 239, 39))
+      {
+        screenSettings();
       }
       break;
    }
