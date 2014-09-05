@@ -62,6 +62,8 @@ DS18B20
 
 The DS18B20 is a digital thermometer that communicates over a 1-Wire bus. These are used to monitor water and ambient temperature.
 
+`Datasheet <http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf>`_
+
 Peristaltic Pump
 ------
 
