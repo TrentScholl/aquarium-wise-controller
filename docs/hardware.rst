@@ -54,3 +54,17 @@ The `DS3231 <http://www.maximintegrated.com/en/products/digital/real-time-clocks
 Purchasing a pre-made PCB with components is the simplest and quickest way to get your RTC up and running.
 
 `Datasheet <datasheets.maximintegrated.com/en/ds/DS3231.pdf>`_
+
+DS18B20
+-------
+
+.. image:: /img/DS18B20.jpg
+
+The DS18B20 is a digital thermometer that communicates over a 1-Wire bus. These are used to monitor water and ambient temperature.
+
+Peristaltic Pump
+------
+
+.. image:: /img/peristaltic_pump.jpg
+
+A Peralistic Pump is a displacement pump that is used to pump fluids, in our case, liquid fertilizers or other aquarium chemicals. This documentation explains how to use 12v pumps, but different voltages can be used with minor modifications. 
