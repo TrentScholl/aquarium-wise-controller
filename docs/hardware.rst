@@ -10,6 +10,22 @@ The `Arduino Mega 2560 <http://arduino.cc/en/Main/ArduinoBoardMega2560>`_ is a m
 
 It is important that you purchase the Arduino Mega 2560 R3 or equivalent clone as all of the documentation and software is designed specifically for it.
 
+SainSmart 3.2” SSD1289 TFT Touch Screen
+---------------------------------------
+
+.. image:: /img/touch_screen.jpg
+
+The SainSmart 3.2" TFT Touch screen is a LCD screen module with a SSD1289 controller. It also includes and SD card reader - however, this is not currently used by any of the functionality in the Aquarium Wise Controller.
+
+This component can be replaced with any 320 x 240 LCD module that is supported by the UTFT library. The modifications required for using a different screen can be found in the Software section of this documentation.
+
+SainSmart TFT LCD Adjustable Shield 
+-----------------------------------
+
+.. image:: /img/tft_shield.jpg
+
+Although not required, the SainSmart TFT LCD Adjustable Shield makes the process of hooking up the 3.2" TFT to the Arduino much simpler. Some modifications are required if you wish to use it as a straight plug-in for the Arduino. These modifications are located further in to the documentation.
+
 Atlas Scientific pH Kit
 -------
 

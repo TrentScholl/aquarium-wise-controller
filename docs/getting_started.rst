@@ -16,7 +16,7 @@ Here's what you need to get started:
 * Atlas Scientific pH Kit
 * SainSmart 8 Channel Relay Module Board
 * SainSmart 3.2" SSD1289 TFT Touch Screen
-* SainSmart TFT Shield
+* SainSmart TFT LCD Adjustable Shield 
 * 3 x 10 Position Terminal Blocks
 * 8 x Panel Mount Power Sockets (to match your country)
 * C14 Power Inlet Socket
