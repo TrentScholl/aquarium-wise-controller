@@ -30,6 +30,7 @@ void drawBackground();
 void drawSpinner(int x, int y);
 void drawLargeBlueButton(int x, int y, char* text);
 void screenHome();
+int findCenterText(String text, int x1, int x2);
 void drawPleaseWait();
 void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor);
 void screenFeeding();

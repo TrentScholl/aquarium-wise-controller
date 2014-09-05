@@ -558,9 +558,20 @@ void screenHome()
   utext.setFont(Arial7);
   utext.print(48, 108, "Temp");
   utext.print(172, 108, "pH");
+  
+  utext.getTextWidth("Temp");
  
   check_Temperatures();
   check_Ph();
+}
+
+int findCenterText(String text, int x1, int x2)
+{
+    Serial.println("Center");
+  int textWidth = utext.getTextWidth(text);
+  Serial.print('\n');
+    
+  return ((x2 - x1) - textWidth) / 2;
 }
 
 void drawPleaseWait()
@@ -583,16 +594,16 @@ void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor)
   
   int arcAngle = (360) * (((float)dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getVol()));
   
-  Serial.println(arcAngle);
-  
   myGLCD.setColor(arcColor.r, arcColor.g, arcColor.b);
   geo.drawArc(x, y, 30, 0, arcAngle, 3);
   
+  String remaining = String(dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getDoseAmt());
+  
   utext.setFont(Arial11);
-  utext.print(x - 8, y - 7, String(dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getDoseAmt()));
+  utext.print((x - 30) + findCenterText(remaining, x - 30, x + 30), y - 7, remaining);
   
   utext.setFont(Arial7);
-  utext.print(x - 12, y - 44, label);
+  utext.print((x - 30) + findCenterText(label, x - 30, x + 30), y - 44, label);
 }
 
 void screenFeeding()
