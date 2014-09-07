@@ -14,6 +14,11 @@
 #include "atlas_ph.h"
 #include "fonts.h"
 #include "theme.h"
+//#include <SPI.h>
+//#include <UIPEthernet.h>
+
+//byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+//EthernetClient client;
 
 const byte numRelays = 8;
 Relay relays[numRelays] = {
@@ -38,7 +43,7 @@ AtlasPh pH01(&Serial1);
 
 byte lightSensorPin = A15;
 
-byte screenBrightPin = 4;
+byte screenBrightPin = 15;
 
 byte alarmPin = 12;
 
@@ -52,7 +57,7 @@ byte screenBrightMem;
 
 RTC_DS1307 RTC;
 
-OneWire oneWire(2);
+OneWire oneWire(14);
 
 DallasTemperature dallasTemperatureSensors(&oneWire);
 
@@ -96,7 +101,7 @@ int freeRam ()
 }
 
 void setup()
-{
+{  
   firstRunSetup();
 
   myGLCD.InitLCD(PORTRAIT);
@@ -128,14 +133,11 @@ void setup()
   millisDim = millis();
   
   setup_Relays();
- 
-  Serial.print("SRAM: ");
-  Serial.print(freeRam());
-  Serial.print("\n");
-
-  screenHome();  
-
+  
+  // Ethernet.begin(mac);
   delay(1000);
+
+  screenHome();
 }
 
 void load_Settings()
@@ -205,7 +207,7 @@ void loop()
     {
       check_Ph();
       check_Temperatures();
-    }
+    }  
   }
 
   if (screenDimSec != 0)
@@ -236,6 +238,7 @@ void loop()
       {
         if (dispScreen == 10)
         {
+          drawPleaseWait();
           for (byte i = 0; i <= numDosingPumps; i++)
           {
             dosingPumps[i].saveSettings();
@@ -571,21 +574,24 @@ void screenHome()
 
 int findCenterText(String text, int x1, int x2)
 {
-    Serial.println("Center");
   int textWidth = utext.getTextWidth(text);
-  Serial.print('\n');
     
   return ((x2 - x1) - textWidth) / 2;
 }
 
 void drawPleaseWait()
 {
+    myGLCD.setColor(0, 0, 0);
+    myGLCD.fillRect(30, 120, 209, 180);
+    
     myGLCD.setColor(THEME_SUBHEAD_BACK.r, THEME_SUBHEAD_BACK.g, THEME_SUBHEAD_BACK.b);
-    myGLCD.fillRect(0, 0, 239, 319);
+    myGLCD.fillRect(31, 121, 208, 179);
+    
+    
     
     utext.setFont(Arial11);
     utext.setForeground(0, 0, 0);
-    utext.print(80, 150, "Please wait...");
+    utext.print(80, 145, "Please wait...");
 }
 
 void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor)
@@ -1145,6 +1151,7 @@ void processMyTouch()
     case 10:
       if (inBounds(x, y, 0, 0, 119, 39))
       {
+        drawPleaseWait();
         for (byte i = 0; i <= numDosingPumps; i++)
         {
           dosingPumps[i].saveSettings();
@@ -1154,6 +1161,7 @@ void processMyTouch()
       }
       else if (inBounds(x, y, 120, 0, 239, 39))
       {
+        drawPleaseWait();
         for (byte i = 0; i <= numDosingPumps; i++)
         {
           dosingPumps[i].saveSettings();
@@ -1270,6 +1278,8 @@ void processMyTouch()
    }
 }
 
+char prevphString[7];
+
 void check_Ph()
 {
   float phVal = pH01.requestPh(dallasTemperatureSensors.getTempC(temperatureProbe01));
@@ -1288,13 +1298,23 @@ void check_Ph()
 
   char phString[7];
   
-  dtostrf(pH01.requestPh(), 4, 2, phString);
+  dtostrf(phVal, 4, 2, phString);
   
-  utext.setForeground(88, 102, 110);
-  utext.setBackground(255, 255, 255); 
-  utext.setFont(Arial30);
-  utext.print(140, 70, phString);
+  if (String(phString) != String(prevphString))
+  {
+      myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
+      myGLCD.fillRect(122, 64, 235, 106);
+      
+      utext.setForeground(88, 102, 106);
+      utext.setBackground(255, 255, 255);
+      utext.setFont(Arial30);
+      utext.print(140, 70, phString);
+      
+      strncpy(prevphString, phString, 7);
+  }
 }
+
+char prevtempString[7];
 
 void check_Temperatures()
 {    
@@ -1320,10 +1340,19 @@ void check_Temperatures()
   
   dtostrf(probeTemp01, 4, 1, tempstring);
   
-  utext.setForeground(88, 102, 110);
-  utext.setBackground(255, 255, 255); 
-  utext.setFont(Arial30);
-  utext.print(32, 70, tempstring);
+  if (String(tempstring) != String(prevtempString))
+  {
+    myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
+    myGLCD.fillRect(4, 64, 117, 106);
+    
+    utext.setForeground(88, 102, 110);
+    utext.setBackground(255, 255, 255);
+    utext.setFont(Arial30);
+
+    utext.print(22, 70, tempstring);
+    
+    strncpy(prevtempString, tempstring, 7);
+  }
 }
 
 void SaveTime()

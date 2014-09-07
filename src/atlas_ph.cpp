@@ -13,7 +13,7 @@ float AtlasPh::requestPh()
 
 float AtlasPh::requestPh(float tempVal)
 {
-	float phVal;
+	float phVal = 0.0;
 		
 	hwSerial->print(tempVal);
 	hwSerial->print("\r");
