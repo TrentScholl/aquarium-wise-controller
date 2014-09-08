@@ -1278,7 +1278,7 @@ void processMyTouch()
    }
 }
 
-char prevphString[7];
+char prevphString[5];
 
 void check_Ph()
 {
@@ -1296,14 +1296,30 @@ void check_Ph()
 	  }
   }
 
-  char phString[7];
+  char phString[5] = "0.00";
   
-  dtostrf(phVal, 4, 2, phString);
+  dtostrf(phVal, 2, 2, phString);
   
   if (String(phString) != String(prevphString))
   {
       myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
-      myGLCD.fillRect(122, 64, 235, 106);
+
+      if (phString[0] != prevphString[0])
+      {
+        myGLCD.fillRect(140, 64, 160, 106);
+      }
+      
+      if (phString[2] != prevphString[2])
+      {
+        myGLCD.fillRect(170, 64, 195, 106);
+      }
+            
+      if (phString[3] != prevphString[3])
+      {
+        myGLCD.fillRect(195, 64, 220, 106);
+      }
+      
+      
       
       utext.setForeground(88, 102, 106);
       utext.setFont(Arial30);
