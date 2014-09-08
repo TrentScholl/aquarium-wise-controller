@@ -1302,12 +1302,11 @@ void check_Ph()
   
   if (String(phString) != String(prevphString))
   {
-      //myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
-      //myGLCD.fillRect(122, 64, 235, 106);
+      myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
+      myGLCD.fillRect(122, 64, 235, 106);
       
       utext.setForeground(88, 102, 106);
       utext.setFont(Arial30);
-      utext.clean(prevphString);
       utext.print(140, 70, phString);
       
       strncpy(prevphString, phString, 7);
