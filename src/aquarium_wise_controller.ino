@@ -48,6 +48,7 @@ byte screenBrightPin = 15;
 byte alarmPin = 12;
 
 byte backLight = 255;
+
 boolean backlightTouch = true;
 
 byte screenRetHome;
@@ -127,8 +128,6 @@ void setup()
   setup_TemperatureSensors();
 
   analogWrite(screenBrightPin, screenBrightMem);
-  
-  updateTimeDate();
 
   millisDim = millis();
   
@@ -137,6 +136,7 @@ void setup()
   // Ethernet.begin(mac);
   delay(1000);
 
+  updateTimeDate();
   screenHome();
 }
 
@@ -1302,12 +1302,12 @@ void check_Ph()
   
   if (String(phString) != String(prevphString))
   {
-      myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
-      myGLCD.fillRect(122, 64, 235, 106);
+      //myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
+      //myGLCD.fillRect(122, 64, 235, 106);
       
       utext.setForeground(88, 102, 106);
-      utext.setBackground(255, 255, 255);
       utext.setFont(Arial30);
+      utext.clean(prevphString);
       utext.print(140, 70, phString);
       
       strncpy(prevphString, phString, 7);
