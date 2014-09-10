@@ -18,7 +18,6 @@ extern "C" void __cxa_pure_virtual() {;}
 
 int freeRam ();
 //
-void load_Settings();
 void setup_TemperatureSensors();
 void setup_Relays();
 time_t syncProvider();
@@ -94,6 +93,8 @@ void firstRunSetup();
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\configuration.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\configuration.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\debug_utils.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\display.cpp"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\display.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\dosing_pump.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\dosing_pump.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fan.cpp"

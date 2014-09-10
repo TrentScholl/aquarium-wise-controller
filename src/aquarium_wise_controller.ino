@@ -12,6 +12,7 @@
 #include "dosing_pump.h"
 #include "relay.h"
 #include "atlas_ph.h"
+#include "display.h"
 #include "heater.h"
 #include "fonts.h"
 #include "theme.h"
@@ -40,9 +41,11 @@ DosingPump dosingPumps[numDosingPumps] = {
   DosingPump(A10, 92, alarm_glut_dose)
 };
 
-Heater heater01(&relays[3], 132);
+Heater heater01(&relays[3], 138);
 
 AtlasPh pH01(&Serial1);
+
+Display display01(144);
 
 byte lightSensorPin = A15;
 
@@ -53,11 +56,6 @@ byte alarmPin = 12;
 byte backLight = 255;
 
 boolean backlightTouch = true;
-
-byte screenRetHome;
-byte screenDimLevel;
-byte screenDimSec;
-byte screenBrightMem;
 
 RTC_DS1307 RTC;
 
@@ -111,8 +109,6 @@ void setup()
   myTouch.InitTouch(PORTRAIT);
   myTouch.setPrecision(PREC_MEDIUM);
 
-  load_Settings();
-
   Serial.begin(9600);
   Wire.begin();
   RTC.begin();
@@ -126,7 +122,7 @@ void setup()
 
   setup_TemperatureSensors();
 
-  analogWrite(screenBrightPin, screenBrightMem);
+  analogWrite(screenBrightPin, display01.getBrightness());
 
   millisDim = millis();
   
@@ -137,14 +133,6 @@ void setup()
 
   updateTimeDate();
   screenHome();
-}
-
-void load_Settings()
-{
-  screenRetHome = EEPROM.readByte(138);
-  screenDimLevel = EEPROM.readByte(139);
-  screenDimSec = EEPROM.readByte(140);
-  screenBrightMem = EEPROM.readByte(141);
 }
 
 void setup_TemperatureSensors()
@@ -205,14 +193,14 @@ void loop()
     }  
   }
 
-  if (screenDimSec != 0)
+  if (display01.getDimSecs() != 0)
   {
-    if (screenDimLevel != 0)
+    if (display01.getDimLevel() != 0)
     {
       if (backlightTouch == true)
       {
         unsigned long pastMillis = (currentMillis - millisDim);
-        if (pastMillis > (1000 * screenDimSec))
+        if (pastMillis > (1000 * display01.getDimSecs()))
         {
           backlightTouch=false;
         }
@@ -224,12 +212,12 @@ void loop()
     }
   }
   
-  if (screenRetHome != 0)
+  if (display01.getHomeTimeout() != 0)
   {
     if ((dispScreen != 1) && (dispScreen != 2))
     {
       unsigned long pastMillis = (currentMillis - millisHome);
-      if (pastMillis > (60000 * screenRetHome)) 
+      if (pastMillis > (60000 * display01.getHomeTimeout())) 
       {
         if (dispScreen == 10)
         {
@@ -865,10 +853,10 @@ void screenScreen()
   utext.print(12, 163, "Dim Time");
   utext.print(12, 202, "Bright");
     
-  drawSpinner(80, 68, String(EEPROM.readByte(144)));
-  drawSpinner(80, 109, String(EEPROM.readByte(145)));
-  drawSpinner(80, 150, String(EEPROM.readByte(146)));
-  drawSpinner(80, 191, String(EEPROM.readByte(147)));
+  drawSpinner(80, 68, String(display01.getHomeTimeout()));
+  drawSpinner(80, 109, String(display01.getDimLevel()));
+  drawSpinner(80, 150, String(display01.getDimSecs()));
+  drawSpinner(80, 191, String(display01.getBrightness()));
 }
 
 boolean inBounds(int touchPointx, int touchPointy, int point1x, int point1y, int point2x, int point2y)
@@ -1301,11 +1289,59 @@ void processMyTouch()
     case 16:
       if (inBounds(x, y, 0, 0, 119, 39))
       {
+        drawPleaseWait();
+        
+        display01.saveSettings();
+
         screenHome();
       }
       else if (inBounds(x, y, 120, 0, 239, 39))
       {
+        drawPleaseWait();
+        
+        display01.saveSettings();
+        
         screenSettings();
+      }
+      else if (inBounds(x, y, 80, 68, 111, 101))
+      {
+        display01.setHomeTimeout(display01.getHomeTimeout() - 1);
+        screenScreen();
+      }
+      else if (inBounds(x, y, 200, 68, 231, 101))
+      {
+        display01.setHomeTimeout(display01.getHomeTimeout() + 1);
+        screenScreen();
+      }
+      else if (inBounds(x, y, 80, 109, 111, 142))
+      {
+        display01.setDimLevel(display01.getDimLevel() - 1);
+        screenScreen();
+      }
+      else if (inBounds(x, y, 200, 109, 231, 142))
+      {
+        display01.setDimLevel(display01.getDimLevel() + 1);
+        screenScreen();
+      }
+      else if (inBounds(x, y, 80, 150, 111, 183))
+      {
+        display01.setDimSecs(display01.getDimSecs() - 1);
+        screenScreen();
+      }
+      else if (inBounds(x, y, 200, 150, 231, 183))
+      {
+        display01.setDimSecs(display01.getDimSecs() + 1);
+        screenScreen();
+      }
+      else if (inBounds(x, y, 80, 191, 111, 224))
+      {
+        display01.setBrightness(display01.getBrightness() - 1);
+        screenScreen();
+      }
+      else if (inBounds(x, y, 200, 191, 231, 224))
+      {
+        display01.setBrightness(display01.getBrightness() + 1);
+        screenScreen();
       }
       break;
    }
@@ -1514,23 +1550,23 @@ void autoBrightness()
 
   int brightAdjust;
 
-  if (screenDimLevel == 1)
+  if (display01.getDimLevel() == 1)
   {
     brightAdjust =- 20;
   }
-  else if (screenDimLevel == 2)
+  else if (display01.getDimLevel() == 2)
   {
     brightAdjust =- 10;
   }
-  else if (screenDimLevel == 3)
+  else if (display01.getDimLevel() == 3)
   {
     brightAdjust = 0;
   }
-  else if (screenDimLevel == 4)
+  else if (display01.getDimLevel() == 4)
   {
     brightAdjust = 10;
   }
-  else if (screenDimLevel == 5)
+  else if (display01.getDimLevel() == 5)
   {
     brightAdjust = 20;
   }
