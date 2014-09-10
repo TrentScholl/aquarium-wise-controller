@@ -99,6 +99,8 @@ void firstRunSetup();
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fan.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fan.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\fonts.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\heater.cpp"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\heater.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\theme.h"

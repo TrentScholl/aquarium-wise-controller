@@ -12,6 +12,7 @@
 #include "dosing_pump.h"
 #include "relay.h"
 #include "atlas_ph.h"
+#include "heater.h"
 #include "fonts.h"
 #include "theme.h"
 //#include <SPI.h>
@@ -38,6 +39,8 @@ DosingPump dosingPumps[numDosingPumps] = {
   DosingPump(A9, 75, alarm_micro_dose),
   DosingPump(A10, 92, alarm_glut_dose)
 };
+
+Heater heater01(&relays[3], 132);
 
 AtlasPh pH01(&Serial1);
 
@@ -88,10 +91,6 @@ unsigned long prevMillisTouch = 0;
 unsigned long prevMillis5sec = 0;
 unsigned long millisDim = 0;
 unsigned long millisHome = 0;
-
-byte heatOffTemp;
-byte heatOnTemp;
-byte coldWarnTemp;
 
 int freeRam ()
 {
@@ -146,10 +145,6 @@ void load_Settings()
   screenDimLevel = EEPROM.readByte(139);
   screenDimSec = EEPROM.readByte(140);
   screenBrightMem = EEPROM.readByte(141);
-
-  heatOffTemp = EEPROM.readByte(132);
-  heatOnTemp = EEPROM.readByte(133);
-  coldWarnTemp = EEPROM.readByte(134);
 }
 
 void setup_TemperatureSensors()
@@ -157,8 +152,8 @@ void setup_TemperatureSensors()
   dallasTemperatureSensors.getAddress(temperatureProbe01, 0);
   dallasTemperatureSensors.getAddress(temperatureProbe02, 1);
   
-  dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, 30);
-  dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, 24);
+  dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, heater01.getOffTemp());
+  dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, heater01.getOnTemp());
   
   dallasTemperatureSensors.setAlarmHandler(&alarm_temperature);
 }
@@ -727,9 +722,9 @@ void screenHeater()
   utext.print(12, 124, "On");
   utext.print(12, 163, "Warn.");
   
-  drawSpinner(80, 68, String(EEPROM.readByte(138)));
-  drawSpinner(80, 109, String(EEPROM.readByte(139)));
-  drawSpinner(80, 150, String(EEPROM.readByte(140)));
+  drawSpinner(80, 68, String(heater01.getOffTemp()));
+  drawSpinner(80, 109, String(heater01.getOnTemp()));
+  drawSpinner(80, 150, String(heater01.getWarnTemp()));
 }
 
 void screenSchedule()
@@ -1128,12 +1123,50 @@ void processMyTouch()
 
     case 8:
       if (inBounds(x, y, 0, 0, 119, 39))
-      {     
+      {
+        drawPleaseWait();
+        
+        heater01.saveSettings();
+
         screenHome();
       }
       else if (inBounds(x, y, 120, 0, 239, 39))
       {
+        drawPleaseWait();
+        
+        heater01.saveSettings();
+        
         screenSettings();
+      }
+      else if (inBounds(x, y, 80, 68, 111, 101))
+      {
+        heater01.setOffTemp(heater01.getOffTemp() - 1);
+        screenHeater();
+      }
+      else if (inBounds(x, y, 200, 68, 231, 101))
+      {
+        heater01.setOffTemp(heater01.getOffTemp() + 1);
+        screenHeater();
+      }
+      else if (inBounds(x, y, 80, 109, 111, 142))
+      {
+        heater01.setOnTemp(heater01.getOnTemp() - 1);
+        screenHeater();
+      }
+      else if (inBounds(x, y, 200, 109, 231, 142))
+      {
+        heater01.setOnTemp(heater01.getOnTemp() + 1);
+        screenHeater();
+      }
+      else if (inBounds(x, y, 80, 150, 111, 183))
+      {
+        heater01.setWarnTemp(heater01.getWarnTemp() - 1);
+        screenHeater();
+      }
+      else if (inBounds(x, y, 200, 150, 231, 183))
+      {
+        heater01.setWarnTemp(heater01.getWarnTemp() + 1);
+        screenHeater();
       }
       break;
 
@@ -1339,9 +1372,9 @@ void check_Temperatures()
 
 	float probeTemp01 = dallasTemperatureSensors.getTempC(temperatureProbe01);
 
-	if (!dallasTemperatureSensors.hasAlarm(temperatureProbe01) && relays[3].isOff())
+	if (!dallasTemperatureSensors.hasAlarm(temperatureProbe01) && !heater01.isOn())
 	{
-    relays[3].on();
+    heater01.on();
   }
 
 	//float probeTemp02 = dallasTemperatureSensors.getTempC(temperatureProbe02);
@@ -1572,9 +1605,9 @@ void alarm_temperature(const uint8_t* deviceAddress)
 {
   float probeTemp = dallasTemperatureSensors.getTempC(deviceAddress);
   
-  if (probeTemp >= dallasTemperatureSensors.getHighAlarmTemp(deviceAddress) & relays[3].isOn())
+  if (probeTemp >= dallasTemperatureSensors.getHighAlarmTemp(deviceAddress) & heater01.isOn())
   {
-    relays[3].off();
+    heater01.off();
   }
   else if (probeTemp <= dallasTemperatureSensors.getLowAlarmTemp(deviceAddress))
   {
