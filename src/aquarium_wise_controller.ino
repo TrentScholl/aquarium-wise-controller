@@ -74,6 +74,9 @@ uText utext(&myGLCD, 240, 320);
 byte dispScreen = 0;
 byte selectedItem = 0;
 
+char prevtempString[7];
+char prevphString[5];
+
 struct RTC_T
 {  
   byte tHour;
@@ -488,6 +491,9 @@ void screenHome()
     dispScreen = 1;
     drawHeader("1", "Home");
     drawBackground();
+    
+    memset(prevtempString, 0, sizeof prevtempString);
+    memset(prevphString, 0, sizeof prevtempString);
   } 
   
   dispScreen = 1;
@@ -1347,8 +1353,6 @@ void processMyTouch()
    }
 }
 
-char prevphString[5];
-
 void check_Ph()
 {
   float phVal = pH01.requestPh(dallasTemperatureSensors.getTempC(temperatureProbe01));
@@ -1397,8 +1401,6 @@ void check_Ph()
       strncpy(prevphString, phString, 7);
   }
 }
-
-char prevtempString[7];
 
 void check_Temperatures()
 {    
