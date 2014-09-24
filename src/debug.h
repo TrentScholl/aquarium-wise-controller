@@ -1,12 +1,16 @@
-#ifndef DEBUGUTILS_H
-#define DEBUGUTILS_H
+#ifndef DEBUG_H
+#define DEBUG_H
 
-#define DEBUG_PRINT(str)    \
+//#define DEBUG
+
+#ifdef DEBUG
+#define DEBUG_PRINTLN(str)    \
 Serial.print(millis());     \
 Serial.print(": ");         \
 Serial.print(__PRETTY_FUNCTION__); \
 Serial.print(' ');          \
 Serial.println(str);
-
-
+#else
+#define DEBUG_PRINTLN(str)
+#endif
 #endif

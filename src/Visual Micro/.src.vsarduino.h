@@ -92,7 +92,7 @@ void firstRunSetup();
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\basic_switch.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\configuration.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\configuration.h"
-#include "C:\Workspaces\Personal\aquarium_wise_controller\src\debug_utils.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\debug.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\display.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\display.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\dosing_pump.cpp"

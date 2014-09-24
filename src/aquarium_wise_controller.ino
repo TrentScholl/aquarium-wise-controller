@@ -9,6 +9,8 @@
 #include <TimeAlarms.h>
 #include <OneWire.h> 
 #include <DallasTemperature.h>
+
+#include "debug.h"
 #include "dosing_pump.h"
 #include "relay.h"
 #include "atlas_ph.h"
@@ -103,6 +105,9 @@ int freeRam ()
 
 void setup()
 {  
+  Serial.begin(9600);
+  
+  DEBUG_PRINTLN("Starting Aquarium Wise");
   firstRunSetup();
 
   myGLCD.InitLCD(PORTRAIT);
@@ -112,7 +117,6 @@ void setup()
   myTouch.InitTouch(PORTRAIT);
   myTouch.setPrecision(PREC_MEDIUM);
 
-  Serial.begin(9600);
   Wire.begin();
   RTC.begin();
   dallasTemperatureSensors.begin();
@@ -140,6 +144,7 @@ void setup()
 
 void setup_TemperatureSensors()
 {
+  DEBUG_PRINTLN("Setting up temperature sensors");
   dallasTemperatureSensors.getAddress(temperatureProbe01, 0);
   dallasTemperatureSensors.getAddress(temperatureProbe02, 1);
   
@@ -151,6 +156,7 @@ void setup_TemperatureSensors()
 
 void setup_Relays()
 {
+  DEBUG_PRINTLN("Setting up relays");
   alarm_rlyFilter_on();
   alarm_rlyHeater_on();
 }
@@ -486,6 +492,7 @@ void drawLargeBlueButton(int x, int y, char* text)
 
 void screenHome()
 {
+  DEBUG_PRINTLN("Drawing home screen");
   if (dispScreen != 1)
   {
     dispScreen = 1;
@@ -607,6 +614,7 @@ void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor)
 
 void screenFeeding()
 {
+  DEBUG_PRINTLN("Drawing feeding screen");
   dispScreen = 2;
   
   drawHeader("8", "Feeding");
@@ -615,6 +623,7 @@ void screenFeeding()
 
 void screenPower()
 {
+  DEBUG_PRINTLN("Drawing power screen");
   if (dispScreen != 3)
   {
     dispScreen = 3;
@@ -642,6 +651,7 @@ void screenPower()
 
 void screenSettings()
 {
+  DEBUG_PRINTLN("Drawing settings screen");
   dispScreen = 4;
 
   drawHeader("1", "Home");
@@ -661,6 +671,8 @@ void screenSettings()
 
 void screenLights()
 {
+  DEBUG_PRINTLN("Drawing light settings screen");
+  
   dispScreen = 5; 
   
   drawHeader("2", "Lights");
@@ -669,6 +681,8 @@ void screenLights()
 
 void screenClock()
 {
+  DEBUG_PRINTLN("Drawing clock settings screen");
+  
   dispScreen = 6; 
   
   drawHeader("b", "Clock");
@@ -677,6 +691,8 @@ void screenClock()
 
 void screenFeedSettings()
 {
+  DEBUG_PRINTLN("Drawing feed settings screen");
+  
   dispScreen = 7; 
   
   drawHeader("8", "Feeding");
@@ -704,6 +720,8 @@ void screenFeedSettings()
 
 void screenHeater()
 {
+  DEBUG_PRINTLN("Drawing heater settings screen");
+
   dispScreen = 8; 
   
   drawHeader("4", "Heater");
@@ -723,6 +741,8 @@ void screenHeater()
 
 void screenSchedule()
 {
+  DEBUG_PRINTLN("Drawing schedule settings screen");
+  
   dispScreen = 9; 
   
   drawHeader("c", "Schedule");
@@ -730,7 +750,7 @@ void screenSchedule()
 }
 
 void drawDosingPumpSettings(byte pump)
-{ 
+{  
   drawSpinner(80, 105, String(dosingPumps[pump].getDoseAmt()));
   drawSpinner(80, 146, String(dosingPumps[pump].getMlSec()));
   drawSpinner(80, 187, String(dosingPumps[pump].getVol()));
@@ -777,6 +797,8 @@ void drawDosingPumpTabs(byte selected)
 
 void screenDosing(byte pump)
 {
+  DEBUG_PRINTLN("Drawing dosing settings screen");
+  
   dispScreen = 10;
   selectedItem = pump;
 
@@ -800,6 +822,8 @@ void screenDosing(byte pump)
 
 void screenPwrSchedule()
 {
+  DEBUG_PRINTLN("Drawing power schedule settings screen");
+  
   dispScreen = 11; 
   
   drawHeader("c", "Power Schedule");
@@ -846,6 +870,8 @@ void screenDosingSched(byte pumpNo)
 
 void screenScreen()
 {
+  DEBUG_PRINTLN("Drawing screen settings screen");
+  
   dispScreen = 16; 
   
   drawHeader("d", "Screen");
@@ -877,6 +903,8 @@ boolean inBounds(int touchPointx, int touchPointy, int point1x, int point1y, int
 
 void processMyTouch()
 {
+  DEBUG_PRINTLN("Processing touch event");
+  
   myTouch.read();
 
   int x = myTouch.getX();
@@ -1355,6 +1383,8 @@ void processMyTouch()
 
 void check_Ph()
 {
+  DEBUG_PRINTLN("Checking pH");
+  
   float phVal = pH01.requestPh(dallasTemperatureSensors.getTempC(temperatureProbe01));
 
   if (relays[5].inSchedule())
@@ -1404,6 +1434,7 @@ void check_Ph()
 
 void check_Temperatures()
 {    
+  DEBUG_PRINTLN("Checking temperature");
 	dallasTemperatureSensors.requestTemperatures();
 
   dallasTemperatureSensors.processAlarms();
@@ -1628,10 +1659,14 @@ void rampScreenBrightness(byte fromLevel, byte toLevel)
  
 void update_alarms()
 {
+  DEBUG_PRINTLN("Updating dosing pump alarms");
+  
   for (byte i = 0; i <= numDosingPumps; i++)
   {
     dosingPumps[i].updateAlarms();
   }
+
+  DEBUG_PRINTLN("Updating relay alarms");
 
   for (byte i = 0; i <= numRelays; i++)
   {

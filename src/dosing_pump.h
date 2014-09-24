@@ -1,6 +1,7 @@
 #ifndef _DOSING_PUMP_h
 #define _DOSING_PUMP_h
 
+#include "debug.h"
 #include <Time.h>
 #include <TimeAlarms.h>
 #include <EEPROMex.h>
@@ -20,7 +21,7 @@ class DosingPump
     int alarmIds[6];
 
 	public:
-		DosingPump(byte pin, int configByte, DoseHandler handler);
+		DosingPump(byte pumpPin, int configByte, DoseHandler handler);
 		byte getDoseAmt();
 		void setDoseAmt(byte val);
 		int getMlSec();

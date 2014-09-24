@@ -1,11 +1,14 @@
 #include "dosing_pump.h"
 
-DosingPump::DosingPump(byte pin, int configByte, DoseHandler handler)
+DosingPump::DosingPump(byte pumpPin, int configByte, DoseHandler handler)
 {
 	cfgByte = configByte;
   doseHandler = handler;
   
-	pinMode(pin, OUTPUT);
+  pin = pumpPin;
+  
+	pinMode(pumpPin, OUTPUT);
+  
 	doseAmt = EEPROM.readByte(cfgByte + 10);
 	mlSec = EEPROM.readByte(cfgByte + 11) * 10;
 	vol = EEPROM.readByte(cfgByte + 12) * 10;
@@ -111,9 +114,10 @@ byte DosingPump::getDoseAmt()
 
 void DosingPump::dose()
 {
-	analogWrite(pin, 255);
+  DEBUG_PRINTLN("Dosing");
+	digitalWrite(pin, HIGH);
 	delay((long)mlSec * doseAmt);
-	analogWrite(pin, 0);
+	digitalWrite(pin, LOW);
   
   setRemainingVol(remainingVol - doseAmt);
 }
