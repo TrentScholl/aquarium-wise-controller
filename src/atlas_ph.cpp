@@ -29,7 +29,7 @@ float AtlasPh::requestPh(float tempVal)
 	return phVal;
 }
 
-void AtlasPh::setHighAlarmPh(char phVal)
+void AtlasPh::setHighAlarmPh(byte phVal)
 {
 	if (phVal > 8)
 	{
@@ -43,7 +43,7 @@ void AtlasPh::setHighAlarmPh(char phVal)
 	highAlarmPh = (uint8_t)phVal;
 }
 
-void AtlasPh::setLowAlarmPh(char phVal)
+void AtlasPh::setLowAlarmPh(byte phVal)
 {
 	if (phVal > 8)
 	{
@@ -57,12 +57,12 @@ void AtlasPh::setLowAlarmPh(char phVal)
 	lowAlarmPh = (uint8_t)phVal;
 }
 
-char AtlasPh::getHighAlarmPh()
+byte AtlasPh::getHighAlarmPh()
 {
 	return (char)highAlarmPh;
 }
 
-char AtlasPh::getLowAlarmPh()
+byte AtlasPh::getLowAlarmPh()
 {
 	return (char)lowAlarmPh;
 }
