@@ -6,17 +6,17 @@
 class AtlasPh
 {
 	protected:
-		byte highAlarmPh;
-		byte lowAlarmPh;
+		float highAlarmPh;
+		float lowAlarmPh;
 		HardwareSerial *hwSerial;
 	public:
 		AtlasPh(HardwareSerial *serialPort);
 		float requestPh(float tempVal);
 		float requestPh();
-		void setHighAlarmPh(byte);
-		void setLowAlarmPh(byte);
-		byte getHighAlarmPh();
-		byte getLowAlarmPh();
+		void setHighAlarmPh(float);
+		void setLowAlarmPh(float);
+		float getHighAlarmPh();
+		float getLowAlarmPh();
 };
 
 #endif

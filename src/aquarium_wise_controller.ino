@@ -11,6 +11,7 @@
 #include <DallasTemperature.h>
 
 #include "debug.h"
+#include "pins.h"
 #include "dosing_pump.h"
 #include "relay.h"
 #include "atlas_ph.h"
@@ -26,34 +27,29 @@
 
 const byte numRelays = 8;
 Relay relays[numRelays] = {
-  Relay(A0, 1, alarm_rlyLight1_on, alarm_rlyLight1_off),
-  Relay(A1, 8, alarm_rlyLight2_on, alarm_rlyLight2_off),
-  Relay(A2),
-  Relay(A3),
-  Relay(A4, 29, alarm_rlyCirc_on, alarm_rlyCirc_off),
-  Relay(A5, 36, alarm_rlyCO2_on, alarm_rlyCO2_off),
-  Relay(A6, 43, alarm_rlyAux1_on, alarm_rlyAux1_off),
-  Relay(A7, 50, alarm_rlyAux2_on, alarm_rlyAux2_off)
+  Relay(relayLights1Pin, 1, alarm_rlyLight1_on, alarm_rlyLight1_off),
+  Relay(relayLights2Pin, 8, alarm_rlyLight2_on, alarm_rlyLight2_off),
+  Relay(relayHeater1Pin),
+  Relay(relayHeater2Pin),
+  Relay(relayFilter1Pin),
+  Relay(relayFilter2Pin),
+  Relay(relayCirculationPin, 43, alarm_rlyAux1_on, alarm_rlyAux1_off),
+  Relay(relayCO2Pin, 50, alarm_rlyAux2_on, alarm_rlyAux2_off)
 };
 
 const byte numDosingPumps = 3;
 DosingPump dosingPumps[numDosingPumps] = {
-  DosingPump(A8, 58, alarm_macro_dose),
-  DosingPump(A9, 75, alarm_micro_dose),
-  DosingPump(A10, 92, alarm_glut_dose)
+  DosingPump(dosingPumpMacroPin, 58, alarm_macro_dose),
+  DosingPump(dosingPumpMicroPin, 75, alarm_micro_dose),
+  DosingPump(dosingPumpGlutPin, 92, alarm_glut_dose)
 };
 
-Heater heater01(&relays[3], 138);
+Heater heater01(&relays[2], 138);
+Heater heater02(&relays[3], 138);
 
 AtlasPh pH01(&Serial1);
 
 Display display01(144);
-
-byte lightSensorPin = A15;
-
-byte screenBrightPin = 15;
-
-byte alarmPin = 12;
 
 byte backLight = 255;
 
@@ -61,15 +57,15 @@ boolean backlightTouch = true;
 
 RTC_DS1307 RTC;
 
-OneWire oneWire(14);
+OneWire oneWire(oneWirePin);
 
 DallasTemperature dallasTemperatureSensors(&oneWire);
 
 DeviceAddress temperatureProbe01;
 DeviceAddress temperatureProbe02;
 
-UTFT myGLCD(SSD1289, 38, 39, 40, 41);
-UTouch myTouch(6, 5, 4, 3, 2);
+UTFT myGLCD(SSD1289, tftRsPin, tftWrPin, tftCsPin, tftRstPin);
+UTouch myTouch(touchClkPin, touchCsPin, touchDinPin, touchDoutPin, touchIrqPin);
 UTFT_Geometry geo(&myGLCD);
 uText utext(&myGLCD, 240, 320);
 
@@ -123,13 +119,13 @@ void setup()
   
   setSyncProvider(syncProvider);
 
-  pinMode(screenBrightPin, OUTPUT);
+  pinMode(screenBrightnessPin, OUTPUT);
   pinMode(lightSensorPin, INPUT);
   pinMode(alarmPin, OUTPUT);
 
   setup_TemperatureSensors();
 
-  analogWrite(screenBrightPin, display01.getBrightness());
+  analogWrite(screenBrightnessPin, display01.getBrightness());
 
   millisDim = millis();
   
@@ -178,7 +174,7 @@ void loop()
       if (backlightTouch == false)
       {
         backLight = 255;
-        analogWrite(screenBrightPin, backLight);
+        analogWrite(screenBrightnessPin, backLight);
         backlightTouch = true;
       }
       
@@ -1635,7 +1631,7 @@ void rampScreenBrightness(byte fromLevel, byte toLevel)
   {
     while (fromLevel < toLevel) 
     {
-      analogWrite(screenBrightPin, fromLevel);
+      analogWrite(screenBrightnessPin, fromLevel);
 
       fromLevel++;
 
@@ -1646,7 +1642,7 @@ void rampScreenBrightness(byte fromLevel, byte toLevel)
   {
     while (fromLevel > toLevel) 
     {
-      analogWrite(screenBrightPin, fromLevel);  
+      analogWrite(screenBrightnessPin, fromLevel);  
 
       fromLevel--;
 
