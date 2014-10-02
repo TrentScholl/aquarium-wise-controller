@@ -1467,8 +1467,19 @@ void check_Temperatures()
     myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
     myGLCD.fillRect(4, 64, 117, 106);
     
-    utext.setForeground(88, 102, 110);
-    utext.setBackground(255, 255, 255);
+    if (probeTemp01 >= heater01.getOffTemp())
+    {
+      utext.setForeground(255, 0, 0);
+    }
+    else if (probeTemp01 <= heater01.getWarnTemp())
+    {
+      utext.setForeground(0, 0, 255);
+    }
+    else
+    {
+      utext.setForeground(88, 102, 110);
+    }
+    
     utext.setFont(Arial30);
 
     utext.print(22, 70, tempstring);
