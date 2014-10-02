@@ -454,6 +454,12 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
     <Compile Include="basic_switch.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="buzzer.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="buzzer.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="configuration.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -488,6 +494,9 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="heater.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pins.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="relay.cpp">

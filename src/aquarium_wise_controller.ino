@@ -15,6 +15,7 @@
 #include "dosing_pump.h"
 #include "relay.h"
 #include "atlas_ph.h"
+#include "buzzer.h"
 #include "display.h"
 #include "heater.h"
 #include "fonts.h"
@@ -131,8 +132,10 @@ void setup()
   
   setup_Relays();
   
+  buzzer.init();
+  buzzer.beep(2, 50);
+  
   // Ethernet.begin(mac);
-  delay(1000);
 
   updateTimeDate();
   screenHome();
@@ -145,7 +148,7 @@ void setup_TemperatureSensors()
   dallasTemperatureSensors.getAddress(temperatureProbe02, 1);
   
   dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, heater01.getOffTemp());
-  dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, heater01.getOnTemp());
+  dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, heater01.getWarnTemp());
   
   dallasTemperatureSensors.setAlarmHandler(&alarm_temperature);
 }
@@ -1145,6 +1148,9 @@ void processMyTouch()
         drawPleaseWait();
         
         heater01.saveSettings();
+        
+        dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, heater01.getOffTemp());
+        dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, heater01.getWarnTemp());
 
         screenHome();
       }
@@ -1153,6 +1159,9 @@ void processMyTouch()
         drawPleaseWait();
         
         heater01.saveSettings();
+        
+        dallasTemperatureSensors.setHighAlarmTemp(temperatureProbe01, heater01.getOffTemp());
+        dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, heater01.getWarnTemp());
         
         screenSettings();
       }
@@ -1671,18 +1680,20 @@ void update_alarms()
 }
 
 void alarm_temperature(const uint8_t* deviceAddress)
-{
+{  
   float probeTemp = dallasTemperatureSensors.getTempC(deviceAddress);
   
   if (probeTemp >= dallasTemperatureSensors.getHighAlarmTemp(deviceAddress) & heater01.isOn())
   {
+    DEBUG_PRINTLN("Triggering high temperature alarm");
     heater01.off();
   }
   else if (probeTemp <= dallasTemperatureSensors.getLowAlarmTemp(deviceAddress))
   {
-    analogWrite(alarmPin, 255);
-    delay(100);
-    analogWrite(alarmPin, 0);
+    DEBUG_PRINTLN(probeTemp);
+    DEBUG_PRINTLN(dallasTemperatureSensors.getLowAlarmTemp(deviceAddress));
+    DEBUG_PRINTLN("Triggering low temperature alarm");
+    buzzer.beep(1, 100);
   }
 }
 
