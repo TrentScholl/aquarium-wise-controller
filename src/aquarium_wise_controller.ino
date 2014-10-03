@@ -9,6 +9,7 @@
 #include <TimeAlarms.h>
 #include <OneWire.h> 
 #include <DallasTemperature.h>
+#include <avr/wdt.h>
 
 #include "debug.h"
 #include "pins.h"
@@ -103,6 +104,8 @@ int freeRam ()
 void setup()
 {  
   Serial.begin(9600);
+  
+  wdt_enable(WDTO_4S);
   
   DEBUG_PRINTLN("Starting Aquarium Wise");
   firstRunSetup();

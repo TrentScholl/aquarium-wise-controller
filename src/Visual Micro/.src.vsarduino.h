@@ -108,3 +108,4 @@ void firstRunSetup();
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\theme.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\version.h"
