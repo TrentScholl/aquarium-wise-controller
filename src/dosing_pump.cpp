@@ -24,8 +24,6 @@ DosingPump::DosingPump(byte pumpPin, int configByte, DoseHandler handler)
   schedule.Thursday = EEPROM.readByte(cfgByte + 7);
   schedule.Friday = EEPROM.readByte(cfgByte + 8);
   schedule.Saturday = EEPROM.readByte(cfgByte + 9);
-  
-  updateAlarms();
 }
 
 void DosingPump::setRemainingVol(int val)

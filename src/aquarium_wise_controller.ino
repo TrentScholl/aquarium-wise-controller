@@ -134,6 +134,7 @@ void setup()
   millisDim = millis();
   
   setup_Relays();
+  setup_DosingPumps();
   
   buzzer.init();
   buzzer.beep(2, 50);
@@ -142,6 +143,14 @@ void setup()
 
   updateTimeDate();
   screenHome();
+}
+
+void setup_DosingPumps()
+{
+    for (byte i = 0; i <= numDosingPumps; i++)
+    {
+      dosingPumps[i].updateAlarms();
+    }
 }
 
 void setup_TemperatureSensors()
