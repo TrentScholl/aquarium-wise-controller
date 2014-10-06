@@ -18,7 +18,6 @@ extern "C" void __cxa_pure_virtual() {;}
 
 int freeRam ();
 //
-void setup_DosingPumps();
 void setup_TemperatureSensors();
 void setup_Relays();
 time_t syncProvider();

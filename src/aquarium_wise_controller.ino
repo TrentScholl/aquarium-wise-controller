@@ -134,7 +134,8 @@ void setup()
   millisDim = millis();
   
   setup_Relays();
-  setup_DosingPumps();
+  
+  update_alarms();
   
   buzzer.init();
   buzzer.beep(2, 50);
@@ -143,14 +144,6 @@ void setup()
 
   updateTimeDate();
   screenHome();
-}
-
-void setup_DosingPumps()
-{
-    for (byte i = 0; i <= numDosingPumps; i++)
-    {
-      dosingPumps[i].updateAlarms();
-    }
 }
 
 void setup_TemperatureSensors()
@@ -169,11 +162,6 @@ void setup_Relays()
 {
   DEBUG_PRINTLN("Setting up relays");
   
-  for (byte i = 0; i <= numRelays; i++)
-  {
-    relays[i].updateAlarms();
-  }
-  
   relays[2].on();
   relays[3].on();
   relays[4].on();
@@ -186,7 +174,7 @@ time_t syncProvider()
 }
 
 void loop()
-{
+{  
   unsigned long currentMillis = millis();
 
   if (myTouch.dataAvailable())
@@ -250,7 +238,7 @@ void loop()
         if (dispScreen == 10)
         {
           drawPleaseWait();
-          for (byte i = 0; i <= numDosingPumps; i++)
+          for (byte i = 0; i < numDosingPumps; i++)
           {
             dosingPumps[i].saveSettings();
           }
@@ -578,6 +566,7 @@ void screenHome()
   drawDoseChart(198, 202, 2, "Glut", THEME_GLUT);
   
   utext.setFont(Arial7);
+  utext.setForeground(88, 102, 110);
   utext.print(48, 108, "Temp");
   utext.print(172, 108, "pH");
   
@@ -623,6 +612,8 @@ void drawDoseChart(int x, int y, byte pump, char* label, Color arcColor)
   geo.drawArc(x, y, 30, 0, arcAngle, 3);
   
   String remaining = String(dosingPumps[pump].getRemainingVol() / dosingPumps[pump].getDoseAmt());
+  
+  utext.setForeground(88, 102, 110);
   
   utext.setFont(Arial11);
   utext.print((x - 30) + findCenterText(remaining, x - 30, x + 30), y - 7, remaining);
@@ -1277,7 +1268,7 @@ void processMyTouch()
       if (inBounds(x, y, 0, 0, 119, 39))
       {
         drawPleaseWait();
-        for (byte i = 0; i <= numDosingPumps; i++)
+        for (byte i = 0; i < numDosingPumps; i++)
         {
           dosingPumps[i].saveSettings();
         }
@@ -1287,7 +1278,7 @@ void processMyTouch()
       else if (inBounds(x, y, 120, 0, 239, 39))
       {
         drawPleaseWait();
-        for (byte i = 0; i <= numDosingPumps; i++)
+        for (byte i = 0; i < numDosingPumps; i++)
         {
           dosingPumps[i].saveSettings();
         }
@@ -1742,7 +1733,7 @@ void update_alarms()
 {
   DEBUG_PRINTLN("Updating dosing pump alarms");
   
-  for (byte i = 0; i <= numDosingPumps; i++)
+  for (byte i = 0; i < numDosingPumps; i++)
   {
     dosingPumps[i].updateAlarms();
   }
