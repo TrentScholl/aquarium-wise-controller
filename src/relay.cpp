@@ -14,8 +14,6 @@ Relay::Relay(int val, int configByte, AlarmHandler onHandler, AlarmHandler offHa
   schedule.onMinute = EEPROM.readByte(cfgByte + 2);
   schedule.offHour = EEPROM.readByte(cfgByte + 3);
   schedule.offMinute = EEPROM.readByte(cfgByte + 4);
-  
-  updateAlarms();
 }
 
 void Relay::updateAlarms()

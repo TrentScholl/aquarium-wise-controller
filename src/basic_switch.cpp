@@ -1,5 +1,4 @@
 #include "basic_switch.h"
-#include "debug.h"
 
 BasicSwitch::BasicSwitch(int val)
 {

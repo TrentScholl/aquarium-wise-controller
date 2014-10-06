@@ -31,12 +31,12 @@ const byte numRelays = 8;
 Relay relays[numRelays] = {
   Relay(relayLights1Pin, 1, alarm_rlyLight1_on, alarm_rlyLight1_off),
   Relay(relayLights2Pin, 8, alarm_rlyLight2_on, alarm_rlyLight2_off),
-  Relay(relayHeater1Pin),
-  Relay(relayHeater2Pin),
   Relay(relayFilter1Pin),
   Relay(relayFilter2Pin),
-  Relay(relayCirculationPin, 43, alarm_rlyAux1_on, alarm_rlyAux1_off),
-  Relay(relayCO2Pin, 50, alarm_rlyAux2_on, alarm_rlyAux2_off)
+  Relay(relayHeater1Pin),
+  Relay(relayHeater2Pin),
+  Relay(relayCirculationPin, 43, alarm_rlyCirc_on, alarm_rlyCirc_off),
+  Relay(relayCO2Pin, 50, alarm_rlyCO2_on, alarm_rlyCO2_off)
 };
 
 const byte numDosingPumps = 3;
@@ -46,8 +46,8 @@ DosingPump dosingPumps[numDosingPumps] = {
   DosingPump(dosingPumpGlutPin, 92, alarm_glut_dose)
 };
 
-Heater heater01(&relays[2], 138);
-Heater heater02(&relays[3], 138);
+Heater heater01(&relays[4], 138);
+Heater heater02(&relays[5], 138);
 
 AtlasPh pH01(&Serial1);
 
@@ -105,7 +105,7 @@ void setup()
 {  
   Serial.begin(9600);
   
-  wdt_enable(WDTO_4S);
+  //wdt_enable(WDTO_4S);
   
   DEBUG_PRINTLN("Starting Aquarium Wise");
   firstRunSetup();
@@ -159,8 +159,16 @@ void setup_TemperatureSensors()
 void setup_Relays()
 {
   DEBUG_PRINTLN("Setting up relays");
-  alarm_rlyFilter_on();
-  alarm_rlyHeater_on();
+  
+  for (byte i = 0; i <= numRelays; i++)
+  {
+    relays[i].updateAlarms();
+  }
+  
+  relays[2].on();
+  relays[3].on();
+  relays[4].on();
+  relays[5].on();
 }
 
 time_t syncProvider()
@@ -192,7 +200,7 @@ void loop()
     }
   }
 
-  if (currentMillis - prevMillis5sec > 1000) 
+  if (currentMillis - prevMillis5sec > 1000)
   {
     prevMillis5sec = millis();
     updateTimeDate();
@@ -201,7 +209,7 @@ void loop()
     {
       check_Ph();
       check_Temperatures();
-    }  
+    }
   }
 
   if (display01.getDimSecs() != 0)
@@ -216,7 +224,7 @@ void loop()
           backlightTouch=false;
         }
       }
-      else 
+      else
       {
         autoBrightness();
       }
@@ -228,7 +236,7 @@ void loop()
     if ((dispScreen != 1) && (dispScreen != 2))
     {
       unsigned long pastMillis = (currentMillis - millisHome);
-      if (pastMillis > (60000 * display01.getHomeTimeout())) 
+      if (pastMillis > (60000 * display01.getHomeTimeout()))
       {
         if (dispScreen == 10)
         {
@@ -285,19 +293,19 @@ void drawSmallRelayStatus(int relay, int state, int x, int y)
       utext.print(x+6, y+3, "3");
       break;
     case 3:
-      utext.print(x+9, y+4, "4");
+      utext.print(x+6, y+3, "3");
       break;
     case 4:
-      utext.print(x+5, y+3, "5");
+      utext.print(x+8, y+4, "4");
       break;
     case 5:
-      utext.print(x+3, y+3, "6");
+      utext.print(x+8, y+4, "4");
       break;
     case 6:
-      utext.print(x+9, y+2, "7");
+      utext.print(x+5, y+2, "5");
       break;
     case 7:
-      utext.print(x+9, y+2, "7");
+      utext.print(x+3, y+3, "6");
       break;
   }
 }
@@ -636,14 +644,14 @@ void screenPower()
   drawLargeButton('2', "Lights 1", relays[0].isOn(), 4, 64);
   drawLargeButton('2', "Lights 2", relays[1].isOn(), 122, 64);
   
-  drawLargeButton('3', "Filter", relays[2].isOn(), 4, 102);
-  drawLargeButton('4', "Heater", relays[3].isOn(), 122, 102);
+  drawLargeButton('3', "Filter 1", relays[2].isOn(), 4, 102);
+  drawLargeButton('4', "Filter 2", relays[3].isOn(), 122, 102);
   
-  drawLargeButton('5', "Circulat..", relays[4].isOn(), 4, 140);
-  drawLargeButton('6', "CO2", relays[5].isOn(), 122, 140);
+  drawLargeButton('5', "Heater 1", relays[4].isOn(), 4, 140);
+  drawLargeButton('6', "Heater 2", relays[5].isOn(), 122, 140);
   
-  drawLargeButton('7', "AUX1", relays[6].isOn(), 4, 178);
-  drawLargeButton('7', "AUX2", relays[7].isOn(), 122, 178);
+  drawLargeButton('7', "Circulat...", relays[6].isOn(), 4, 178);
+  drawLargeButton('7', "CO2", relays[7].isOn(), 122, 178);
   
   drawLargeButton('9', "All On", 1, 4, 283);
   drawLargeButton('9', "All Off", 0, 122, 283);
@@ -749,6 +757,9 @@ void screenSchedule()
   
   drawHeader("c", "Schedule");
   drawBackground();
+  
+  drawLargeButton('7', "Power", 0, 4, 64);
+  drawLargeButton('e', "Dosing", 0, 122, 64);
 }
 
 void drawDosingPumpSettings(byte pump)
@@ -822,6 +833,15 @@ void screenDosing(byte pump)
   drawLargeBlueButton(121, 280, "Test");
 }
 
+char* friendlyTime(byte onHour, byte onMinute)
+{
+  static char str[5];
+
+  sprintf(str, "%02d:%02d", onHour, onMinute);
+  
+  return str;
+}
+
 void screenPwrSchedule()
 {
   DEBUG_PRINTLN("Drawing power schedule settings screen");
@@ -830,6 +850,22 @@ void screenPwrSchedule()
   
   drawHeader("c", "Power Schedule");
   drawBackground();
+  
+  myGLCD.setColor(255, 255, 255);
+  myGLCD.fillRect(4, 64, 235, 230);
+    
+  utext.setForeground(88, 102, 106);
+  utext.setFont(Arial11);
+  utext.print(120, 66, "On");
+  utext.print(170, 66, "Off");
+    
+  myGLCD.setColor(222, 229, 231);
+  myGLCD.drawLine(4, 83, 235, 83);
+    
+  drawPowerScheduleLineItem("Lights 1", friendlyTime(relays[0].schedule.onHour, relays[0].schedule.onMinute), friendlyTime(relays[0].schedule.offHour, relays[0].schedule.offMinute), "Y", 6, 91);
+  drawPowerScheduleLineItem("Lights 2", friendlyTime(relays[1].schedule.onHour, relays[1].schedule.onMinute), friendlyTime(relays[1].schedule.offHour, relays[1].schedule.offMinute), "Y", 6, 118);
+  drawPowerScheduleLineItem("Circulation", friendlyTime(relays[6].schedule.onHour, relays[6].schedule.onMinute), friendlyTime(relays[6].schedule.offHour, relays[6].schedule.offMinute), "Y", 6, 145);
+  drawPowerScheduleLineItem("CO2", friendlyTime(relays[7].schedule.onHour, relays[7].schedule.onMinute), friendlyTime(relays[7].schedule.offHour, relays[7].schedule.offMinute), "Y", 6, 172);
 }
 
 void screenPwrScheduleItem(int itemNo)
@@ -861,8 +897,27 @@ void screenLightRampItem(byte rampNo)
   drawHeader("2", "Lights");
   drawBackground();
 }
+
   
-void screenDosingSched(byte pumpNo)
+void screenDosingSched()
+{
+  dispScreen = 15;
+  
+  drawHeader("c", "Dosing Schedule");
+  drawBackground();
+}
+
+void drawPowerScheduleLineItem(String name, String on, String off, String active, byte x, byte y)
+{
+  utext.print(x, y, name);
+  utext.print(x + 104, y, on);
+  utext.print(x + 154, y, off);
+  utext.print(x + 209, y, active);
+  myGLCD.setColor(222, 229, 231);
+  myGLCD.drawLine(4, y + 21, 235, y + 21);
+}  
+  
+void screenDosingSchedItem(byte pumpNo)
 {
   dispScreen = 15; 
   
@@ -943,27 +998,19 @@ void processMyTouch()
       }
       else if (inBounds(x, y, 4, 283, 117, 316))
       {
-        alarm_rlyLight1_on();
-        alarm_rlyLight2_on();
-        alarm_rlyFilter_on();
-        alarm_rlyCirc_on();
-        alarm_rlyHeater_on();
-        alarm_rlyCO2_on();
-        alarm_rlyAux1_on();
-        alarm_rlyAux2_on();
+        for (byte i = 0; i <= numRelays; i++)
+        {
+          relays[i].on();
+        }
         
         screenPower();
       }
       else if (inBounds(x, y, 122, 283, 235, 316))
       {
-        alarm_rlyLight1_off();
-        alarm_rlyLight2_off();
-        alarm_rlyFilter_off();
-        alarm_rlyCirc_off();
-        alarm_rlyHeater_off();
-        alarm_rlyCO2_off();
-        alarm_rlyAux1_off();
-        alarm_rlyAux2_off();
+        for (byte i = 0; i <= numRelays; i++)
+        {
+          relays[i].off();
+        }
 
         screenPower();
       }
@@ -971,11 +1018,11 @@ void processMyTouch()
       {
         if (relays[0].isOn() == 0)
         {
-          alarm_rlyLight1_on();
+          relays[0].on();
         }
         else if (relays[0].isOn() == 1)
         {
-          alarm_rlyLight1_off();
+          relays[0].off();
         }
 
         drawLargeButton('2', "Lights 1", relays[0].isOn(), 4, 64);
@@ -984,11 +1031,11 @@ void processMyTouch()
       {
         if (relays[1].isOn() == 0)
         {
-          alarm_rlyLight2_on();
+          relays[1].on();
         }
         else if (relays[1].isOn() == 1)
         {
-          alarm_rlyLight2_off();
+          relays[1].off();
         }
         
         drawLargeButton('2', "Lights 2", relays[1].isOn(), 122, 64);
@@ -997,79 +1044,79 @@ void processMyTouch()
       {
         if (relays[2].isOn() == 0)
         { 
-          alarm_rlyFilter_on();
+          relays[2].on();
         }
         else if (relays[2].isOn() == 1)
         {
-          alarm_rlyFilter_off();
+          relays[2].off();
         }
 
-        drawLargeButton('3', "Filter", relays[2].isOn(), 4, 102);
-      }
-      else if (inBounds(x, y, 4, 140, 117, 173))
-      {
-        if (relays[4].isOn() == 0)
-        {
-          alarm_rlyCirc_on();
-        }
-        else if (relays[4].isOn() == 1)
-        {
-          alarm_rlyCirc_off();
-        }
-
-        drawLargeButton('5', "Circulat..", relays[4].isOn(), 4, 140);
+        drawLargeButton('3', "Filter 1", relays[2].isOn(), 4, 102);
       }
       else if (inBounds(x, y, 122, 102, 235, 135))
       {
         if (relays[3].isOn() == 0)
         {
-          alarm_rlyHeater_on();
+          relays[3].on();
         }
         else if (relays[3].isOn() == 1)
         {
-          alarm_rlyHeater_off();
+          relays[3].off();
         }
 
-        drawLargeButton('4', "Heater", relays[3].isOn(), 122, 102);
+        drawLargeButton('4', "Filter 2", relays[3].isOn(), 122, 102);
+      }
+      else if (inBounds(x, y, 4, 140, 117, 173))
+      {
+        if (relays[4].isOn() == 0)
+        {
+          relays[4].on();
+        }
+        else if (relays[4].isOn() == 1)
+        {
+          relays[4].off();
+        }
+
+        drawLargeButton('5', "Heater 1", relays[4].isOn(), 4, 140);
       }
       else if (inBounds(x, y, 122, 130, 235, 173))
       {
         if (relays[5].isOn() == 0)
         {
-          alarm_rlyCO2_on();
+          relays[5].on();
         }
         else if (relays[5].isOn() == 1)
         {
-          alarm_rlyCO2_off();
+          relays[5].off();
         }
 
-        drawLargeButton('6', "CO2", relays[5].isOn(), 122, 140);
+        drawLargeButton('6', "Heater 2", relays[5].isOn(), 122, 140);
       }
       else if (inBounds(x, y, 4, 178, 117, 211))
       {
         if (relays[6].isOn() == 0)
         {
-          alarm_rlyAux1_on();
+          relays[6].on();
         }
         else if (relays[6].isOn() == 1)
         {
-          alarm_rlyAux1_off();
+          relays[6].off();
         }
         
-        drawLargeButton('7', "AUX1", relays[6].isOn(), 4, 178);
+        drawLargeButton('7', "Circulat.", relays[6].isOn(), 4, 178);
       }
       else if (inBounds(x, y, 122, 178, 235, 211))
       {
         if (relays[7].isOn() == 0)
         {
-          alarm_rlyAux2_on();
+          relays[7].on();
         }
         else if (relays[7].isOn() == 1)
         {
-          alarm_rlyAux2_off();
+          relays[7].off();
         }
 
-        drawLargeButton('7', "AUX2", relays[7].isOn(), 122, 178);
+        drawLargeButton('7', "CO2", relays[7].isOn(), 122, 178);
       }
       break;
      
@@ -1080,10 +1127,7 @@ void processMyTouch()
       }
       else if (inBounds(x, y, 4, 64, 117, 97))
       {
-        if (relays[0].isOn() == 1)
-        {
-          screenLights();
-        }
+        screenLights();
       }
       else if (inBounds(x, y, 122, 139, 235, 172))
       {
@@ -1209,6 +1253,15 @@ void processMyTouch()
       {
         screenSettings();
       }
+      else if (inBounds(x, y, 4, 64, 117, 97))
+      {
+        screenPwrSchedule();
+      }
+      else if (inBounds(x, y, 122, 64, 235, 97))
+      {
+        screenDosingSched();
+      }
+      
       break;
 
     case 10:
@@ -1395,15 +1448,15 @@ void check_Ph()
   
   float phVal = pH01.requestPh(dallasTemperatureSensors.getTempC(temperatureProbe01));
 
-  if (relays[5].inSchedule())
+  if (relays[7].inSchedule())
   {
-	  if (phVal >= pH01.getHighAlarmPh() && relays[5].isOff())
+	  if (phVal >= pH01.getHighAlarmPh() && relays[7].isOff())
 	  {
-  	  relays[5].on();
+  	  relays[7].on();
 	  }
-	  else if (phVal <= pH01.getLowAlarmPh() && relays[5].isOff())
+	  else if (phVal <= pH01.getLowAlarmPh() && relays[7].isOff())
 	  {
-  	  relays[5].off();
+  	  relays[7].off();
 	  }
   }
 
@@ -1417,7 +1470,7 @@ void check_Ph()
 
       if (phString[0] != prevphString[0])
       {
-        myGLCD.fillRect(140, 64, 160, 106);
+        myGLCD.fillRect(140, 64, 162, 106);
       }
       
       if (phString[2] != prevphString[2])
@@ -1721,32 +1774,32 @@ void alarm_rlyLight2_on()
   relays[1].on();
 }
 
-void alarm_rlyFilter_on()
+void alarm_rlyFilter1_on()
 {
   relays[2].on();
 }
 
-void alarm_rlyHeater_on()
+void alarm_rlyFilter2_on()
 {
   relays[3].on();
 }
 
-void alarm_rlyCirc_on()
+void alarm_rlyHeater1_on()
 {
   relays[4].on();
 }
 
-void alarm_rlyCO2_on()
+void alarm_rlyHeater2_on()
 {
   relays[5].on();
 }
 
-void alarm_rlyAux1_on()
+void alarm_rlyCirc_on()
 {
   relays[6].on();
 }
 
-void alarm_rlyAux2_on()
+void alarm_rlyCO2_on()
 {
   relays[7].on();
 }
@@ -1761,32 +1814,32 @@ void alarm_rlyLight2_off()
   relays[1].off();
 }
 
-void alarm_rlyFilter_off()
+void alarm_rlyFilter1_off()
 {
   relays[2].off();
 }
 
-void alarm_rlyHeater_off()
+void alarm_rlyFilter2_off()
 {
   relays[3].off();
 }
 
-void alarm_rlyCirc_off()
+void alarm_rlyHeater1_off()
 {
   relays[4].off();
 }
 
-void alarm_rlyCO2_off()
+void alarm_rlyHeater2_off()
 {
   relays[5].off();
 }
 
-void alarm_rlyAux1_off()
+void alarm_rlyCirc_off()
 {
   relays[6].off();
 }
 
-void alarm_rlyAux2_off()
+void alarm_rlyCO2_off()
 {
   relays[7].off();
 }
@@ -1818,11 +1871,11 @@ void firstRunSetup()
     EEPROM.writeByte(4,19); // Relay 1 Off Hour
     EEPROM.writeByte(5,0); // Relay 1 Off Minute
 
-    EEPROM.writeByte(8,0); // Relay 2 Active
-    EEPROM.writeByte(9,0); // Relay 2 On Hour
+    EEPROM.writeByte(8,1); // Relay 2 Active
+    EEPROM.writeByte(9,19); // Relay 2 On Hour
     EEPROM.writeByte(10,0); // Relay 2 On Minute
-    EEPROM.writeByte(11,0); // Relay 2 Off Hour
-    EEPROM.writeByte(12,0); // Relay 2 Off Minute
+    EEPROM.writeByte(11,21); // Relay 2 Off Hour
+    EEPROM.writeByte(12,30); // Relay 2 Off Minute
 
     EEPROM.writeByte(15,0); // Relay 3 Active
     EEPROM.writeByte(16,0); // Relay 3 On Hour
@@ -1837,28 +1890,28 @@ void firstRunSetup()
     EEPROM.writeByte(26,0); // Relay 4 Off Minute
 
     EEPROM.writeByte(29,0); // Relay 5 Active
-    EEPROM.writeByte(30,1); // Relay 5 On Hour
-    EEPROM.writeByte(31,1); // Relay 5 On Minute
-    EEPROM.writeByte(32,1); // Relay 5 Off Hour
-    EEPROM.writeByte(33,1); // Relay 5 Off Minute
+    EEPROM.writeByte(30,0); // Relay 5 On Hour
+    EEPROM.writeByte(31,0); // Relay 5 On Minute
+    EEPROM.writeByte(32,0); // Relay 5 Off Hour
+    EEPROM.writeByte(33,0); // Relay 5 Off Minute
 
-    EEPROM.writeByte(36,1); // Relay 6 Active
-    EEPROM.writeByte(37,10); // Relay 6 On Hour
+    EEPROM.writeByte(36,0); // Relay 6 Active
+    EEPROM.writeByte(37,0); // Relay 6 On Hour
     EEPROM.writeByte(38,0); // Relay 6 On Minute
-    EEPROM.writeByte(39,18); // Relay 6 Off Hour
+    EEPROM.writeByte(39,0); // Relay 6 Off Hour
     EEPROM.writeByte(40,0); // Relay 6 Off Minute
 
-    EEPROM.writeByte(43,0); // Relay 7 Active
+    EEPROM.writeByte(43,1); // Relay 7 Active
     EEPROM.writeByte(43,0); // Relay 7 On Hour
     EEPROM.writeByte(43,0); // Relay 7 On Minute
     EEPROM.writeByte(43,0); // Relay 7 Off Hour
     EEPROM.writeByte(43,0); // Relay 7 Off Minute
 
-    EEPROM.writeByte(50,0); // Relay 8 Active
-    EEPROM.writeByte(51,0); // Relay 8 On Hour
-    EEPROM.writeByte(52,0); // Relay 8 On Minute
-    EEPROM.writeByte(53,0); // Relay 8 Off Hour
-    EEPROM.writeByte(54,0); // Relay 8 Off Minute
+    EEPROM.writeByte(50,1); // Relay 8 Active
+    EEPROM.writeByte(51,10); // Relay 8 On Hour
+    EEPROM.writeByte(52,30); // Relay 8 On Minute
+    EEPROM.writeByte(53,18); // Relay 8 Off Hour
+    EEPROM.writeByte(54,30); // Relay 8 Off Minute
   }
 
   if (EEPROM.readByte(57) < 1)
