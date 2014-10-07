@@ -105,8 +105,6 @@ void setup()
 {  
   Serial.begin(9600);
   
-  //wdt_enable(WDTO_4S);
-  
   DEBUG_PRINTLN("Starting Aquarium Wise");
   firstRunSetup();
 
@@ -862,10 +860,10 @@ void screenPwrSchedule()
   myGLCD.setColor(222, 229, 231);
   myGLCD.drawLine(4, 83, 235, 83);
     
-  drawPowerScheduleLineItem("Lights 1", friendlyTime(relays[0].schedule.onHour, relays[0].schedule.onMinute), friendlyTime(relays[0].schedule.offHour, relays[0].schedule.offMinute), "Y", 6, 91);
-  drawPowerScheduleLineItem("Lights 2", friendlyTime(relays[1].schedule.onHour, relays[1].schedule.onMinute), friendlyTime(relays[1].schedule.offHour, relays[1].schedule.offMinute), "Y", 6, 118);
-  drawPowerScheduleLineItem("Circulation", friendlyTime(relays[6].schedule.onHour, relays[6].schedule.onMinute), friendlyTime(relays[6].schedule.offHour, relays[6].schedule.offMinute), "Y", 6, 145);
-  drawPowerScheduleLineItem("CO2", friendlyTime(relays[7].schedule.onHour, relays[7].schedule.onMinute), friendlyTime(relays[7].schedule.offHour, relays[7].schedule.offMinute), "Y", 6, 172);
+  drawPowerScheduleLineItem("Lights 1", relays[0], 6, 91);
+  drawPowerScheduleLineItem("Lights 2", relays[1], 6, 118);
+  drawPowerScheduleLineItem("Circulation", relays[6], 6, 145);
+  drawPowerScheduleLineItem("CO2", relays[7], 6, 172);
 }
 
 void screenPwrScheduleItem(int itemNo)
@@ -898,24 +896,122 @@ void screenLightRampItem(byte rampNo)
   drawBackground();
 }
 
-  
 void screenDosingSched()
 {
   dispScreen = 15;
   
   drawHeader("c", "Dosing Schedule");
   drawBackground();
+  
+  myGLCD.setColor(255, 255, 255);
+  myGLCD.fillRect(4, 64, 235, 230);
+  
+  utext.setForeground(88, 102, 106);
+  utext.setFont(Arial11);
+  utext.print(80, 66, "On");
+  utext.print(130, 66, "S M T W T F S");
+  
+  myGLCD.setColor(222, 229, 231);
+  myGLCD.drawLine(4, 83, 235, 83);
+  
+  drawDoingPumpScheduleLineItem("Macro", dosingPumps[0], 6, 91);
+  drawDoingPumpScheduleLineItem("Micro", dosingPumps[1], 6, 118);
+  drawDoingPumpScheduleLineItem("Glut", dosingPumps[2], 6, 145);
 }
 
-void drawPowerScheduleLineItem(String name, String on, String off, String active, byte x, byte y)
+void drawPowerScheduleLineItem(String name, Relay rly, byte x, byte y)
 {
   utext.print(x, y, name);
-  utext.print(x + 104, y, on);
-  utext.print(x + 154, y, off);
-  utext.print(x + 209, y, active);
+  utext.print(x + 104, y, friendlyTime(rly.schedule.onHour, rly.schedule.onMinute));
+  utext.print(x + 154, y, friendlyTime(rly.schedule.offHour, rly.schedule.offMinute));
+
+  if (rly.schedule.active)
+  {
+    utext.print(x + 209, y, "Y");
+  }
+  else
+  {
+    utext.print(x + 209, y, "N");  
+  }
+  
   myGLCD.setColor(222, 229, 231);
   myGLCD.drawLine(4, y + 21, 235, y + 21);
-}  
+}
+
+void drawDoingPumpScheduleLineItem(String name, DosingPump dp, byte x, byte y)
+{
+  utext.print(x, y, name);
+  utext.print(x + 64, y, friendlyTime(dp.schedule.onHour, dp.schedule.onMinute));
+
+  myGLCD.setColor(222, 229, 231);
+  myGLCD.setBackColor(222, 229, 231);
+  
+  if (dp.schedule.Sunday)
+  {
+    myGLCD.fillRect(x + 125, y + 2, x + 135, y + 13);
+  }
+  else
+  {
+    myGLCD.drawRect(x + 125, y + 2, x + 135, y + 13);
+  }
+  
+  if (dp.schedule.Monday)
+  {
+    myGLCD.fillRect(x + 139, y + 2, x + 149, y + 13);
+  }
+  else
+  {
+    myGLCD.drawRect(x + 139, y + 2, x + 149, y + 13);
+  }
+  
+  if (dp.schedule.Tuesday)
+  {
+    myGLCD.fillRect(x + 153, y + 2, x + 163, y + 13);
+  }
+  else
+  {
+    myGLCD.drawRect(x + 153, y + 2, x + 163, y + 13);
+  }
+  
+  if (dp.schedule.Wednesday)
+  {
+    myGLCD.fillRect(x + 167, y + 2, x + 177, y + 13);
+  }
+  else
+  {
+    myGLCD.drawRect(x + 167, y + 2, x + 177, y + 13);
+  }
+  
+  if (dp.schedule.Thursday)
+  {
+    myGLCD.fillRect(x + 181, y + 2, x + 191, y + 13);
+  }
+  else
+  {
+    myGLCD.drawRect(x + 181, y + 2, x + 191, y + 13);
+  }
+  
+  if (dp.schedule.Friday)
+  {
+    myGLCD.fillRect(x + 195, y + 2, x + 205, y + 13);
+  }
+  else
+  {
+    myGLCD.drawRect(x + 195, y + 2, x + 205, y + 13);
+  }
+  
+  if (dp.schedule.Saturday)
+  {
+    myGLCD.fillRect(x + 209, y + 2, x + 219, y + 13);
+  }
+  else
+  {
+    myGLCD.drawRect(x + 209, y + 2, x + 219, y + 13);
+  }
+  
+  myGLCD.setColor(222, 229, 231);
+  myGLCD.drawLine(4, y + 21, 235, y + 21);
+}
   
 void screenDosingSchedItem(byte pumpNo)
 {
