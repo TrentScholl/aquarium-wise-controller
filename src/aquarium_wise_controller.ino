@@ -943,8 +943,8 @@ void drawDoingPumpScheduleLineItem(String name, DosingPump dp, byte x, byte y)
   utext.print(x, y, name);
   utext.print(x + 64, y, friendlyTime(dp.schedule.onHour, dp.schedule.onMinute));
 
-  myGLCD.setColor(222, 229, 231);
-  myGLCD.setBackColor(222, 229, 231);
+  myGLCD.setColor(17, 153, 196);
+  myGLCD.setBackColor(17, 153, 196);
   
   if (dp.schedule.Sunday)
   {
@@ -2017,12 +2017,12 @@ void firstRunSetup()
     EEPROM.writeByte(58,1); // Pump 1 Active
     EEPROM.writeByte(59,10); // Pump 1 On Hour
     EEPROM.writeByte(60,30); // Pump 1 On Minute
-    EEPROM.writeByte(61,0); // Pump 1 On Sunday
-    EEPROM.writeByte(62,1); // Pump 1 On Monday
-    EEPROM.writeByte(63,0); // Pump 1 On Tuesday
-    EEPROM.writeByte(64,1); // Pump 1 On Wednesday 
-    EEPROM.writeByte(65,0); // Pump 1 On Thursday 
-    EEPROM.writeByte(66,1); // Pump 1 On Friday
+    EEPROM.writeByte(61,1); // Pump 1 On Sunday
+    EEPROM.writeByte(62,0); // Pump 1 On Monday
+    EEPROM.writeByte(63,1); // Pump 1 On Tuesday
+    EEPROM.writeByte(64,0); // Pump 1 On Wednesday
+    EEPROM.writeByte(65,1); // Pump 1 On Thursday
+    EEPROM.writeByte(66,0); // Pump 1 On Friday
     EEPROM.writeByte(67,0); // Pump 1 On Saturday
     EEPROM.writeByte(68,5); // Pump 1 Dose
     EEPROM.writeByte(69,122); // Pump 1 mL/s
@@ -2033,11 +2033,11 @@ void firstRunSetup()
     EEPROM.writeByte(76,10); // Pump 2 On Hour
     EEPROM.writeByte(77,30); // Pump 2 On Minute
     EEPROM.writeByte(78,0); // Pump 2 On Sunday
-    EEPROM.writeByte(79,0); // Pump 2 On Monday
-    EEPROM.writeByte(80,1); // Pump 2 On Tuesday
-    EEPROM.writeByte(81,0); // Pump 2 On Wednesday
-    EEPROM.writeByte(82,1); // Pump 2 On Thursday
-    EEPROM.writeByte(83,0); // Pump 2 On Friday
+    EEPROM.writeByte(79,1); // Pump 2 On Monday
+    EEPROM.writeByte(80,0); // Pump 2 On Tuesday
+    EEPROM.writeByte(81,1); // Pump 2 On Wednesday
+    EEPROM.writeByte(82,0); // Pump 2 On Thursday
+    EEPROM.writeByte(83,1); // Pump 2 On Friday
     EEPROM.writeByte(84,0); // Pump 2 On Saturday
     EEPROM.writeByte(85,5); // Pump 2 Dose
     EEPROM.writeByte(86,122); // Pump 2 mL/s
@@ -2052,7 +2052,7 @@ void firstRunSetup()
     EEPROM.writeByte(97,0); // Pump 3 On Tuesday
     EEPROM.writeByte(98,1); // Pump 3 On Wednesday
     EEPROM.writeByte(99,0); // Pump 3 On Thursday
-    EEPROM.writeByte(100,0); // Pump 3 On Friday
+    EEPROM.writeByte(100,1); // Pump 3 On Friday
     EEPROM.writeByte(101,0); // Pump 3 On Saturday
     EEPROM.writeByte(102,5); // Pump 3 Dose
     EEPROM.writeByte(103,122); // Pump 3 mL/s
