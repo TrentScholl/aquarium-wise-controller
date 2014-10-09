@@ -21,11 +21,11 @@
 #include "heater.h"
 #include "fonts.h"
 #include "theme.h"
-//#include <SPI.h>
-//#include <UIPEthernet.h>
+#include <SPI.h>
+#include <UIPEthernet.h>
 
-//byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-//EthernetClient client;
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+EthernetClient client;
 
 const byte numRelays = 8;
 Relay relays[numRelays] = {
@@ -112,6 +112,8 @@ void setup()
   
   myGLCD.fillScr(THEME_BACK.r, THEME_BACK.g, THEME_BACK.b);
   
+  drawPleaseWait();
+  
   myTouch.InitTouch(PORTRAIT);
   myTouch.setPrecision(PREC_MEDIUM);
 
@@ -138,7 +140,7 @@ void setup()
   buzzer.init();
   buzzer.beep(2, 50);
   
-  // Ethernet.begin(mac);
+  Ethernet.begin(mac);
 
   updateTimeDate();
   screenHome();
