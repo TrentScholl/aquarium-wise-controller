@@ -362,13 +362,15 @@ void drawHeader(char* icon, char* title)
     case 12:
     case 13:
     case 14:
-    case 15:
+      utext.print(110, 12, "1");
+      break;
     case 5:
     case 6:
     case 7:
     case 8:
     case 9:
     case 10:
+    case 15:
     case 16:
         utext.print(160, 12, "a");
         utext.print(60, 12, "1");
