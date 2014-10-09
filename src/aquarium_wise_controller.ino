@@ -144,9 +144,15 @@ void setup()
   screenHome();
 }
 
+unsigned long lastTempRequest = 0;
+int  delayInMillis = 0;
+
 void setup_TemperatureSensors()
 {
   DEBUG_PRINTLN("Setting up temperature sensors");
+  dallasTemperatureSensors.setResolution(10);
+  dallasTemperatureSensors.setWaitForConversion(false);
+
   dallasTemperatureSensors.getAddress(temperatureProbe01, 0);
   dallasTemperatureSensors.getAddress(temperatureProbe02, 1);
   
@@ -154,6 +160,10 @@ void setup_TemperatureSensors()
   dallasTemperatureSensors.setLowAlarmTemp(temperatureProbe01, heater01.getWarnTemp());
   
   dallasTemperatureSensors.setAlarmHandler(&alarm_temperature);
+  
+  dallasTemperatureSensors.requestTemperatures();
+  delayInMillis = 750 / (1 << (12 - 10));
+  lastTempRequest = millis();
 }
 
 void setup_Relays()
@@ -177,8 +187,7 @@ void loop()
 
   if (myTouch.dataAvailable())
   {
-    delay(5);
-    if (currentMillis - prevMillisTouch > 500)
+    if (currentMillis - prevMillisTouch > 250)
     {
       if (backlightTouch == false)
       {
@@ -199,12 +208,9 @@ void loop()
   {
     prevMillis5sec = millis();
     updateTimeDate();
-    
-    if (dispScreen == 1)
-    {
-      check_Ph();
-      check_Temperatures();
-    }
+
+    check_Ph(dispScreen == 1);
+    check_Temperatures(dispScreen == 1);
   }
 
   if (display01.getDimSecs() != 0)
@@ -246,7 +252,7 @@ void loop()
     }
   }
 
-  Alarm.delay(5);
+  Alarm.delay(0);
 }
 
 void drawSmallRelayStatus(int relay, int state, int x, int y)
@@ -357,8 +363,6 @@ void drawHeader(char* icon, char* title)
     case 13:
     case 14:
     case 15:
-        utext.print(110, 12, "1");
-        break;
     case 5:
     case 6:
     case 7:
@@ -570,8 +574,8 @@ void screenHome()
   
   utext.getTextWidth("Temp");
  
-  check_Temperatures();
-  check_Ph();
+  check_Temperatures(true);
+  check_Ph(true);
 }
 
 int findCenterText(String text, int x1, int x2)
@@ -1471,10 +1475,18 @@ void processMyTouch()
       break;
 
     case 15:
-      if (inBounds(x, y, 80, 0, 165, 39))
-      {     
+      if (inBounds(x, y, 0, 0, 119, 39))
+      {
+        drawPleaseWait();
+
         screenHome();
-      }    
+      }
+      else if (inBounds(x, y, 120, 0, 239, 39))
+      {
+        drawPleaseWait();
+        
+        screenSettings();
+      }  
       break;
       
     case 16:
@@ -1538,7 +1550,7 @@ void processMyTouch()
    }
 }
 
-void check_Ph()
+void check_Ph(boolean print)
 {
   DEBUG_PRINTLN("Checking pH");
   
@@ -1556,12 +1568,14 @@ void check_Ph()
 	  }
   }
 
-  char phString[5] = "0.00";
-  
-  dtostrf(phVal, 2, 2, phString);
-  
-  if (String(phString) != String(prevphString))
+  if (print)
   {
+    char phString[5] = "0.00";
+    
+    dtostrf(phVal, 2, 2, phString);
+    
+    if (String(phString) != String(prevphString))
+    {
       myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
 
       if (phString[0] != prevphString[0])
@@ -1573,71 +1587,77 @@ void check_Ph()
       {
         myGLCD.fillRect(170, 64, 195, 106);
       }
-            
+      
       if (phString[3] != prevphString[3])
       {
         myGLCD.fillRect(195, 64, 220, 106);
       }
-      
-      
       
       utext.setForeground(88, 102, 106);
       utext.setFont(Arial30);
       utext.print(140, 70, phString);
       
       strncpy(prevphString, phString, 7);
-  }
+    }
+  }  
 }
 
-void check_Temperatures()
+void check_Temperatures(boolean print)
 {    
   DEBUG_PRINTLN("Checking temperature");
-	dallasTemperatureSensors.requestTemperatures();
+  
+  if (millis() - lastTempRequest >= delayInMillis)
+  {
+    float probeTemp01 = dallasTemperatureSensors.getTempC(temperatureProbe01);
+	  dallasTemperatureSensors.requestTemperatures();
+    lastTempRequest = millis();
+    
+    dallasTemperatureSensors.processAlarms();
 
-  dallasTemperatureSensors.processAlarms();
+	  if (!dallasTemperatureSensors.hasAlarm(temperatureProbe01) && !heater01.isOn())
+	  {
+      heater01.on();
+    }
 
-	float probeTemp01 = dallasTemperatureSensors.getTempC(temperatureProbe01);
+	  //float probeTemp02 = dallasTemperatureSensors.getTempC(temperatureProbe02);
 
-	if (!dallasTemperatureSensors.hasAlarm(temperatureProbe01) && !heater01.isOn())
-	{
-    heater01.on();
-  }
-
-	//float probeTemp02 = dallasTemperatureSensors.getTempC(temperatureProbe02);
-
-  char tempstring[7];
+    if (print)
+    {
+      char tempstring[7];
  
-  if (probeTemp01 == -127.0)
-  {
-    probeTemp01 = 0;
-  }
+      if (probeTemp01 == -127.0)
+      {
+        probeTemp01 = 0;
+      }
   
-  dtostrf(probeTemp01, 4, 1, tempstring);
+      dtostrf(probeTemp01, 4, 1, tempstring);
   
-  if (String(tempstring) != String(prevtempString))
-  {
-    myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
-    myGLCD.fillRect(4, 64, 117, 106);
+      if (String(tempstring) != String(prevtempString))
+      {
+        myGLCD.setColor(THEME_PRIMARY_BACK.r, THEME_PRIMARY_BACK.g, THEME_PRIMARY_BACK.b);
+        myGLCD.fillRect(4, 64, 117, 106);
     
-    if (probeTemp01 >= heater01.getOffTemp())
-    {
-      utext.setForeground(255, 0, 0);
-    }
-    else if (probeTemp01 <= heater01.getWarnTemp())
-    {
-      utext.setForeground(0, 0, 255);
-    }
-    else
-    {
-      utext.setForeground(88, 102, 110);
-    }
+        if (probeTemp01 >= heater01.getOffTemp())
+        {
+          utext.setForeground(255, 0, 0);
+        }
+        else if (probeTemp01 <= heater01.getWarnTemp())
+        {
+          utext.setForeground(0, 0, 255);
+        }
+        else
+        {
+          utext.setForeground(88, 102, 110);
+        }
     
-    utext.setFont(Arial30);
+        utext.setFont(Arial30);
 
-    utext.print(22, 70, tempstring);
+        utext.print(22, 70, tempstring);
     
-    strncpy(prevtempString, tempstring, 7);
-  }
+        strncpy(prevtempString, tempstring, 7);
+      }    
+    }
+  }  
 }
 
 void SaveTime()
