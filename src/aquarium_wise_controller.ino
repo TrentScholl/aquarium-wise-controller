@@ -27,6 +27,8 @@
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 EthernetClient client;
 
+const byte ethernetEnabled = 1;
+
 const byte numRelays = 8;
 Relay relays[numRelays] = {
   Relay(relayLights1Pin, 1, alarm_rlyLight1_on, alarm_rlyLight1_off),
@@ -140,7 +142,13 @@ void setup()
   buzzer.init();
   buzzer.beep(2, 50);
   
-  Ethernet.begin(mac);
+  if (ethernetEnabled)
+  {
+    DEBUG_PRINTLN("Initializing Ethernet");
+    Ethernet.begin(mac);
+
+    Alarm.alarmRepeat(0, 0, 0, alarm_maintain_ethernet);
+  }
 
   updateTimeDate();
   screenHome();
@@ -1864,6 +1872,11 @@ void update_alarms()
   {
     relays[i].updateAlarms();
   }
+}
+
+void alarm_maintain_ethernet()
+{
+  Ethernet.maintain();
 }
 
 void alarm_temperature(const uint8_t* deviceAddress)

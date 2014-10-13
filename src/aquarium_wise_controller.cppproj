@@ -26,14 +26,14 @@
     <UncachedRange />
     <BootSegment>0</BootSegment>
     <AsfFrameworkConfig>
-      <framework-data xmlns="">
+      <framework-data>
         <options />
         <configurations />
         <files />
         <documentation help="" />
         <offline-documentation help="" />
         <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.18.1" />
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.6.0" />
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
@@ -65,8 +65,8 @@
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMex</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMex\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTFT</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTFT\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTouch</Value>
@@ -92,7 +92,7 @@
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
-            <Value>C:\Users\tscholl\Documents\Arduino\libraries</Value>
+            <Value>C:\Users\Corinne\Documents\Arduino\libraries</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -123,8 +123,8 @@
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMex</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMex\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTFT</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTFT\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTouch</Value>
@@ -150,7 +150,7 @@
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
-            <Value>C:\Users\tscholl\Documents\Arduino\libraries</Value>
+            <Value>C:\Users\Corinne\Documents\Arduino\libraries</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -189,7 +189,7 @@ build.core=arduino
 build.variant=mega
 runtime.ide.path=C:\Program Files (x86)\Arduino
 build.system.path=C:\Program Files (x86)\Arduino\hardware\arduino\system
-runtime.ide.version=105
+runtime.ide.version=106
 originalid=mega2560
 vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x
 vm.core.include=arduino.h
@@ -215,24 +215,12 @@ ide.url=http://arduino.cc/en/Main/Software
 vm.debug=true
 software=ARDUINO
 ide.appid=arduino10x
-location.sketchbook=C:\Users\tscholl\Documents\Arduino
+location.sketchbook=C:\Users\Corinne\Documents\Arduino
 build.board=AVR_MEGA2560
 vm.boardsource.path=C:\Program Files (x86)\Arduino\hardware\arduino
+runtime.platform.path=C:\Program Files (x86)\Arduino\hardware\arduino
 vm.platformname.name=avr
 build.arch=AVR
-vm.runtime.compiler.showwarnings=false
-compiler.path=C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\
-includes= -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino"  -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega"  -I"C:\Program Files (x86)\Arduino\libraries\Wire"  -I"C:\Program Files (x86)\Arduino\libraries\RTClib"  -I"C:\Program Files (x86)\Arduino\libraries\DallasTemperature"  -I"C:\Program Files (x86)\Arduino\libraries\OneWire"  -I"C:\Program Files (x86)\Arduino\libraries\SoftwareSerial"  -I"C:\Program Files (x86)\Arduino\libraries\TimeAlarms"  -I"C:\Program Files (x86)\Arduino\libraries\Time"  -I"C:\Program Files (x86)\Arduino\libraries\EEPROMEx"  -I"C:\Program Files (x86)\Arduino\libraries"  -I"C:\Program Files (x86)\Arduino\hardware\arduino\libraries"  -I"C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers"  -I"C:\Users\tscholl\Documents\Arduino\libraries"  -I"C:\Program Files (x86)\Arduino\libraries\Wire\utility"
-build.path=C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560
-build.project_name=aquarium_wise_controller
-build.variant.path=C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega
-archive_file=core.a
-object_file=C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\EEPROMEx\EEPROMex.cpp.o
-source_file=C:\Program Files (x86)\Arduino\libraries\EEPROMEx\EEPROMex.cpp
-object_files="C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\aquarium_wise_controller.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\atlas_ph.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\basic_switch.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\configuration.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\dosing_pump.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\fan.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Wire\Wire.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Wire\utility\twi.c.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\RTClib\RTClib.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\DallasTemperature\DallasTemperature.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\OneWire\OneWire.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\SoftwareSerial\SoftwareSerial.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\TimeAlarms\TimeAlarms.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Time\DateStrings.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Time\Time.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\EEPROMEx\EEPROMex.cpp.o" 
-build.architecture=avr
-vmresolved.compiler.path=C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\
-vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
 </arduino.board.property_bag>
         <arduino.build.mcu>atmega2560</arduino.build.mcu>
         <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
@@ -243,6 +231,7 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
         <visualmicro.application.name>arduino10x</visualmicro.application.name>
         <visualmicro.package.name>arduino</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
+        <arduino.upload.port>COM4</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -273,8 +262,8 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMex</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMex\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTFT</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTFT\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTouch</Value>
@@ -300,7 +289,7 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
-            <Value>C:\Users\tscholl\Documents\Arduino\libraries</Value>
+            <Value>C:\Users\Corinne\Documents\Arduino\libraries</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -331,8 +320,8 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\Wire\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMEx\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMex</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\EEPROMex\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTFT</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTFT\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\UTouch</Value>
@@ -358,7 +347,7 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
-            <Value>C:\Users\tscholl\Documents\Arduino\libraries</Value>
+            <Value>C:\Users\Corinne\Documents\Arduino\libraries</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\</Value>
             <Value>c:\program files (x86)\arduino\hardware\tools\avr\avr\</Value>
@@ -397,7 +386,7 @@ build.core=arduino
 build.variant=mega
 runtime.ide.path=C:\Program Files (x86)\Arduino
 build.system.path=C:\Program Files (x86)\Arduino\hardware\arduino\system
-runtime.ide.version=105
+runtime.ide.version=106
 originalid=mega2560
 vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x
 vm.core.include=arduino.h
@@ -423,24 +412,12 @@ ide.url=http://arduino.cc/en/Main/Software
 vm.debug=true
 software=ARDUINO
 ide.appid=arduino10x
-location.sketchbook=C:\Users\tscholl\Documents\Arduino
+location.sketchbook=C:\Users\Corinne\Documents\Arduino
 build.board=AVR_MEGA2560
 vm.boardsource.path=C:\Program Files (x86)\Arduino\hardware\arduino
+runtime.platform.path=C:\Program Files (x86)\Arduino\hardware\arduino
 vm.platformname.name=avr
 build.arch=AVR
-vm.runtime.compiler.showwarnings=false
-compiler.path=C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\
-includes= -I"C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino"  -I"C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega"  -I"C:\Program Files (x86)\Arduino\libraries\Wire"  -I"C:\Program Files (x86)\Arduino\libraries\RTClib"  -I"C:\Program Files (x86)\Arduino\libraries\DallasTemperature"  -I"C:\Program Files (x86)\Arduino\libraries\OneWire"  -I"C:\Program Files (x86)\Arduino\libraries\SoftwareSerial"  -I"C:\Program Files (x86)\Arduino\libraries\TimeAlarms"  -I"C:\Program Files (x86)\Arduino\libraries\Time"  -I"C:\Program Files (x86)\Arduino\libraries\EEPROMEx"  -I"C:\Program Files (x86)\Arduino\libraries"  -I"C:\Program Files (x86)\Arduino\hardware\arduino\libraries"  -I"C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers"  -I"C:\Users\tscholl\Documents\Arduino\libraries"  -I"C:\Program Files (x86)\Arduino\libraries\Wire\utility"
-build.path=C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560
-build.project_name=aquarium_wise_controller
-build.variant.path=C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega
-archive_file=core.a
-object_file=C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\EEPROMEx\EEPROMex.cpp.o
-source_file=C:\Program Files (x86)\Arduino\libraries\EEPROMEx\EEPROMex.cpp
-object_files="C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\aquarium_wise_controller.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\atlas_ph.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\basic_switch.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\configuration.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\dosing_pump.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\fan.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Wire\Wire.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Wire\utility\twi.c.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\RTClib\RTClib.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\DallasTemperature\DallasTemperature.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\OneWire\OneWire.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\SoftwareSerial\SoftwareSerial.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\TimeAlarms\TimeAlarms.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Time\DateStrings.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\Time\Time.cpp.o" "C:\Users\tscholl\AppData\Local\VMicro\Arduino\Builds\aquarium_wise_controller\mega2560\EEPROMEx\EEPROMex.cpp.o" 
-build.architecture=avr
-vmresolved.compiler.path=C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\
-vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
 </arduino.board.property_bag>
         <arduino.build.mcu>atmega2560</arduino.build.mcu>
         <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
@@ -451,6 +428,7 @@ vmresolved.tools.path=C:\Program Files (x86)\Arduino\hardware\tools\avr
         <visualmicro.application.name>arduino10x</visualmicro.application.name>
         <visualmicro.package.name>arduino</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
+        <arduino.upload.port>COM4</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>

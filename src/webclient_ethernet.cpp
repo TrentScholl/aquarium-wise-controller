@@ -12,5 +12,7 @@ WebClient::WebClient(char *username, char *password)
 
 bool WebClient::init()
 {
+  client.connect("aquariumwise.net", 8086);
+  client.stop();
   return true;
 }
