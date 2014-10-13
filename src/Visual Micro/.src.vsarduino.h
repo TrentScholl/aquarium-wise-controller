@@ -65,6 +65,7 @@ time_t tmConvert_t(int YYYY, byte MM, byte DD, byte hh, byte mm, byte ss);
 void autoBrightness();
 void rampScreenBrightness(byte fromLevel, byte toLevel);
 void update_alarms();
+void alarm_maintain_ethernet();
 void alarm_temperature(const uint8_t* deviceAddress);
 void alarm_rlyLight1_on();
 void alarm_rlyLight2_on();

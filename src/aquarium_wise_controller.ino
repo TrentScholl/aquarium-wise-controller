@@ -23,9 +23,15 @@
 #include "theme.h"
 #include <SPI.h>
 #include <UIPEthernet.h>
+#include <UIPServer.h>
+#include <UIPClient.h>
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 EthernetClient client;
+
+EthernetServer server = EthernetServer(1000);
+
+const byte ethernetEnabled = 1;
 
 const byte numRelays = 8;
 Relay relays[numRelays] = {
@@ -140,7 +146,15 @@ void setup()
   buzzer.init();
   buzzer.beep(2, 50);
   
-  Ethernet.begin(mac);
+  if (ethernetEnabled)
+  {
+    DEBUG_PRINTLN("Initializing Ethernet");
+    Ethernet.begin(mac);
+
+    Alarm.alarmRepeat(0, 0, 0, alarm_maintain_ethernet);
+    
+    server.begin();
+  }
 
   updateTimeDate();
   screenHome();
@@ -184,7 +198,7 @@ time_t syncProvider()
 }
 
 void loop()
-{  
+{   
   unsigned long currentMillis = millis();
 
   if (myTouch.dataAvailable())
@@ -213,6 +227,19 @@ void loop()
 
     check_Ph(dispScreen == 1);
     check_Temperatures(dispScreen == 1);
+    
+    EthernetClient client = server.available();
+    
+    if (client)
+    {
+      client.print("Temp: ");
+      client.print(prevtempString);
+      client.println("");
+      
+      client.print("pH: ");
+      client.print(prevphString);
+      client.println("");
+    }
   }
 
   if (display01.getDimSecs() != 0)
@@ -1864,6 +1891,11 @@ void update_alarms()
   {
     relays[i].updateAlarms();
   }
+}
+
+void alarm_maintain_ethernet()
+{
+  Ethernet.maintain();
 }
 
 void alarm_temperature(const uint8_t* deviceAddress)
