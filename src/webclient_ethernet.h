@@ -16,6 +16,7 @@ class WebClient
    WebClient(char *username, char *password);
    EthernetClient client;
    bool init();
+   void post(byte dataType, unsigned long data, char *field);
 
 };
 
