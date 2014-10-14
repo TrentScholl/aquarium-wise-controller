@@ -10,6 +10,12 @@
 #include <OneWire.h> 
 #include <DallasTemperature.h>
 #include <avr/wdt.h>
+#include <SPI.h>
+#include <UIPEthernet.h>
+#include <UIPServer.h>
+#include <UIPClient.h>
+#include <Dns.h>
+#include <JsonGenerator.h>
 
 #include "debug.h"
 #include "pins.h"
@@ -21,17 +27,9 @@
 #include "heater.h"
 #include "fonts.h"
 #include "theme.h"
-#include <SPI.h>
-#include <UIPEthernet.h>
-#include <UIPServer.h>
-#include <UIPClient.h>
+#include "webclient_ethernet.h"
 
-byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-EthernetClient client;
-
-EthernetServer server = EthernetServer(1000);
-
-const byte ethernetEnabled = 1;
+WebClient webClient;
 
 const byte numRelays = 8;
 Relay relays[numRelays] = {
@@ -96,6 +94,7 @@ struct RTC_T
 
 unsigned long prevMillisTouch = 0;
 unsigned long prevMillis5sec = 0;
+unsigned long prevMillis30sec = 0;
 unsigned long millisDim = 0;
 unsigned long millisHome = 0;
 
@@ -146,18 +145,17 @@ void setup()
   buzzer.init();
   buzzer.beep(2, 50);
   
-  if (ethernetEnabled)
-  {
-    DEBUG_PRINTLN("Initializing Ethernet");
-    Ethernet.begin(mac);
-
-    Alarm.alarmRepeat(0, 0, 0, alarm_maintain_ethernet);
-    
-    server.begin();
-  }
+  webClient.init();
+  
+  Alarm.alarmRepeat(0, 0, 0, alarm_maintain_ethernet);
 
   updateTimeDate();
   screenHome();
+}
+
+void alarm_maintain_ethernet()
+{
+  webClient.maintain();
 }
 
 unsigned long lastTempRequest = 0;
@@ -220,27 +218,23 @@ void loop()
     }
   }
 
-  if (currentMillis - prevMillis5sec > 1000)
+  if (currentMillis - prevMillis5sec > 5000)
   {
     prevMillis5sec = millis();
     updateTimeDate();
 
     check_Ph(dispScreen == 1);
     check_Temperatures(dispScreen == 1);
-    
-    EthernetClient client = server.available();
-    
-    if (client)
-    {
-      client.print("Temp: ");
-      client.print(prevtempString);
-      client.println("");
-      
-      client.print("pH: ");
-      client.print(prevphString);
-      client.println("");
-    }
   }
+  
+  if (currentMillis - prevMillis30sec > 30000)
+  {
+    prevMillis30sec = millis();
+      
+    webClient.send(1, "tank", atof(prevphString));
+    webClient.send(0, "water", atof(prevtempString));
+  }
+  
 
   if (display01.getDimSecs() != 0)
   {
@@ -1891,11 +1885,6 @@ void update_alarms()
   {
     relays[i].updateAlarms();
   }
-}
-
-void alarm_maintain_ethernet()
-{
-  Ethernet.maintain();
 }
 
 void alarm_temperature(const uint8_t* deviceAddress)

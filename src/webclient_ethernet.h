@@ -1,23 +1,25 @@
 #ifndef _WEBCLIENT_ETHERNET_h
 #define _WEBCLIENT_ETHERNET_h
 
-#include "Arduino.h"
-
 #include <SPI.h>
 #include <UIPEthernet.h>
+#include <UIPServer.h>
+#include <UIPClient.h>
+#include "Arduino.h"
 
 class WebClient
 {
  protected:
-  char *username_;
-  char *password_;
-  
- public:
-   WebClient(char *username, char *password);
+   void readln(char*, int);
+   IPAddress serverIp;
    EthernetClient client;
+   char buffer[150];
+ public:
    bool init();
-   void post(byte dataType, unsigned long data, char *field);
-
+   bool query(const char* path, char* content, int maxContentSize);
+   bool send(byte uom, char* desc, float val);
+   void maintain();
+   
 };
 
 #endif

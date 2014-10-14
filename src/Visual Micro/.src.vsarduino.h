@@ -18,6 +18,7 @@ extern "C" void __cxa_pure_virtual() {;}
 
 int freeRam ();
 //
+void alarm_maintain_ethernet();
 void setup_TemperatureSensors();
 void setup_Relays();
 time_t syncProvider();
@@ -65,7 +66,6 @@ time_t tmConvert_t(int YYYY, byte MM, byte DD, byte hh, byte mm, byte ss);
 void autoBrightness();
 void rampScreenBrightness(byte fromLevel, byte toLevel);
 void update_alarms();
-void alarm_maintain_ethernet();
 void alarm_temperature(const uint8_t* deviceAddress);
 void alarm_rlyLight1_on();
 void alarm_rlyLight2_on();
@@ -97,7 +97,6 @@ void firstRunSetup();
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\basic_switch.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\buzzer.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\buzzer.h"
-#include "C:\Workspaces\Personal\aquarium_wise_controller\src\configuration.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\configuration.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\debug.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\display.cpp"
@@ -113,6 +112,7 @@ void firstRunSetup();
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\relay.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\theme.h"
+#include "C:\Workspaces\Personal\aquarium_wise_controller\src\uoms.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\version.h"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\webclient_ethernet.cpp"
 #include "C:\Workspaces\Personal\aquarium_wise_controller\src\webclient_ethernet.h"

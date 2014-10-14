@@ -87,8 +87,10 @@
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\arduino_uip</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\arduino_uip\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\arduinouip</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\arduinouip\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\ArduinoJson</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\ArduinoJson\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -145,8 +147,10 @@
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\arduino_uip</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\arduino_uip\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\arduinouip</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\arduinouip\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\ArduinoJson</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\ArduinoJson\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -284,8 +288,10 @@ build.arch=AVR
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\arduino_uip</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\arduino_uip\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\arduinouip</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\arduinouip\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\ArduinoJson</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\ArduinoJson\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -342,8 +348,10 @@ build.arch=AVR
             <Value>C:\Program Files (x86)\Arduino\libraries\DallasTemperature\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries\SPI\utility</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\arduino_uip</Value>
-            <Value>C:\Program Files (x86)\Arduino\libraries\arduino_uip\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\arduinouip</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\arduinouip\utility</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\ArduinoJson</Value>
+            <Value>C:\Program Files (x86)\Arduino\libraries\ArduinoJson\utility</Value>
             <Value>C:\Program Files (x86)\Arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Arduino\hardware\arduino\libraries</Value>
             <Value>C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers</Value>
@@ -454,9 +462,6 @@ build.arch=AVR
     <Compile Include="buzzer.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="configuration.cpp">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="configuration.h">
       <SubType>compile</SubType>
     </Compile>
@@ -500,6 +505,9 @@ build.arch=AVR
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="theme.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uoms.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="version.h">
